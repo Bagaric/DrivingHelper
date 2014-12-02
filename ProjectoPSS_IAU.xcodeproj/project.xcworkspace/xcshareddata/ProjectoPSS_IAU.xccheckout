@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0C78F75E-2F5A-4A82-A219-79E5E5D0C7C9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ProjectoPSS_IAU</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D9412596E58697F2251C45AB7491224D2D19BB07</key>
+		<string>https://github.com/KlaudioS/PSS_IAU_Project</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ProjectoPSS_IAU.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D9412596E58697F2251C45AB7491224D2D19BB07</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/KlaudioS/PSS_IAU_Project</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D9412596E58697F2251C45AB7491224D2D19BB07</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D9412596E58697F2251C45AB7491224D2D19BB07</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ClaudioBranch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
