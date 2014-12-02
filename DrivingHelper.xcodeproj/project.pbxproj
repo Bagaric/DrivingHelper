@@ -83,8 +83,8 @@
 				52A45D651A290C93000BC533 /* car.png */,
 				52A45D631A290C37000BC533 /* RightArrow.png */,
 				52A45D611A290C32000BC533 /* arrow-40169_640.png */,
-				52A798351A265C4800DD0CA9 /* ProjectoPSS_IAU */,
-				52A7984D1A265C4900DD0CA9 /* ProjectoPSS_IAUTests */,
+				52A798351A265C4800DD0CA9 /* DrivingHelper */,
+				52A7984D1A265C4900DD0CA9 /* DrivingHelperTests */,
 				52A798341A265C4800DD0CA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,7 +98,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52A798351A265C4800DD0CA9 /* ProjectoPSS_IAU */ = {
+		52A798351A265C4800DD0CA9 /* DrivingHelper */ = {
 			isa = PBXGroup;
 			children = (
 				52A798381A265C4800DD0CA9 /* AppDelegate.swift */,
@@ -110,7 +110,7 @@
 				52A798431A265C4800DD0CA9 /* LaunchScreen.xib */,
 				52A798361A265C4800DD0CA9 /* Supporting Files */,
 			);
-			path = ProjectoPSS_IAU;
+			path = DrivingHelper;
 			sourceTree = "<group>";
 		};
 		52A798361A265C4800DD0CA9 /* Supporting Files */ = {
@@ -121,13 +121,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		52A7984D1A265C4900DD0CA9 /* ProjectoPSS_IAUTests */ = {
+		52A7984D1A265C4900DD0CA9 /* DrivingHelperTests */ = {
 			isa = PBXGroup;
 			children = (
 				52A798501A265C4900DD0CA9 /* ProjectoPSS_IAUTests.swift */,
 				52A7984E1A265C4900DD0CA9 /* Supporting Files */,
 			);
-			path = ProjectoPSS_IAUTests;
+			path = DrivingHelperTests;
 			sourceTree = "<group>";
 		};
 		52A7984E1A265C4900DD0CA9 /* Supporting Files */ = {
@@ -370,7 +370,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ProjectoPSS_IAU/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DrivingHelper;
 			};
@@ -380,7 +380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = ProjectoPSS_IAU/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DrivingHelper;
 			};
@@ -398,10 +398,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ProjectoPSS_IAUTests/Info.plist;
+				INFOPLIST_FILE = DrivingHelperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = DrivingHelperTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectoPSS_IAU.app/ProjectoPSS_IAU";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingHelper.app/DrivingHelper";
 			};
 			name = Debug;
 		};
@@ -413,10 +413,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ProjectoPSS_IAUTests/Info.plist;
+				INFOPLIST_FILE = DrivingHelperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = DrivingHelperTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectoPSS_IAU.app/ProjectoPSS_IAU";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingHelper.app/DrivingHelper";
 			};
 			name = Release;
 		};
