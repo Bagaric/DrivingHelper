@@ -25,6 +25,8 @@
 		843CC61A1A2AD50500094D37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
 		969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */; };
 		969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */; };
+		96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA51A2E76A40064D8F1 /* timer31.png */; };
+		96AC6AA81A2E80760064D8F1 /* play3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA71A2E80760064D8F1 /* play3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		843CC6191A2AD50500094D37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ios7-gear-outline-44.png"; sourceTree = "<group>"; };
 		969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		96AC6AA51A2E76A40064D8F1 /* timer31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer31.png; sourceTree = "<group>"; };
+		96AC6AA71A2E80760064D8F1 /* play3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
+				96AC6AA71A2E80760064D8F1 /* play3.png */,
+				96AC6AA51A2E76A40064D8F1 /* timer31.png */,
 				969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */,
 				843CC6191A2AD50500094D37 /* CoreLocation.framework */,
 				843CC6171A2AD4FA00094D37 /* CoreMotion.framework */,
@@ -239,7 +245,9 @@
 				969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */,
 				52A45D661A290C93000BC533 /* car.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
+				96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */,
 				52A45D641A290C37000BC533 /* RightArrow.png in Resources */,
+				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
 				52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */,
 				52A45D621A290C32000BC533 /* arrow-40169_640.png in Resources */,
 				52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */,
