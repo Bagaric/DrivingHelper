@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		192D362E1A2E09D9005B568B /* icon-ios7-gear-outline-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D362A1A2E09D9005B568B /* icon-ios7-gear-outline-44.png */; };
+		192D362F1A2E09D9005B568B /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D362B1A2E09D9005B568B /* car.png */; };
+		192D36301A2E09D9005B568B /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D362C1A2E09D9005B568B /* RightArrow.png */; };
+		192D36311A2E09D9005B568B /* arrow-40169_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 192D362D1A2E09D9005B568B /* arrow-40169_640.png */; };
+		192D36331A2E09F6005B568B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 192D36321A2E09F6005B568B /* CoreMotion.framework */; };
 		19AD33C11A2E052700DF9F2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD33C01A2E052700DF9F2E /* AppDelegate.swift */; };
 		19AD33C31A2E052700DF9F2E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD33C21A2E052700DF9F2E /* FirstViewController.swift */; };
 		19AD33C51A2E052700DF9F2E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AD33C41A2E052700DF9F2E /* SecondViewController.swift */; };
@@ -27,6 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		192D362A1A2E09D9005B568B /* icon-ios7-gear-outline-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-ios7-gear-outline-44.png"; path = "DrivingHelper/icon-ios7-gear-outline-44.png"; sourceTree = "<group>"; };
+		192D362B1A2E09D9005B568B /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = car.png; path = DrivingHelper/car.png; sourceTree = "<group>"; };
+		192D362C1A2E09D9005B568B /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RightArrow.png; path = DrivingHelper/RightArrow.png; sourceTree = "<group>"; };
+		192D362D1A2E09D9005B568B /* arrow-40169_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-40169_640.png"; path = "DrivingHelper/arrow-40169_640.png"; sourceTree = "<group>"; };
+		192D36321A2E09F6005B568B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		19AD33BB1A2E052700DF9F2E /* DrivingHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AD33BF1A2E052700DF9F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19AD33C01A2E052700DF9F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192D36331A2E09F6005B568B /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +72,11 @@
 		19AD33B21A2E052700DF9F2E = {
 			isa = PBXGroup;
 			children = (
+				192D36321A2E09F6005B568B /* CoreMotion.framework */,
+				192D362A1A2E09D9005B568B /* icon-ios7-gear-outline-44.png */,
+				192D362B1A2E09D9005B568B /* car.png */,
+				192D362C1A2E09D9005B568B /* RightArrow.png */,
+				192D362D1A2E09D9005B568B /* arrow-40169_640.png */,
 				19AD33BD1A2E052700DF9F2E /* DrivingHelper */,
 				19AD33D51A2E052700DF9F2E /* DrivingHelperTests */,
 				19AD33BC1A2E052700DF9F2E /* Products */,
@@ -197,7 +213,11 @@
 			files = (
 				19AD33C81A2E052700DF9F2E /* Main.storyboard in Resources */,
 				19AD33CD1A2E052700DF9F2E /* LaunchScreen.xib in Resources */,
+				192D36301A2E09D9005B568B /* RightArrow.png in Resources */,
+				192D362F1A2E09D9005B568B /* car.png in Resources */,
+				192D362E1A2E09D9005B568B /* icon-ios7-gear-outline-44.png in Resources */,
 				19AD33CA1A2E052700DF9F2E /* Images.xcassets in Resources */,
+				192D36311A2E09D9005B568B /* arrow-40169_640.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +429,7 @@
 				19AD33DE1A2E052700DF9F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19AD33DF1A2E052700DF9F2E /* Build configuration list for PBXNativeTarget "DrivingHelperTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +438,7 @@
 				19AD33E11A2E052700DF9F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
