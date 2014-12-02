@@ -20,6 +20,7 @@ class FirstViewController: UIViewController {
     let motionManager = CMMotionManager()
     
     
+    
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!

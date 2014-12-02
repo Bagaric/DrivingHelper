@@ -10,31 +10,31 @@
 	<string>DrivingHelper</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D9412596E58697F2251C45AB7491224D2D19BB07</key>
-		<string>https://github.com/KlaudioS/PSS_IAU_Project</string>
+		<key>C96BE5F92B9956D41D93A7490CA931CA5EFC2571</key>
+		<string>https://github.com/Bagaric/DrivingHelper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>DrivingHelper.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D9412596E58697F2251C45AB7491224D2D19BB07</key>
+		<key>C96BE5F92B9956D41D93A7490CA931CA5EFC2571</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/KlaudioS/PSS_IAU_Project</string>
+	<string>https://github.com/Bagaric/DrivingHelper.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D9412596E58697F2251C45AB7491224D2D19BB07</string>
+	<string>C96BE5F92B9956D41D93A7490CA931CA5EFC2571</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D9412596E58697F2251C45AB7491224D2D19BB07</string>
+			<string>C96BE5F92B9956D41D93A7490CA931CA5EFC2571</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ClaudioBranch</string>
+			<string>DrivingHelper</string>
 		</dict>
 	</array>
 </dict>
