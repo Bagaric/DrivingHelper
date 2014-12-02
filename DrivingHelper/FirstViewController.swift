@@ -163,13 +163,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        println("Checkpoint 1")
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
-            
-            println("Chekpoint 4")
+
             if (error != nil) {
                 println("Reverse geocoder failed with error" + error.localizedDescription)
                 return
@@ -185,7 +183,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func displayLocationInfo(placemark: CLPlacemark?) {
-        println("Checkpoint 2")
         if let containsPlacemark = placemark {
             //stop updating location to save battery life
             locationManager.stopUpdatingLocation()
@@ -202,7 +199,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Checkpoint 3")
         println("Error while updating location " + error.localizedDescription)
     }
     
