@@ -8,10 +8,15 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
     
     let userDefaults = NSUserDefaults.standardUserDefaults();
+    
+    
     // Constants
     let accelerometerUpdateInterval = 0.2
     
@@ -59,7 +64,6 @@ class FirstViewController: UIViewController {
                 println("\(error)")
             }
         })
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,12 +76,6 @@ class FirstViewController: UIViewController {
          ChangeColorCarAccelerate(limitAcelerate)
          ChangeColorLeftTurn(limitLeftTurn)
          ChangeColorRightTurn(limitRightTurn)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
         
     }
     
@@ -150,6 +148,69 @@ class FirstViewController: UIViewController {
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.carColor.backgroundColor = color})
+        
+    }
+    
+    
+    
+    /*
+     *  Location detection
+     */
+    
+    @IBAction func detectLocation(sender: AnyObject) {
+        // Run the location detection
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        println("Checkpoint 1")
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
+            
+            println("Chekpoint 4")
+            if (error != nil) {
+                println("Reverse geocoder failed with error" + error.localizedDescription)
+                return
+            }
+            
+            if placemarks.count > 0 {
+                let pm = placemarks[0] as CLPlacemark
+                self.displayLocationInfo(pm)
+            } else {
+                println("Problem with the data received from geocoder")
+            }
+        })
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark?) {
+        println("Checkpoint 2")
+        if let containsPlacemark = placemark {
+            //stop updating location to save battery life
+            locationManager.stopUpdatingLocation()
+            let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
+            let postalCode = (containsPlacemark.postalCode != nil) ? containsPlacemark.postalCode : ""
+            let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            println(locality)
+            println(postalCode)
+            println(administrativeArea)
+            println(country)
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Checkpoint 3")
+        println("Error while updating location " + error.localizedDescription)
+    }
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
         
     }
     
