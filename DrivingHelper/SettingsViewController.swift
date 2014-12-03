@@ -13,50 +13,48 @@ protocol ViewSettingsControllerDelegate{
 }
 
 class SettingsViewController: UIViewController {
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     var delegate:ViewSettingsControllerDelegate?
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    var limitAccel: Float
-    var limitBraking: Float
-    var limitTurning: Float
-    var limitRoad: Float
+    var limitAccel: Float = 0.0
+    var limitBraking: Float = 0.0
+    var limitTurning: Float = 0.0
+    var limitRoad: Float = 0.0
     
     
     @IBAction func accelerationSlider(sender: UISlider) {
-        var currentValue = Int(sender.value)
-        println(sender.value)
-        
+        limitAccel = sender.value
+        println(limitAccel)
         
     }
     
     @IBAction func brakingSlider(sender: UISlider) {
-        var currentValue = Int(sender.value)
-        println(sender.value)
+        limitBraking = sender.value
+        println(limitBraking)
     }
     
     @IBAction func turningSlider(sender: UISlider) {
-        var currentValue = Int(sender.value)
+        limitTurning = sender.value
         println(sender.value)
-        
     }
     
     @IBAction func roadSlider(sender: UISlider) {
-        var currentValue = Int(sender.value)
-        println(sender.value)
-        
+        limitRoad = sender.value
+        println(limitRoad)
     }
+    
+    @IBOutlet weak var accelerationSliderPosition: UISlider!
+    @IBOutlet weak var brakingSliderPosition: UISlider!
+    @IBOutlet weak var turningSliderPosition: UISlider!
+    @IBOutlet weak var roadSliderPosition: UISlider!
+    
     
     @IBAction func SaveSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
         //delegate!.viewSettingsFinish(self,limitAcel: 0.5, limitLeft: 0.2, limitRight: 0.9)
-        let userDefaults = NSUserDefaults.standardUserDefaults();
         
         
-
         
         //NSUserDefaults
         userDefaults.setFloat(limitAccel, forKey: "limitAccel");
@@ -65,14 +63,33 @@ class SettingsViewController: UIViewController {
         userDefaults.setFloat(limitRoad, forKey: "limitRoad");
         userDefaults.synchronize();
         
+        println("Set Acceleration to: \(limitAccel)")
+        println("Set Acceleration to: \(limitBraking)")
+        println("Set Acceleration to: \(limitTurning)")
+        println("Set Acceleration to: \(limitRoad)")
        
        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Loading
+        limitAccel = userDefaults.floatForKey("limitAccel")
+        limitBraking = userDefaults.floatForKey("limitBraking")
+        limitTurning = userDefaults.floatForKey("limitTurning")
+        limitRoad = userDefaults.floatForKey("limitRoad")
+        
+        accelerationSliderPosition.value = limitAccel
+        brakingSliderPosition.value = limitBraking
+        turningSliderPosition.value = limitTurning
+        roadSliderPosition.value = limitRoad
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (limitAccel == 0) {
+        /*if (limitAccel == 0) {
             limitAccel = 1.0
         }
         if (limitBraking == 0) {
@@ -83,7 +100,7 @@ class SettingsViewController: UIViewController {
         }
         if (limitRoad == 0) {
             limitRoad = 1.0
-        }
+        }*/
         
         // Do any additional setup after loading the view.
     }

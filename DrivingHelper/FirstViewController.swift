@@ -30,10 +30,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var LeftColor: UIImageView!
     @IBOutlet weak var carColor: UIImageView!
     
-    var limitAccelerate:CGFloat = 0
-    var limitBraking:CGFloat = 0
-    var limitTurning:CGFloat = 0
-    var limitRoad:CGFloat = 0
+    var limitAccelerate:CGFloat = 1.0
+    var limitBraking:CGFloat = 1.0
+    var limitTurning:CGFloat = 1.0
+    var limitRoad:CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
