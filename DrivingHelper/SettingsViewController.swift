@@ -105,6 +105,18 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func resetValues(sender: UIButton) {
+        limitAccel = 0.5
+        limitBraking = 0.5
+        limitTurning = 0.5
+        limitRoad = 0.5
+        
+        accelerationSliderPosition.value = limitAccel
+        brakingSliderPosition.value = limitBraking
+        turningSliderPosition.value = limitTurning
+        roadSliderPosition.value = limitRoad
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
