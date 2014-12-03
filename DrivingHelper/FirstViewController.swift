@@ -30,18 +30,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var LeftColor: UIImageView!
     @IBOutlet weak var carColor: UIImageView!
     
-    var limitAcelerate:CGFloat = 0
-    var limitLeftTurn:CGFloat = 0
-    var limitRightTurn:CGFloat = 0
-  
+    var limitAccelerate:CGFloat = 0
+    var limitBraking:CGFloat = 0
+    var limitTurning:CGFloat = 0
+    var limitRoad:CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Reseting colors to green by default
-        ChangeColorLeftTurn(0)
-        ChangeColorCarAccelerate(0)
-        ChangeColorRightTurn(0)
         
         // Check if the accelerometer is inactive and available
         if self.motionManager.accelerometerActive {
@@ -70,12 +65,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         
         //Loading
-         limitAcelerate = CGFloat(userDefaults.floatForKey("LimitAcel"))
-         limitLeftTurn =  CGFloat(userDefaults.floatForKey("LimitLeft"))
-         limitRightTurn =  CGFloat(userDefaults.floatForKey("LimitRight"))
-         ChangeColorCarAccelerate(limitAcelerate)
-         ChangeColorLeftTurn(limitLeftTurn)
-         ChangeColorRightTurn(limitRightTurn)
+         limitAccelerate = CGFloat(userDefaults.floatForKey("limitAccel"))
+         limitBraking = CGFloat(userDefaults.floatForKey("limitBraking"))
+         limitTurning = CGFloat(userDefaults.floatForKey("limitTurning"))
+         limitRoad = CGFloat(userDefaults.floatForKey("limitRoad"))
         
     }
     
@@ -94,18 +87,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         // Change arrow colors
         if acceleration.x > Double(0) {
-            ChangeColorRightTurn(CGFloat(acceleration.x))
+            ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
         }
         if acceleration.x <= Double(0) {
-            ChangeColorLeftTurn(CGFloat(abs(acceleration.x)))
+            ChangeColorLeftTurn(CGFloat(abs(acceleration.x))*limitTurning)
         }
         
         // Change car color
         if acceleration.z > Double(0) {
-            ChangeColorCarBrake(CGFloat(acceleration.z))
+            ChangeColorCarBrake(CGFloat(acceleration.z)*limitBraking)
         }
         if acceleration.z <= Double(0) {
-            ChangeColorCarAccelerate(CGFloat(abs(acceleration.z)))
+            ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
         }
         
     }
@@ -150,8 +143,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             self.carColor.backgroundColor = color})
         
     }
-    
-    
     
     /*
      *  Location detection
@@ -200,8 +191,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Error while updating location " + error.localizedDescription)
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
