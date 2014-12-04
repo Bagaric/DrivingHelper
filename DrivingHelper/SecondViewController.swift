@@ -13,7 +13,7 @@ import CoreMotion
 class SecondViewController: UIViewController {
     
     // Constants
-    let accelerometerUpdateInterval = 0.2
+    let gmeterUpdateInterval = 0.3
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
@@ -38,7 +38,7 @@ class SecondViewController: UIViewController {
         }
         
         // Run the accelerometer in the background
-        motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
+        motionManager.accelerometerUpdateInterval = gmeterUpdateInterval
         motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
             self.outputAccelerationData(accelerometerData.acceleration)
             if (error != nil) {
@@ -71,7 +71,7 @@ class SecondViewController: UIViewController {
         var originX = self.imgGBase.frame.origin.x+90
         var originY = self.imgGBase.frame.origin.y+90
         
-        UIView.animateWithDuration(0.5, animations:{
+        UIView.animateWithDuration(gmeterUpdateInterval, animations:{
             self.imgGBall.frame.origin = CGPoint (x: originX+85, y: originY+30);
         })
     }
@@ -80,7 +80,7 @@ class SecondViewController: UIViewController {
         var originX = self.imgGBase.frame.origin.x+90
         var originY = self.imgGBase.frame.origin.y+90
         
-        UIView.animateWithDuration(0.5, animations:{
+        UIView.animateWithDuration(gmeterUpdateInterval, animations:{
             self.imgGBall.frame.origin = CGPoint (x: originX+valueX, y: originY+valueY);
         })
         
