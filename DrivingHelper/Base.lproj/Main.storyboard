@@ -241,6 +241,22 @@
                                     <constraint firstAttribute="width" constant="200" id="muN-3O-fRW"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMeterBall2" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-QO-Eid">
+                                <rect key="frame" x="150" y="188" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="D3B-v6-KLe"/>
+                                    <constraint firstAttribute="width" constant="20" id="a0s-Pi-85b"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYY-Ky-y6o">
+                                <rect key="frame" x="141" y="327" width="38" height="30"/>
+                                <state key="normal" title="Move">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMove:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="38d-hw-7Nk"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spu-ON-eCu">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -251,22 +267,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYY-Ky-y6o">
-                                <rect key="frame" x="141" y="327" width="38" height="30"/>
-                                <state key="normal" title="Move">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnMove:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="38d-hw-7Nk"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMeterBall2" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-QO-Eid">
-                                <rect key="frame" x="150" y="188" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="D3B-v6-KLe"/>
-                                    <constraint firstAttribute="width" constant="20" id="a0s-Pi-85b"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -289,6 +289,38 @@
             </objects>
             <point key="canvasLocation" x="400" y="340"/>
         </scene>
+        <!--History-->
+        <scene sceneID="AsS-cS-qdA">
+            <objects>
+                <viewController id="WRL-gT-K9y" customClass="HistoryViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RM4-Qm-Dc1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mxt-Va-fiT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ctP-6B-JnA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHr-rU-jFE">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="Driving Helper" id="a4f-w3-3Uz">
+                                        <barButtonItem key="leftBarButtonItem" title="?" id="Agi-0Y-50e"/>
+                                        <barButtonItem key="rightBarButtonItem" image="icon-ios7-gear-outline-44" id="N33-Gr-9pp"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="History" image="first" selectedImage="GMeterBall2" id="gKT-ZR-coH"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JKY-c0-EY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="826" y="338"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -302,6 +334,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="WRL-gT-K9y" kind="relationship" relationship="viewControllers" id="Ba5-23-hEz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
