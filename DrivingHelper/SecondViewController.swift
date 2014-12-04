@@ -8,8 +8,14 @@
 
 import UIKit
 import CoreLocation
+import CoreMotion
 
 class SecondViewController: UIViewController {
+    
+    // Constants
+    let accelerometerUpdateInterval = 0.2
+    // Accelerometer initialization
+    let motionManager = CMMotionManager()
     
     @IBOutlet weak var imgGBall: UIImageView!
     @IBOutlet weak var imgGBase: UIImageView!
@@ -20,6 +26,40 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.imgGBase.layer.cornerRadius = self.imgGBase.bounds.size.width/2
         
+        
+        // Check if the accelerometer is inactive and available
+        /*if self.motionManager.accelerometerActive {
+            self.stopAccelerometer()
+            return
+        }*/
+        if !self.motionManager.accelerometerAvailable {
+            println("No accelerometer detected.")
+            return
+        }
+        
+        // Run the accelerometer in the background
+        motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
+        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
+            self.outputAccelerationData(accelerometerData.acceleration)
+            if (error != nil) {
+                println("\(error)")
+            }
+        })
+        
+        
+    }
+    
+    func stopAccelerometer () {
+        self.motionManager.stopAccelerometerUpdates()
+    }
+    
+    
+    // Processes data taken from the accelerometer
+    func outputAccelerationData(acceleration:CMAcceleration) {
+        
+        println(CGFloat(acceleration.x))
+        
+        updateGmeter(CGFloat(acceleration.x*90), valueY: CGFloat(acceleration.z*90))
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,12 +76,12 @@ class SecondViewController: UIViewController {
         })
     }
     
-    func updateGmeter(valorX:CGFloat,valorY:CGFloat){
+    func updateGmeter(valueX:CGFloat, valueY:CGFloat){
         var originX = self.imgGBase.frame.origin.x+90
         var originY = self.imgGBase.frame.origin.y+90
         
         UIView.animateWithDuration(0.5, animations:{
-            self.imgGBall.frame.origin = CGPoint (x: originX+valorX, y: originY+valorY);
+            self.imgGBall.frame.origin = CGPoint (x: originX+valueX, y: originY+valueY);
         })
         
     }
