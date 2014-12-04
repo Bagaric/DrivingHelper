@@ -27,6 +27,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var btnRoute: UIButton!
     @IBOutlet weak var speedLabel: UILabel!
+    var speed: CLLocationSpeed = 0.0
     
     
     // UI element declarations
@@ -158,21 +159,61 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Location stuff
      */
     
+    var recordingInProgress = false
+    var recordedLocations : [CLLocation] = []
+    var recordedCoordinates : [CLLocationCoordinate2D] = []
+    var recordedDistance : CLLocationDistance = 0.0
+    var recordStartedAt : NSDate?
+    var recordedTime : NSTimeInterval = 0.0
+    var recordedSpeed : CLLocationSpeed = 0.0
+    
+    var defersLocationUpdates = false
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
             
             if (error != nil) {
-                println("Reverse geocoder failed with error" + error.localizedDescription)
+                println("GPS failed with error: " + error.localizedDescription)
                 return
             }
+            
+            
             
             if placemarks.count > 0 {
                 let pm = placemarks[0] as CLPlacemark
                 self.displayLocationInfo(pm)
             } else {
-                println("Problem with the data received from geocoder")
+                println("Problem with the data received from geocoder.")
             }
         })
+        
+        
+        
+        if !self.recordingInProgress {
+            return
+        }
+        
+        for location in locations as [CLLocation] {
+            
+            if !(self.recordStartedAt != nil) {
+                self.recordStartedAt = location.timestamp
+            }
+            self.recordedTime = NSDate().timeIntervalSinceDate(self.recordStartedAt!)
+            
+            // First, calculate distance
+            if self.recordedCoordinates.count > 0 {
+                self.recordedDistance += location.distanceFromLocation(self.recordedLocations.last)
+            }
+            
+            if (self.recordedCoordinates.count > 1 && self.recordedDistance > 0 && self.recordedTime > 0) {
+                self.recordedSpeed = self.recordedDistance / self.recordedTime
+            }
+        }
+        
+        if (!self.defersLocationUpdates && CLLocationManager.deferredLocationUpdatesAvailable()) {
+            self.defersLocationUpdates = true
+            locationManager.allowDeferredLocationUpdatesUntilTraveled(100000, timeout: 10000)
+        }
     }
     
     func displayLocationInfo(placemark: CLPlacemark?) {
@@ -188,7 +229,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             println(administrativeArea)
             println(country)
         }
-        
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
@@ -209,7 +249,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             btnRoute.setTitle("STOP", forState: UIControlState.Normal);
             stateMain = 0;
         }
-        else{
+        else {
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
             alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))

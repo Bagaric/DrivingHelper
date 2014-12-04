@@ -12,6 +12,11 @@ import CoreMotion
 
 class SecondViewController: UIViewController {
     
+    
+    let userDefaults = NSUserDefaults.standardUserDefaults();
+    
+    var limitGmeter: CGFloat = 1.0
+    
     // Constants
     let gmeterUpdateInterval = 0.3
     // Accelerometer initialization
@@ -45,7 +50,13 @@ class SecondViewController: UIViewController {
                 println("\(error)")
             }
         })
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
+        //Loading
+        limitGmeter = CGFloat(userDefaults.floatForKey("limitG"))
         
     }
     
@@ -53,10 +64,9 @@ class SecondViewController: UIViewController {
         self.motionManager.stopAccelerometerUpdates()
     }
     
-    
     // Processes data taken from the accelerometer
     func outputAccelerationData(acceleration:CMAcceleration) {
-        updateGmeter(CGFloat(acceleration.x*90), valueY: CGFloat(acceleration.z*90))
+        updateGmeter((CGFloat(acceleration.x * 90) * limitGmeter), valueY: (CGFloat(acceleration.z * 90) * limitGmeter))
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,24 +74,25 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func btnMove(sender: AnyObject) {
-        var originX = self.imgGBase.frame.origin.x+90
-        var originY = self.imgGBase.frame.origin.y+90
-        
-        UIView.animateWithDuration(0.5, animations:{
-            self.imgGBall.frame.origin = CGPoint (x: originX+85, y: originY+30);
-        })
-    }
-    
     func updateGmeter(valueX:CGFloat, valueY:CGFloat){
         var originX = self.imgGBase.frame.origin.x+90
         var originY = self.imgGBase.frame.origin.y+90
         var newPoint = CGPoint (x: originX+valueX, y: originY+valueY)
         
-        if !CGRectContainsPoint(rectangle!,newPoint){
-            var alert = UIAlertController(title: "Josip´s Fault", message: "Recent scientific research have proven that its Josip´s fault ^_^", preferredStyle: UIAlertControllerStyle.Alert)
-                        self.presentViewController(alert, animated: true, completion: nil)
-        }else{
+        var radius = sqrt(pow((newPoint.x),2) + pow((newPoint.y),2))
+        var constraintRatio = 90/radius
+        
+        if !CGRectContainsPoint(rectangle!,newPoint) {
+            
+            if radius > 90 {
+                newPoint.x = newPoint.x * constraintRatio + originX
+                newPoint.y = newPoint.y * constraintRatio + originY
+            }
+            
+            UIView.animateWithDuration(gmeterUpdateInterval, animations:{
+                self.imgGBall.frame.origin = newPoint
+            })
+        } else {
             UIView.animateWithDuration(gmeterUpdateInterval, animations:{
                 self.imgGBall.frame.origin = newPoint
             })

@@ -11,7 +11,7 @@ import UIKit
 
 class GmeterSettings: UIViewController {
     
-    var limitG:Float=0
+    var limitG:Float = 0
     let userDefaults = NSUserDefaults.standardUserDefaults()
 
     
@@ -29,6 +29,7 @@ class GmeterSettings: UIViewController {
     @IBAction func CancelSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func SaveSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     
