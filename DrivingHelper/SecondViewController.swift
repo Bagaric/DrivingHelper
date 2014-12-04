@@ -8,8 +8,14 @@
 
 import UIKit
 import CoreLocation
+import CoreMotion
 
 class SecondViewController: UIViewController {
+    
+    // Constants
+    let gmeterUpdateInterval = 0.3
+    // Accelerometer initialization
+    let motionManager = CMMotionManager()
     
     @IBOutlet weak var imgGBall: UIImageView!
     @IBOutlet weak var imgGBase: UIImageView!
@@ -37,12 +43,12 @@ class SecondViewController: UIViewController {
             })
     }
     
-    func updateGmeter(valorX:CGFloat,valorY:CGFloat){
+    func updateGmeter(valueX:CGFloat, valueY:CGFloat){
         var originX = self.imgGBase.frame.origin.x+90
         var originY = self.imgGBase.frame.origin.y+90
         
-        UIView.animateWithDuration(0.5, animations:{
-            self.imgGBall.frame.origin = CGPoint (x: originX+valorX, y: originY+valorY);
+        UIView.animateWithDuration(gmeterUpdateInterval, animations:{
+            self.imgGBall.frame.origin = CGPoint (x: originX+valueX, y: originY+valueY);
         })
     
     }
