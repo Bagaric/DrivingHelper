@@ -26,6 +26,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     let motionManager = CMMotionManager()
     
     @IBOutlet weak var btnRoute: UIButton!
+    @IBOutlet weak var speedLabel: UILabel!
     
     
     // UI element declarations
@@ -62,6 +63,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 println("\(error)")
             }
         })
+        
+        // Run the location detection
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -148,15 +155,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     /*
-     *  Location detection
+     *  Location stuff
      */
-    
-    @IBAction func detectLocation(sender: AnyObject) {
-        // Run the location detection
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
