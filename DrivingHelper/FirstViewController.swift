@@ -25,6 +25,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
+    @IBOutlet weak var btnRoute: UIButton!
+    
     
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
@@ -199,7 +201,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    var stateMain = 1;
+    
     @IBAction func btnStop(sender: AnyObject) {
+        
+        if (stateMain == 1){
+            btnRoute.te
+        }
+        
         var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
         alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))

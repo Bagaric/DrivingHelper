@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYl-ma-3Td">
@@ -84,14 +84,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="play3.png" translatesAutoresizingMaskIntoConstraints="NO" id="IIo-OS-vuz">
-                                <rect key="frame" x="144" y="463" width="32" height="32"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-NF-P4e">
-                                <rect key="frame" x="193" y="463" width="32" height="32"/>
-                                <state key="normal" image="Stop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-NF-P4e">
+                                <rect key="frame" x="120" y="459" width="80" height="32"/>
+                                <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="btnStop:" destination="9pv-A4-QxB" eventType="touchUpInside" id="gZs-AI-tZs"/>
                                 </connections>
@@ -115,6 +110,7 @@
                     <connections>
                         <outlet property="LeftColor" destination="b7Q-az-95j" id="3dF-lV-wwL"/>
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
+                        <outlet property="btnRoute" destination="nhw-NF-P4e" id="Cfl-fa-Sg5"/>
                         <outlet property="carColor" destination="FSe-4V-AXW" id="meh-UL-2gN"/>
                     </connections>
                 </viewController>
@@ -310,12 +306,10 @@
         <image name="GMeterBall2" width="74" height="74"/>
         <image name="GMeterBase2" width="496" height="496"/>
         <image name="RightArrow" width="88" height="88"/>
-        <image name="Stop" width="32" height="32"/>
         <image name="arrow-40169_640" width="88" height="88"/>
         <image name="car" width="341" height="107"/>
         <image name="first" width="30" height="30"/>
         <image name="icon-ios7-gear-outline-44" width="44" height="44"/>
-        <image name="play3.png" width="32" height="37"/>
         <image name="timer31" width="32" height="32"/>
         <image name="timer31.png" width="32" height="32"/>
     </resources>
