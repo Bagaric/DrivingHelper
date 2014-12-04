@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -230,6 +230,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMeterBase2" translatesAutoresizingMaskIntoConstraints="NO" id="uFw-s1-Ju6">
+                                <rect key="frame" x="60" y="98" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uFw-s1-Ju6" secondAttribute="height" multiplier="1:1" id="CY5-fn-rY2"/>
+                                    <constraint firstAttribute="height" constant="200" id="Hmb-MP-7cv"/>
+                                    <constraint firstAttribute="width" constant="200" id="muN-3O-fRW"/>
+                                </constraints>
+                            </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spu-ON-eCu">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,19 +248,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYY-Ky-y6o">
+                                <rect key="frame" x="141" y="327" width="38" height="30"/>
+                                <state key="normal" title="Move">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMove:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="38d-hw-7Nk"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMeterBall2" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-QO-Eid">
                                 <rect key="frame" x="150" y="188" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="D3B-v6-KLe"/>
                                     <constraint firstAttribute="width" constant="20" id="a0s-Pi-85b"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMeterBase2" translatesAutoresizingMaskIntoConstraints="NO" id="uFw-s1-Ju6">
-                                <rect key="frame" x="60" y="98" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="uFw-s1-Ju6" secondAttribute="height" multiplier="1:1" id="CY5-fn-rY2"/>
-                                    <constraint firstAttribute="height" constant="200" id="Hmb-MP-7cv"/>
-                                    <constraint firstAttribute="width" constant="200" id="muN-3O-fRW"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -268,6 +277,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TrackDay" image="timer31.png" selectedImage="timer31" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="imgGBall" destination="XKh-QO-Eid" id="mMd-31-y03"/>
+                        <outlet property="imgGBase" destination="uFw-s1-Ju6" id="RMR-fg-cci"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>

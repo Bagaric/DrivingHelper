@@ -11,6 +11,9 @@ import CoreLocation
 
 class SecondViewController: UIViewController {
     
+    @IBOutlet weak var imgGBall: UIImageView!
+    @IBOutlet weak var imgGBase: UIImageView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,5 +25,14 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func btnMove(sender: AnyObject) {
+        
+        
+        imgGBall.frame.origin = CGPoint (x: imgGBase.frame.origin.x+70, y: imgGBase.frame.origin.y + 70);
+        
+    }
+    
 }
 
