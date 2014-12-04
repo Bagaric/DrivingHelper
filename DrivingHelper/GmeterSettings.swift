@@ -47,7 +47,7 @@ class GmeterSettings: UIViewController {
         limitG = sliderG.value
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //Loading

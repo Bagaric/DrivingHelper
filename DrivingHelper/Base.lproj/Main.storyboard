@@ -226,7 +226,7 @@
             </objects>
             <point key="canvasLocation" x="1755" y="-352.81690140845069"/>
         </scene>
-        <!--TrackDay-->
+        <!--Timer-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -288,7 +288,7 @@
                             <constraint firstItem="spu-ON-eCu" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="ysp-Cs-dzf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TrackDay" image="timer31.png" selectedImage="timer31" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Timer" image="timerpdf" selectedImage="timerpdf" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="imgGBall" destination="XKh-QO-Eid" id="mMd-31-y03"/>
                         <outlet property="imgGBase" destination="uFw-s1-Ju6" id="RMR-fg-cci"/>
@@ -423,7 +423,6 @@
         <image name="car" width="341" height="107"/>
         <image name="first" width="30" height="30"/>
         <image name="icon-ios7-gear-outline-44" width="44" height="44"/>
-        <image name="timer31" width="32" height="32"/>
-        <image name="timer31.png" width="32" height="32"/>
+        <image name="timerpdf" width="44" height="44"/>
     </resources>
 </document>
