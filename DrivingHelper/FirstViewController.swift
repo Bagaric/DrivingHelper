@@ -25,6 +25,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
+    @IBOutlet weak var btnRoute: UIButton!
+    @IBOutlet weak var speedLabel: UILabel!
+    
     
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
@@ -60,6 +63,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 println("\(error)")
             }
         })
+        
+        // Run the location detection
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -146,15 +155,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     /*
-     *  Location detection
+     *  Location stuff
      */
-    
-    @IBAction func detectLocation(sender: AnyObject) {
-        // Run the location detection
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
@@ -199,13 +201,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    var stateMain = 1;
+    
     @IBAction func btnStop(sender: AnyObject) {
-        var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
-        alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
-        alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
         
+        if (stateMain == 1){
+            btnRoute.setTitle("STOP", forState: UIControlState.Normal);
+            stateMain = 0;
+        }
+        else{
+            var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
+            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            btnRoute.setTitle("START", forState: UIControlState.Normal);
+            stateMain = 1;
+        }
     }
     
     func Tweet()
