@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1979430E1A311DE100ECED0A /* Locate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1979430D1A311DE100ECED0A /* Locate.swift */; };
 		19F0F15A1A2E2EE100D1BB35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
 		19F0F15C1A2E308C00D1BB35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		19F0F15D1A2E309000D1BB35 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
@@ -59,7 +58,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1979430D1A311DE100ECED0A /* Locate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locate.swift; sourceTree = "<group>"; };
 		2C5F13561A2FDA730090D33B /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
 		2C5F135C1A2FE4710090D33B /* GMeterBase2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBase2.png; sourceTree = "<group>"; };
 		2C5F135E1A2FE4790090D33B /* GMeterBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBall2.png; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			children = (
 				52A798381A265C4800DD0CA9 /* AppDelegate.swift */,
 				52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */,
-				1979430D1A311DE100ECED0A /* Locate.swift */,
 				52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */,
 				969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */,
 				2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */,
@@ -294,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */,
-				1979430E1A311DE100ECED0A /* Locate.swift in Sources */,
 				52A798391A265C4800DD0CA9 /* AppDelegate.swift in Sources */,
 				96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */,
 				52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */,
