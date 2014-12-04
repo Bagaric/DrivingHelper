@@ -49,6 +49,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var turningSliderPosition: UISlider!
     @IBOutlet weak var roadSliderPosition: UISlider!
     
+    @IBAction func cancelSettings(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func SaveSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -67,8 +70,6 @@ class SettingsViewController: UIViewController {
         println("Set Acceleration to: \(limitBraking)")
         println("Set Acceleration to: \(limitTurning)")
         println("Set Acceleration to: \(limitRoad)")
-       
-       
     }
     
     override func viewDidAppear(animated: Bool) {

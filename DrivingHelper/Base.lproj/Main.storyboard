@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYl-ma-3Td">
@@ -174,10 +174,14 @@
                                     <navigationItem title="Settings" id="C3K-5q-etb">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XpX-Cf-kkd">
                                             <connections>
-                                                <action selector="SaveSettings:" destination="EBx-ud-wyX" id="sK0-FQ-xE6"/>
+                                                <action selector="cancelSettings:" destination="EBx-ud-wyX" id="Vhv-Cj-Ady"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aVl-3I-t0E"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="aVl-3I-t0E">
+                                            <connections>
+                                                <action selector="SaveSettings:" destination="EBx-ud-wyX" id="YqB-8r-rdM"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -294,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="750" y="359.15492957746477"/>
         </scene>
-        <!--View Controller-->
+        <!--Gmeter Settings-->
         <scene sceneID="TtM-26-BJA">
             <objects>
-                <viewController id="skl-1j-CXC" sceneMemberID="viewController">
+                <viewController id="skl-1j-CXC" customClass="GmeterSettings" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FSv-4Y-xAv"/>
                         <viewControllerLayoutGuide type="bottom" id="mWB-Ie-aR2"/>
@@ -312,19 +316,33 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Settings" id="Yag-eU-bHo">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ymn-rR-nVA"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Bg8-3g-vzg"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ymn-rR-nVA">
+                                            <connections>
+                                                <action selector="CancelSettings:" destination="skl-1j-CXC" id="jUn-1Y-CjL"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Bg8-3g-vzg">
+                                            <connections>
+                                                <action selector="SaveSettings:" destination="skl-1j-CXC" id="Q15-GT-neg"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Syh-q3-iIx">
                                 <rect key="frame" x="49" y="199" width="222" height="31"/>
+                                <connections>
+                                    <action selector="getSlideValue:" destination="skl-1j-CXC" eventType="valueChanged" id="QfM-fO-7u1"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="igc-ZJ-4Fr">
                                 <rect key="frame" x="111" y="493" width="99" height="30"/>
                                 <state key="normal" title="Default Values">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="defaultValues:" destination="skl-1j-CXC" eventType="touchUpInside" id="btE-CL-FY6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="G-meter Sensivity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-5y-JKq">
                                 <rect key="frame" x="90" y="170" width="140" height="21"/>
@@ -336,6 +354,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="HGd-QH-POp"/>
+                    <connections>
+                        <outlet property="sliderG" destination="Syh-q3-iIx" id="8Zr-P9-qJt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qj-cv-N7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -31,6 +31,7 @@
 		969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */; };
 		96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA51A2E76A40064D8F1 /* timer31.png */; };
 		96AC6AA81A2E80760064D8F1 /* play3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA71A2E80760064D8F1 /* play3.png */; };
+		96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		96AC6AA51A2E76A40064D8F1 /* timer31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer31.png; sourceTree = "<group>"; };
 		96AC6AA71A2E80760064D8F1 /* play3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play3.png; sourceTree = "<group>"; };
+		96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmeterSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */,
 				969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */,
 				2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */,
+				96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */,
 				52035C671A2975AD00A8FD52 /* images.xcassets */,
 				52A7983E1A265C4800DD0CA9 /* Main.storyboard */,
 				52A798431A265C4800DD0CA9 /* LaunchScreen.xib */,
@@ -285,6 +288,7 @@
 			files = (
 				52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */,
 				52A798391A265C4800DD0CA9 /* AppDelegate.swift in Sources */,
+				96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */,
 				52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */,
 				2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */,
 				969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */,
