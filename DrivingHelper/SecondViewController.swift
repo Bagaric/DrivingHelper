@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import CoreMotion
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     
     let userDefaults = NSUserDefaults.standardUserDefaults();
@@ -22,6 +22,8 @@ class SecondViewController: UIViewController {
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
+    let locationManager = CLLocationManager()
+    
     
     
     @IBOutlet weak var imgGBall: UIImageView!
@@ -30,6 +32,8 @@ class SecondViewController: UIViewController {
     
     @IBOutlet weak var stopwatch: UILabel!
     @IBOutlet weak var lastLapTime: UILabel!
+    
+    @IBOutlet weak var speedLabel: UILabel!
     
     var startTime = NSTimeInterval()
     var timer: NSTimer = NSTimer()
@@ -59,6 +63,12 @@ class SecondViewController: UIViewController {
                 println("\(error)")
             }
         })
+        
+        // Run the location detection
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,6 +120,8 @@ class SecondViewController: UIViewController {
     
     @IBAction func startStopwatch(sender: AnyObject) {
         if (!timer.valid) {
+            var lastLap = stopwatch.text
+            lastLapTime.text = "Last lap: \(lastLap!)"
             let aSelector : Selector = "updateTime"
             timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
             startTime = NSDate.timeIntervalSinceReferenceDate()
@@ -138,13 +150,31 @@ class SecondViewController: UIViewController {
         let fraction = UInt8(elapsedTime * 100)
         
         //add the leading zero for minutes, seconds and millseconds and store them as string constants
-        let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
-        let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
-        let strFraction = fraction > 9 ? String(fraction):"0" + String(fraction)
+        let strMinutes = minutes > 9 ? String(minutes): "0" + String(minutes)
+        let strSeconds = seconds > 9 ? String(seconds): "0" + String(seconds)
+        let strFraction = fraction > 9 ? String(fraction): "0" + String(fraction)
         
         //concatenate minuets, seconds and milliseconds as assign it to the UILabel
         stopwatch.text = "\(strMinutes):\(strSeconds):\(strFraction)"
+        
+
     }
+    
+    
+    /*
+    *  Location stuff
+    */
+    
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        speedLabel.text = String(manager.location.speed.hashValue) + " km/h"
+    }
+    
+    
+    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+        println("Error while updating location " + error.localizedDescription)
+    }
+    
     
     
     override func didReceiveMemoryWarning() {
