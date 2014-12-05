@@ -72,7 +72,7 @@ class SettingsViewController: UIViewController {
         println("Set Acceleration to: \(limitRoad)")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //Loading
