@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -279,7 +279,7 @@
                                     <constraint firstAttribute="width" constant="200" id="muN-3O-fRW"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:16:142" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9e-Dh-VEc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9e-Dh-VEc">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -331,8 +331,24 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="168" y="432" width="65" height="30"/>
+                                    <rect key="frame" x="50" y="437" width="65" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="startLap:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="vGJ-k6-Glq"/>
+                                    <action selector="startStopwatch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="uUe-WQ-4Qp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dh-3f-CGS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Stop Lap">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="285" y="437" width="65" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="stopStopwatch:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="AfI-5m-w3r"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -353,6 +369,7 @@
                                 <exclude reference="Kcb-LN-X06"/>
                                 <exclude reference="LSs-e4-C2O"/>
                                 <exclude reference="Vyg-NV-2h9"/>
+                                <exclude reference="1dh-3f-CGS"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -363,6 +380,7 @@
                                 <include reference="Kcb-LN-X06"/>
                                 <include reference="LSs-e4-C2O"/>
                                 <include reference="Vyg-NV-2h9"/>
+                                <include reference="1dh-3f-CGS"/>
                             </mask>
                         </variation>
                     </view>
@@ -370,6 +388,11 @@
                     <connections>
                         <outlet property="imgGBall" destination="XKh-QO-Eid" id="mMd-31-y03"/>
                         <outlet property="imgGBase" destination="uFw-s1-Ju6" id="RMR-fg-cci"/>
+                        <outlet property="lastLapTime" destination="2sL-Hg-IF8" id="qsw-WF-RbB"/>
+                        <outlet property="startStopwatch" destination="Vyg-NV-2h9" id="V8e-tA-ITS"/>
+                        <outlet property="stopLap" destination="1dh-3f-CGS" id="7wZ-nH-FHk"/>
+                        <outlet property="stopStopwatch" destination="1dh-3f-CGS" id="Yyk-Az-j7b"/>
+                        <outlet property="stopwatch" destination="j9e-Dh-VEc" id="E6T-lj-S5K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
