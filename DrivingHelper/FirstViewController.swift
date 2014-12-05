@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import CoreLocation
+import Social
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -24,24 +25,23 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
+    @IBOutlet weak var btnRoute: UIButton!
+    @IBOutlet weak var speedLabel: UILabel!
+    var speed: CLLocationSpeed = 0.0
+    
     
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!
     @IBOutlet weak var carColor: UIImageView!
     
-    var limitAcelerate:CGFloat = 0
-    var limitLeftTurn:CGFloat = 0
-    var limitRightTurn:CGFloat = 0
-  
+    var limitAccelerate:CGFloat = 1.0
+    var limitBraking:CGFloat = 1.0
+    var limitTurning:CGFloat = 1.0
+    var limitRoad:CGFloat = 1.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Reseting colors to green by default
-        ChangeColorLeftTurn(0)
-        ChangeColorCarAccelerate(0)
-        ChangeColorRightTurn(0)
         
         // Check if the accelerometer is inactive and available
         if self.motionManager.accelerometerActive {
@@ -64,18 +64,22 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 println("\(error)")
             }
         })
+        
+        // Run the location detection
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //Loading
-         limitAcelerate = CGFloat(userDefaults.floatForKey("LimitAcel"))
-         limitLeftTurn =  CGFloat(userDefaults.floatForKey("LimitLeft"))
-         limitRightTurn =  CGFloat(userDefaults.floatForKey("LimitRight"))
-         ChangeColorCarAccelerate(limitAcelerate)
-         ChangeColorLeftTurn(limitLeftTurn)
-         ChangeColorRightTurn(limitRightTurn)
+         limitAccelerate = CGFloat(userDefaults.floatForKey("limitAccel"))
+         limitBraking = CGFloat(userDefaults.floatForKey("limitBraking"))
+         limitTurning = CGFloat(userDefaults.floatForKey("limitTurning"))
+         limitRoad = CGFloat(userDefaults.floatForKey("limitRoad"))
         
     }
     
@@ -94,18 +98,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         // Change arrow colors
         if acceleration.x > Double(0) {
-            ChangeColorRightTurn(CGFloat(acceleration.x))
+            ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
         }
         if acceleration.x <= Double(0) {
-            ChangeColorLeftTurn(CGFloat(abs(acceleration.x)))
+            ChangeColorLeftTurn(CGFloat(abs(acceleration.x))*limitTurning)
         }
         
         // Change car color
         if acceleration.z > Double(0) {
-            ChangeColorCarBrake(CGFloat(acceleration.z))
+            ChangeColorCarBrake(CGFloat(acceleration.z)*limitBraking)
         }
         if acceleration.z <= Double(0) {
-            ChangeColorCarAccelerate(CGFloat(abs(acceleration.z)))
+            ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
         }
         
     }
@@ -151,10 +155,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
-    
     /*
-     *  Location detection
+     *  Location stuff
      */
     
     @IBAction func detectLocation(sender: AnyObject) {
@@ -169,7 +171,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
 
             if (error != nil) {
-                println("Reverse geocoder failed with error" + error.localizedDescription)
+                println("GPS failed with error: " + error.localizedDescription)
                 return
             }
             
@@ -177,9 +179,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 let pm = placemarks[0] as CLPlacemark
                 self.displayLocationInfo(pm)
             } else {
-                println("Problem with the data received from geocoder")
+                println("Problem with the data received from geocoder.")
             }
         })
+        
+        speedLabel.text = String(manager.location.speed.hashValue) + " km/h"
     }
     
     func displayLocationInfo(placemark: CLPlacemark?) {
@@ -195,19 +199,65 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             println(administrativeArea)
             println(country)
         }
-        
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Error while updating location " + error.localizedDescription)
     }
     
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
     }
+    
+    var stateMain = 1;
+    
+    @IBAction func btnStop(sender: AnyObject) {
+        
+        if (stateMain == 1){
+            btnRoute.setTitle("STOP", forState: UIControlState.Normal);
+            stateMain = 0;
+        }
+        else {
+            var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
+            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            btnRoute.setTitle("START", forState: UIControlState.Normal);
+            stateMain = 1;
+        }
+    }
+    
+    func Tweet()
+    {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            //twitterSheet.setInitialText("Share on Twitter")
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func ShareFacebook()
+    {
+        
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            //facebookSheet.setInitialText("Share on Facebook")
+            self.presentViewController(facebookSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
     
 }
