@@ -16,6 +16,7 @@
 		2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F135C1A2FE4710090D33B /* GMeterBase2.png */; };
 		2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F135E1A2FE4790090D33B /* GMeterBall2.png */; };
 		2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */; };
+		2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF645F31A37609700FF25B3 /* CustomCell.swift */; };
 		52035C681A2975AD00A8FD52 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52035C671A2975AD00A8FD52 /* images.xcassets */; };
 		52A45D621A290C32000BC533 /* arrow-40169_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A45D611A290C32000BC533 /* arrow-40169_640.png */; };
 		52A45D641A290C37000BC533 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A45D631A290C37000BC533 /* RightArrow.png */; };
@@ -62,6 +63,7 @@
 		2C5F135C1A2FE4710090D33B /* GMeterBase2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBase2.png; sourceTree = "<group>"; };
 		2C5F135E1A2FE4790090D33B /* GMeterBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBall2.png; sourceTree = "<group>"; };
 		2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		2CF645F31A37609700FF25B3 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52035C671A2975AD00A8FD52 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		52A45D611A290C32000BC533 /* arrow-40169_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-40169_640.png"; sourceTree = "<group>"; };
 		52A45D631A290C37000BC533 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				52A7983E1A265C4800DD0CA9 /* Main.storyboard */,
 				52A798431A265C4800DD0CA9 /* LaunchScreen.xib */,
 				52A798361A265C4800DD0CA9 /* Supporting Files */,
+				2CF645F31A37609700FF25B3 /* CustomCell.swift */,
 			);
 			path = DrivingHelper;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */,
 				52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */,
 				2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */,
+				2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */,
 				969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
