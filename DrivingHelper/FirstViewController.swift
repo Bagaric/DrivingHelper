@@ -111,14 +111,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
         }
         
-        if acceleration.y > -0.5 || acceleration.y < -1.5 {
+        // Set up road condition limits to fit the calibration
+        var reverseLimitRoad = 0.5 - Double(limitRoad)
+        
+        // Road condition label set
+        if acceleration.y > (-1.0 + reverseLimitRoad) {
             roadConditionLabel.text = "Bad"
-        }
-        else {
+        } else {
             roadConditionLabel.text = "Good"
         }
-        println("Road: \(acceleration.y)")
-        
     }
     
     @IBAction func ChangeColor(sender: AnyObject) {
