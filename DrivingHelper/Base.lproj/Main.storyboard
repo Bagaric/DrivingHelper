@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PPy-PN-H6X">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TE-dp-46r">
                                 <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iYl-ma-3Td">
@@ -97,6 +97,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Good" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-ea-jkY">
+                                <rect key="frame" x="152" y="408" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -118,6 +124,7 @@
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
                         <outlet property="btnRoute" destination="nhw-NF-P4e" id="Cfl-fa-Sg5"/>
                         <outlet property="carColor" destination="FSe-4V-AXW" id="meh-UL-2gN"/>
+                        <outlet property="roadConditionLabel" destination="u3P-ea-jkY" id="IzR-fC-oD1"/>
                         <outlet property="speedLabel" destination="iYN-uA-W8v" id="IbK-3E-ub0"/>
                     </connections>
                 </viewController>
@@ -238,13 +245,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="GMeterBall2" translatesAutoresizingMaskIntoConstraints="NO" id="XKh-QO-Eid">
-                                <rect key="frame" x="150" y="188" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="D3B-v6-KLe"/>
-                                    <constraint firstAttribute="width" constant="20" id="a0s-Pi-85b"/>
-                                </constraints>
-                            </imageView>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spu-ON-eCu">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -321,14 +321,10 @@
                         <constraints>
                             <constraint firstItem="spu-ON-eCu" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="4XA-sq-huk"/>
                             <constraint firstItem="uFw-s1-Ju6" firstAttribute="top" secondItem="spu-ON-eCu" secondAttribute="bottom" constant="26" id="Ati-ke-GRA"/>
-                            <constraint firstItem="uFw-s1-Ju6" firstAttribute="centerY" secondItem="XKh-QO-Eid" secondAttribute="centerY" id="Ilh-ji-GLB"/>
-                            <constraint firstItem="spu-ON-eCu" firstAttribute="centerX" secondItem="XKh-QO-Eid" secondAttribute="centerX" id="fhs-w5-Osg"/>
-                            <constraint firstItem="uFw-s1-Ju6" firstAttribute="centerX" secondItem="XKh-QO-Eid" secondAttribute="centerX" id="wfg-M1-n5y"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timer" image="timerpdf" selectedImage="timerpdf" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="imgGBall" destination="XKh-QO-Eid" id="mMd-31-y03"/>
                         <outlet property="imgGBase" destination="uFw-s1-Ju6" id="RMR-fg-cci"/>
                         <outlet property="lastLapTime" destination="2sL-Hg-IF8" id="qsw-WF-RbB"/>
                         <outlet property="speedLabel" destination="LSs-e4-C2O" id="aIw-jc-OAM"/>
@@ -505,6 +501,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Dv6-Fg-3mx">
+            <objects>
+                <viewController id="q9G-7P-baL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="41F-zj-11T"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zcs-KD-H9i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Vbd-Re-7sE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2R-w7-rDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

@@ -18,7 +18,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     var limitGmeter: CGFloat = 1.0
     
     // Constants
-    let gmeterUpdateInterval = 0.3
+    let gmeterUpdateInterval = 0.2
     // Accelerometer initialization
     let motionManager = CMMotionManager()
     
@@ -28,6 +28,11 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var imgGBall: UIImageView!
     @IBOutlet weak var imgGBase: UIImageView!
+    var imgBallView = UIImageView()
+    var originX: CGFloat = 0
+    var originY: CGFloat = 0
+    var maxRadius: CGFloat = 0.0
+    
     var rectangle:CGRect?
     
     @IBOutlet weak var stopwatch: UILabel!
@@ -41,9 +46,21 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.imgGBase.layer.cornerRadius = self.imgGBase.bounds.size.width/2
-        rectangle = CGRect(origin: imgGBase.frame.origin, size: imgGBase.frame.size)
+        
+        println("RectHeight:\(rectangle?.size.height)\nRectWidth: \(rectangle?.size.width)\n OriginX: \(rectangle?.origin.x) OriginY: \(rectangle?.origin.y)")
+        
+        let img = UIImage(named: "GMeterBall2")
+        imgBallView = UIImageView(image: img)
+        imgBallView.frame = CGRect(x: imgGBase.frame.origin.x, y: imgGBase.frame.origin.y, width: 20, height: 20)
+        imgGBase.addSubview(imgBallView)
+        maxRadius = self.imgGBase.frame.size.width/2.0
+        imgBallView.center = CGPoint(x: self.imgGBase.bounds.size.width/2 , y: self.imgGBase.bounds.size.height/2)
+        imgGBall = imgBallView
+
+        originX = self.imgBallView.center.x
+        originY = self.imgBallView.center.y
+        
+        println("\(imgBallView.center)")
         
         // Check if the accelerometer is inactive and available
         if self.motionManager.accelerometerActive {
@@ -88,30 +105,26 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         updateGmeter((CGFloat(acceleration.x * 90) * limitGmeter), valueY: (CGFloat(acceleration.z * 90) * limitGmeter))
     }
     
-    func updateGmeter(valueX:CGFloat, valueY:CGFloat){
-        var originX = self.imgGBase.frame.origin.x+90
-        var originY = self.imgGBase.frame.origin.y+90
-        var newPoint = CGPoint (x: originX+valueX, y: originY+valueY)
+    func updateGmeter(valueX: CGFloat, valueY: CGFloat){
         
-        var radius = sqrt(pow((newPoint.x),2) + pow((newPoint.y),2))
-        var constraintRatio = 90/radius
-        
-        if !CGRectContainsPoint(rectangle!,newPoint) {
-            
-            if radius > 90 {
-                newPoint.x = newPoint.x * constraintRatio + originX
-                newPoint.y = newPoint.y * constraintRatio + originY
-            }
-            
-            UIView.animateWithDuration(gmeterUpdateInterval, animations:{
-                self.imgGBall.frame.origin = newPoint
-            })
-        } else {
-            UIView.animateWithDuration(gmeterUpdateInterval, animations:{
-                self.imgGBall.frame.origin = newPoint
-            })
+        var gX = valueX
+        var gY = valueY
+        let gVector = sqrt(pow((valueX),2) + pow((valueY),2))
+        if (gVector > maxRadius) {
+            gX *= maxRadius / gVector
+            gY *= maxRadius / gVector
         }
         
+        var newPoint = CGPoint (x: originX + gX, y: originY + gY)
+        
+        /*println("Origin: \(originX) \(originY)")
+        println("Point: \(newPoint.x) \(newPoint.y)")
+        println("Rectangle: \(rectangle?.origin.x) \(rectangle?.origin.y)")
+        println("Rectangle size: \(rectangle?.size.height) \(rectangle?.size.width)")*/
+        
+        UIView.animateWithDuration(gmeterUpdateInterval, animations:{
+            self.imgGBall.center = newPoint
+        })
     }
     
     /*
