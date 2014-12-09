@@ -29,6 +29,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var imgGBall: UIImageView!
     @IBOutlet weak var imgGBase: UIImageView!
     var imgBallView = UIImageView()
+    var originX: CGFloat = 0
+    var originY: CGFloat = 0
     
     var rectangle:CGRect?
     
@@ -56,6 +58,9 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         imgGBase.addSubview(imgBallView)
         imgGBall = imgBallView
         imgBallView.center = CGPoint(x: self.imgGBase.bounds.size.width/2 , y: self.imgGBase.bounds.size.height/2)
+
+        originX = self.imgBallView.center.x
+        originY = self.imgBallView.center.y
         
         println("\(imgBallView.center)")
         
@@ -102,9 +107,9 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         updateGmeter((CGFloat(acceleration.x * 90) * limitGmeter), valueY: (CGFloat(acceleration.z * 90) * limitGmeter))
     }
     
-    func updateGmeter(valueX:CGFloat, valueY:CGFloat){
+    func updateGmeter(valueX: CGFloat, valueY: CGFloat){
 
-        var newPoint = CGPoint (x: self.imgBallView.center.x+valueX, y: self.imgBallView.center.y+valueY)
+        var newPoint = CGPoint (x: originX + valueX, y: originY + valueY)
         
         //var radius = sqrt(pow((newPoint.x),2) + pow((newPoint.y),2))
         //var constraintRatio = 90/radius
