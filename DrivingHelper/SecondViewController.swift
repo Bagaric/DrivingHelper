@@ -106,7 +106,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func updateGmeter(valueX: CGFloat, valueY: CGFloat){
-
+        
         var gX = valueX
         var gY = valueY
         let gVector = sqrt(pow((valueX),2) + pow((valueY),2))
@@ -123,11 +123,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         println("Rectangle size: \(rectangle?.size.height) \(rectangle?.size.width)")*/
         
         UIView.animateWithDuration(gmeterUpdateInterval, animations:{
-                
-            println("Contains")
             self.imgGBall.center = newPoint
         })
-        
     }
     
     /*

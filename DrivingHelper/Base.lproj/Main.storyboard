@@ -97,6 +97,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Good" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-ea-jkY">
+                                <rect key="frame" x="152" y="408" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -118,6 +124,7 @@
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
                         <outlet property="btnRoute" destination="nhw-NF-P4e" id="Cfl-fa-Sg5"/>
                         <outlet property="carColor" destination="FSe-4V-AXW" id="meh-UL-2gN"/>
+                        <outlet property="roadConditionLabel" destination="u3P-ea-jkY" id="IzR-fC-oD1"/>
                         <outlet property="speedLabel" destination="iYN-uA-W8v" id="IbK-3E-ub0"/>
                     </connections>
                 </viewController>

@@ -26,6 +26,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     let motionManager = CMMotionManager()
     
     @IBOutlet weak var btnRoute: UIButton!
+    @IBOutlet weak var roadConditionLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     var speed: CLLocationSpeed = 0.0
     
@@ -99,18 +100,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         // Change arrow colors
         if acceleration.x > Double(0) {
             ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
-        }
-        if acceleration.x <= Double(0) {
+        } else {
             ChangeColorLeftTurn(CGFloat(abs(acceleration.x))*limitTurning)
         }
         
         // Change car color
         if acceleration.z > Double(0) {
             ChangeColorCarBrake(CGFloat(acceleration.z)*limitBraking)
-        }
-        if acceleration.z <= Double(0) {
+        } else {
             ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
         }
+        
+        if acceleration.y > -0.5 || acceleration.y < -1.5 {
+            roadConditionLabel.text = "Bad"
+        }
+        else {
+            roadConditionLabel.text = "Good"
+        }
+        println("Road: \(acceleration.y)")
         
     }
     
