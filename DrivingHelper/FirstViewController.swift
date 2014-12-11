@@ -15,7 +15,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-    let userDefaults = NSUserDefaults.standardUserDefaults();
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     
     // Constants
@@ -167,13 +167,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Location stuff
      */
     
-    @IBAction func detectLocation(sender: AnyObject) {
+    /*@IBAction func detectLocation(sender: AnyObject) {
         // Run the location detection
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-    }
+    }*/
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
@@ -201,11 +201,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
             let postalCode = (containsPlacemark.postalCode != nil) ? containsPlacemark.postalCode : ""
             let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            let streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
             let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            println(locality)
-            println(postalCode)
-            println(administrativeArea)
-            println(country)
+            println("County: \(administrativeArea)")
+            println("Country: \(country)")
+            println("Streetname: \(streetName)")
         }
     }
     
