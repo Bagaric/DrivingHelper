@@ -43,6 +43,11 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     var startTime = NSTimeInterval()
     var timer: NSTimer = NSTimer()
     
+    //start lap button
+    var buttonStatus = 1
+    
+    @IBOutlet weak var lapButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,19 +137,26 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
      */
     
     @IBAction func startStopwatch(sender: AnyObject) {
-        if (!timer.valid) {
-            var lastLap = stopwatch.text
-            lastLapTime.text = "Last lap: \(lastLap!)"
-            let aSelector : Selector = "updateTime"
-            timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
-            startTime = NSDate.timeIntervalSinceReferenceDate()
+        if(buttonStatus == 1){
+            buttonStatus = 0
+            lapButton.setTitle("Stop Lap", forState: UIControlState.Normal);
+            if (!timer.valid) {
+                var lastLap = stopwatch.text
+                lastLapTime.text = "Last lap: \(lastLap!)"
+                let aSelector : Selector = "updateTime"
+                timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
+                startTime = NSDate.timeIntervalSinceReferenceDate()
+            }
+   
+            
+        }
+        else{
+            timer.invalidate()
+            lapButton.setTitle("Start Lap", forState: UIControlState.Normal)
+            buttonStatus = 1
         }
     }
-    
-    @IBAction func stopStopwatch(sender: AnyObject) {
-        timer.invalidate()
-    }
-    
+
     func updateTime() {
         var currentTime = NSDate.timeIntervalSinceReferenceDate()
         

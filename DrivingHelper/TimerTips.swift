@@ -1,0 +1,13 @@
+//
+//  TimerTips.swift
+//  DrivingHelper
+//
+//  Created by Cláudio Silva on 11/12/14.
+//  Copyright (c) 2014 Claudio Silva, Tiago Pedro, Josip Bagaric. All rights reserved.
+//
+
+import UIKit
+
+class TimerTips: UIViewController {
+
+}
