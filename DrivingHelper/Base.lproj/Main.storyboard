@@ -349,7 +349,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Tips" id="KBQ-NW-dTd">
-                                        <barButtonItem key="leftBarButtonItem" title="Done" id="BFj-GZ-gPM"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Done" id="BFj-GZ-gPM">
+                                            <connections>
+                                                <action selector="dismissView:" destination="vWH-gr-vNe" id="3UK-SC-VMa"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
