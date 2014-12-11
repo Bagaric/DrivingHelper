@@ -11,11 +11,40 @@ import CoreMotion
 import CoreLocation
 import Social
 
+class Accelerations
+{
+    
+    var acc: Double = 0;
+    var roadCondition: String = "";
+    var currentSpeed: Double = 0;
+    
+    
+    
+}
+
+class Route
+{
+    
+    var startTime: String = "";
+    var endTime: String = "";
+    
+    var startPoint: String = "";
+    var endPoint: String = "";
+    
+    var kmDone: Int = 0;
+    
+    var endMoment: [Accelerations] = [];
+    
+}
+
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
     let userDefaults = NSUserDefaults.standardUserDefaults();
+    
+    var momentRoute: [Accelerations] = [];
+    var route = Route();
     
     
     // Constants
@@ -43,6 +72,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        route.endMoment = momentRoute;
         
         // Check if the accelerometer is inactive and available
         if self.motionManager.accelerometerActive {
@@ -97,6 +128,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // Processes data taken from the accelerometer
     func outputAccelerationData(acceleration:CMAcceleration) {
         
+        var moment: Accelerations = Accelerations();
+        moment.acc = 15;
+        
         // Change arrow colors
         if acceleration.x > Double(0) {
             ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
@@ -113,13 +147,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         // Set up road condition limits to fit the calibration
         var reverseLimitRoad = 0.5 - Double(limitRoad)
-        
+
         // Road condition label set
         if acceleration.y > (-1.0 + reverseLimitRoad) {
             roadConditionLabel.text = "Bad"
+            moment.roadCondition = "Bad";
+            
         } else {
             roadConditionLabel.text = "Good"
+            moment.roadCondition = "Good";
         }
+        
+        momentRoute.append(moment);
+        
     }
     
     @IBAction func ChangeColor(sender: AnyObject) {
@@ -226,7 +266,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         if (stateMain == 1){
             btnRoute.setTitle("STOP", forState: UIControlState.Normal);
 
-            let dateTime = NSDate();
+            //let dateTime = NSDate();
             /*let calendar = NSCalendar.currentCalendar()
             let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute , fromDate: date)
             let hour = components.hour
@@ -236,7 +276,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             //Code for getting the initial point (Street)
             
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a"
             
+            route.startTime = dateFormatter.stringFromDate(NSDate());
             
             stateMain = 0;
         }
@@ -250,9 +293,54 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             let dateTime = NSDate();
             //Code for getting the ending point
 
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a"
+            
+            route.endTime = dateFormatter.stringFromDate(NSDate());
+            
+            route.endMoment = momentRoute;
+            
+            
+            //println("Valor: \(momentRoute.count)")
+            /*let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String];
+            
+            if (dirs != nil)
+            {
+                
+                let directories:[String] = dirs!
+                let path: String = directories[0];
+                println(path);
+                let plistFilename = "myRoutes.pl";
+                let totalPath = path.stringByAppendingPathComponent(plistFilename);
+                println(totalPath);
+                
+                var myDictionary: NSMutableDictionary = ["startTime" : route.startTime , "endTime" : route.endTime, "moments": route.endMoment];
+                
+                let fileManager = (NSFileManager.defaultManager());
+                
+                if (!fileManager.fileExistsAtPath(totalPath))
+                {
+                    
+                    myDictionary.writeToFile(totalPath, atomically: true);
+                    
+                }
+                else
+                {
+                    println("plist file already found");
+                    
+                    let result: NSMutableDictionary? =  NSMutableDictionary(contentsOfFile: totalPath);
+                    println(result);
+                    
+                }
+                
+                
+            }*/
 
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
+            
+            btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
+            
         }
     }
     
