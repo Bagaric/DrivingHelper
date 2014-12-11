@@ -10,4 +10,7 @@ import UIKit
 
 class TimerTips: UIViewController {
 
+    @IBAction func dismissView(sender: AnyObject) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
