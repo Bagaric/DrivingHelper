@@ -20,6 +20,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     // Constants
     let accelerometerUpdateInterval = 0.2
+    let gyroUpdateInterval = 0.2
     
     
     // Accelerometer initialization
@@ -57,11 +58,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         // Run the accelerometer in the background
         
         motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
+        motionManager.gyroUpdateInterval = 0.2
 
         
         motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
             self.outputAccelerationData(accelerometerData.acceleration)
             if (error != nil) {
+                println("\(error)")
+            }
+        })
+        
+        motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(gyroData: CMGyroData!, error: NSError!)in
+            self.outputRotationData(gyroData.rotationRate)
+            if (error != nil)
+            {
                 println("\(error)")
             }
         })
@@ -85,7 +95,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     /*
-     * Accelerometer management functions
+     * Accelerometer and Gyroscope management functions
      */
     
     // Stops the accelerometer if it's already running
@@ -121,6 +131,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             roadConditionLabel.text = "Good"
         }
     }
+    
+    func outputRotationData(rotation:CMRotationRate) {
+        println("Rotation X: \(rotation.x)")
+        println("Rotation Y: \(rotation.y)")
+        println("Rotation Z: \(rotation.z)")
+    }
+    
+    
+    
+    /*
+     *  Interface
+     */
     
     @IBAction func ChangeColor(sender: AnyObject) {
         ChangeColorLeftTurn(0)
