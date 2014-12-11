@@ -225,6 +225,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         if (stateMain == 1){
             btnRoute.setTitle("STOP", forState: UIControlState.Normal);
+
+            let dateTime = NSDate();
+            /*let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute , fromDate: date)
+            let hour = components.hour
+            let minutes = components.minute*/
+
+            //println("Data: \(date)");
+            
+            //Code for getting the initial point (Street)
+            
+            
+            
             stateMain = 0;
         }
         else {
@@ -234,6 +247,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
+            let dateTime = NSDate();
+            //Code for getting the ending point
+
+
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
         }
