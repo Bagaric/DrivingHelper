@@ -11,32 +11,6 @@ import CoreMotion
 import CoreLocation
 import Social
 
-class Accelerations
-{
-    
-    var acc: Double = 0;
-    var roadCondition: String = "";
-    var currentSpeed: Double = 0;
-    
-    
-    
-}
-
-class Route
-{
-    
-    var startTime: String = "";
-    var endTime: String = "";
-    
-    var startPoint: String = "";
-    var endPoint: String = "";
-    
-    var kmDone: Int = 0;
-    
-    var endMoment: [Accelerations] = [];
-    
-}
-
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
@@ -317,47 +291,34 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             route.endTime = dateFormatter.stringFromDate(NSDate());
             
             route.endMoment = momentRoute;
-            
-            
-            //println("Valor: \(momentRoute.count)")
-            /*let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String];
-            
-            if (dirs != nil)
-            {
-                
-                let directories:[String] = dirs!
-                let path: String = directories[0];
-                println(path);
-                let plistFilename = "myRoutes.pl";
-                let totalPath = path.stringByAppendingPathComponent(plistFilename);
-                println(totalPath);
-                
-                var myDictionary: NSMutableDictionary = ["startTime" : route.startTime , "endTime" : route.endTime, "moments": route.endMoment];
-                
-                let fileManager = (NSFileManager.defaultManager());
-                
-                if (!fileManager.fileExistsAtPath(totalPath))
-                {
-                    
-                    myDictionary.writeToFile(totalPath, atomically: true);
-                    
-                }
-                else
-                {
-                    println("plist file already found");
-                    
-                    let result: NSMutableDictionary? =  NSMutableDictionary(contentsOfFile: totalPath);
-                    println(result);
-                    
-                }
-                
-                
-            }*/
 
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
+
             
-            btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
+            let resultRoute = ArchiveRoute().retrieveData() as [Route];
+            var listRoute: [Route] = resultRoute;
+            
+            if (listRoute[0].startTime == "")
+            {
+                
+                listRoute.append(route);
+                listRoute.removeAtIndex(0)
+                ArchiveRoute().saveData(nameProject: listRoute);
+                
+            }
+            else
+            {
+                
+                listRoute.append(route);
+                ArchiveRoute().saveData(nameProject: listRoute);
+                
+            }
+            
+            
+            
+            //println("Teste2: ");
+            //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
             
         }
     }
