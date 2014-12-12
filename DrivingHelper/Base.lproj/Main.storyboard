@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Main-->
+        <!--Eco Mode Tips View Controller-->
+        <scene sceneID="Ddk-Bm-J1k">
+            <objects>
+                <viewController id="Clx-13-NB7" customClass="ecoModeTipsViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aIn-ic-J2J"/>
+                        <viewControllerLayoutGuide type="bottom" id="wAZ-re-X2k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ghe-gY-c6f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EO4-7t-gZT">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="Tips" id="Aun-EY-yJf">
+                                        <barButtonItem key="leftBarButtonItem" title="Done" id="wxG-7W-Eyg">
+                                            <connections>
+                                                <action selector="dismissView:" destination="Clx-13-NB7" id="nO4-XS-Dnc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPa-Z0-h9a">
+                                <rect key="frame" x="16" y="128" width="288" height="340"/>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</mutableString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1V-Jq-0jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16" y="-723"/>
+        </scene>
+        <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +85,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Driving Helper" id="JcY-A2-6D0">
-                                        <barButtonItem key="leftBarButtonItem" title="?" id="JLo-nV-Oqa"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Tips" style="plain" id="JLo-nV-Oqa">
+                                            <connections>
+                                                <segue destination="Clx-13-NB7" kind="modal" id="CMo-Ea-fIy"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="icon-ios7-gear-outline-44" id="be1-2I-QEO">
                                             <connections>
                                                 <segue destination="EBx-ud-wyX" kind="modal" id="2Vp-Xd-vzz"/>
@@ -118,7 +161,7 @@
                             <constraint firstItem="9TE-dp-46r" firstAttribute="trailing" secondItem="PPy-PN-H6X" secondAttribute="trailing" id="z3u-Fw-rVy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="LeftColor" destination="b7Q-az-95j" id="3dF-lV-wwL"/>
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
@@ -298,7 +341,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Driving Helper" id="xKf-GK-zWD">
-                                        <barButtonItem key="leftBarButtonItem" title="?" id="4qB-0O-OTc">
+                                        <barButtonItem key="leftBarButtonItem" title="Tips" id="4qB-0O-OTc">
                                             <connections>
                                                 <segue destination="vWH-gr-vNe" kind="modal" id="Fr4-wi-W6x"/>
                                             </connections>
@@ -359,7 +402,7 @@
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-z4-eIX">
                                 <rect key="frame" x="16" y="125" width="288" height="340"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</mutableString>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
