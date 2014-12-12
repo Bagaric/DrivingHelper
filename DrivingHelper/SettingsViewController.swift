@@ -72,6 +72,10 @@ class SettingsViewController: UIViewController {
         println("Set Acceleration to: \(limitRoad)")
     }
     
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
         

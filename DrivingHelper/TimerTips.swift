@@ -13,4 +13,8 @@ class TimerTips: UIViewController {
     @IBAction func dismissView(sender: AnyObject) {
             self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
 }
