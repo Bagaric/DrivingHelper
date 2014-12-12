@@ -45,36 +45,30 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Check if the accelerometer is inactive and available
-        if self.motionManager.accelerometerActive {
-            self.stopAccelerometer()
-            return
-        }
-        if !self.motionManager.accelerometerAvailable {
-            println("No accelerometer detected.")
-            return
-        }
-        
         // Run the accelerometer in the background
+        if self.motionManager.accelerometerAvailable {
+            motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
+            
+            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
+                self.outputAccelerationData(accelerometerData.acceleration)
+                if (error != nil) {
+                    println("\(error)")
+                }
+            })
+        }
         
-        motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
-        motionManager.gyroUpdateInterval = 0.2
-
-        
-        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
-            self.outputAccelerationData(accelerometerData.acceleration)
-            if (error != nil) {
-                println("\(error)")
-            }
-        })
-        
-        motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(gyroData: CMGyroData!, error: NSError!)in
-            self.outputRotationData(gyroData.rotationRate)
-            if (error != nil)
-            {
-                println("\(error)")
-            }
-        })
+        // Run the gyro in the background
+        if self.motionManager.gyroAvailable {
+            motionManager.gyroUpdateInterval = gyroUpdateInterval
+            
+            motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(gyroData: CMGyroData!, error: NSError!)in
+                self.outputRotationData(gyroData.rotationRate)
+                if (error != nil)
+                {
+                    println("\(error)")
+                }
+            })
+        }
         
         // Run the location detection
         locationManager.delegate = self
@@ -105,7 +99,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     
     // Processes data taken from the accelerometer
-    func outputAccelerationData(acceleration:CMAcceleration) {
+    func outputAccelerationData(acceleration: CMAcceleration) {
         
         // Change arrow colors
         if acceleration.x > Double(0) {
@@ -132,10 +126,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func outputRotationData(rotation:CMRotationRate) {
+    func outputRotationData(rotation: CMRotationRate) {
         println("Rotation X: \(rotation.x)")
-        println("Rotation Y: \(rotation.y)")
-        println("Rotation Z: \(rotation.z)")
+        //println("Rotation Y: \(rotation.y)")
+        //println("Rotation Z: \(rotation.z)")
     }
     
     
