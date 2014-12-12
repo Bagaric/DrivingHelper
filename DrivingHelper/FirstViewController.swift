@@ -80,8 +80,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var currentAccZ: Double = 0.0
     var measuringStarted: Bool = false
     var accStartingMatrix: Matrix = Matrix(cols: 4, rows: 4)
-    var accStartingValuesMatrix: Matrix = Matrix(cols: 1, rows: 4)
-    var accResultingMatrix: Matrix = Matrix(cols: 4, rows: 1)
+    var currentValuesVector: Matrix = Matrix(cols: 1, rows: 4)
+    var resultVector: Matrix = Matrix(cols: 4, rows: 1)
     var rotationMatrix: CMRotationMatrix? = nil
     
     @IBOutlet weak var btnRoute: UIButton!
@@ -147,7 +147,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
          limitBraking = CGFloat(userDefaults.floatForKey("limitBraking"))
          limitTurning = CGFloat(userDefaults.floatForKey("limitTurning"))
          limitRoad = CGFloat(userDefaults.floatForKey("limitRoad"))
-        
     }
     
     /*
@@ -178,36 +177,38 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             accStartingMatrix[3,1] = -(currentAccY)
             accStartingMatrix[3,2] = -(currentAccZ)
             
-            accStartingValuesMatrix[0,0] = acceleration.x
-            accStartingValuesMatrix[0,1] = acceleration.y
-            accStartingValuesMatrix[0,2] = acceleration.z
-            accStartingValuesMatrix[0,3] = 1.0
+            currentValuesVector[0,0] = acceleration.x
+            currentValuesVector[0,1] = acceleration.y
+            currentValuesVector[0,2] = acceleration.z
+            currentValuesVector[0,3] = 1.0
+            
+            resetMatrix(resultVector)
             
             for i in 0...3 {
                 for j in 0...3 {
-                    accResultingMatrix[i,0] += accStartingMatrix[i,j] * accStartingValuesMatrix[j,0]
+                    resultVector[i,0] += accStartingMatrix[i,j] * currentValuesVector[j,0]
                 }
             }
             
             // Change arrow colors
             if acceleration.x > Double(0) {
-                ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
+                ChangeColorRightTurn(CGFloat(resultVector[0,0])*limitTurning)
             } else {
-                ChangeColorLeftTurn(CGFloat(abs(acceleration.x))*limitTurning)
+                ChangeColorLeftTurn(CGFloat(abs(resultVector[0,0]))*limitTurning)
             }
         
             // Change car color
             if acceleration.z > Double(0) {
-                ChangeColorCarBrake(CGFloat(acceleration.z)*limitBraking)
+                ChangeColorCarBrake(CGFloat(resultVector[3,0])*limitBraking)
             } else {
-                ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
+                ChangeColorCarAccelerate(CGFloat(abs(resultVector[3,0]))*limitBraking)
             }
         
             // Set up road condition limits to fit the calibration
             var reverseLimitRoad = 0.5 - Double(limitRoad)
 
             // Road condition label set
-            if acceleration.y > (-1.0 + reverseLimitRoad) {
+            if resultVector[2,0] > (-1.0 + reverseLimitRoad) {
                 roadConditionLabel.text = "Bad"
                 moment.roadCondition = "Bad";
             } else {
@@ -220,20 +221,23 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func outputRotationData(rotationMatrix: CMRotationMatrix)
+    func outputRotationData(mat: CMRotationMatrix)
     {
         if !measuringStarted {
-            accStartingMatrix[0,0] = rotationMatrix.m11
-            accStartingMatrix[0,1] = rotationMatrix.m12
-            accStartingMatrix[0,2] = rotationMatrix.m13
+            
+            // I NEED TO INVERSE THIS MATRIX
+            
+            accStartingMatrix[0,0] = mat.m11
+            accStartingMatrix[0,1] = mat.m12
+            accStartingMatrix[0,2] = mat.m13
         
-            accStartingMatrix[1,0] = rotationMatrix.m21
-            accStartingMatrix[1,1] = rotationMatrix.m22
-            accStartingMatrix[1,2] = rotationMatrix.m23
+            accStartingMatrix[1,0] = mat.m21
+            accStartingMatrix[1,1] = mat.m22
+            accStartingMatrix[1,2] = mat.m23
         
-            accStartingMatrix[2,0] = rotationMatrix.m31
-            accStartingMatrix[2,1] = rotationMatrix.m32
-            accStartingMatrix[2,2] = rotationMatrix.m33
+            accStartingMatrix[2,0] = mat.m31
+            accStartingMatrix[2,1] = mat.m32
+            accStartingMatrix[2,2] = mat.m33
         }
     }
     
@@ -258,6 +262,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         matrix[3,1] = 0
         matrix[3,2] = 0
         matrix[3,3] = 1
+    }
+    
+    func resetMatrix(matrix: Matrix) {
+        
+        matrix[0,0] = 1
+        matrix[1,0] = 0
+        matrix[2,0] = 0
+        matrix[3,0] = 0
     }
     
     
