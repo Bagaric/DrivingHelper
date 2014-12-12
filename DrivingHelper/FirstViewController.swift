@@ -11,38 +11,20 @@ import CoreMotion
 import CoreLocation
 import Social
 
-class Accelerations {
-    var acc: Double = 0;
-    var roadCondition: String = "";
-    var currentSpeed: Double = 0;
-}
-
-class Route {
-    var startTime: String = "";
-    var endTime: String = "";
-    
-    var startPoint: String = "";
-    var endPoint: String = "";
-    
-    var kmDone: Int = 0;
-    
-    var endMoment: [Accelerations] = [];
-}
-
 class Matrix {
-    var cols: Int, rows: Int
+    var cols:Int, rows:Int
     var matrix:[Double]
     
     
-    init(cols: Int, rows: Int) {
+    init(cols:Int, rows:Int) {
         self.cols = cols
         self.rows = rows
         matrix = Array(count:cols*rows, repeatedValue:0)
     }
     
-    subscript(col: Int, row: Int) -> Double {
+    subscript(col:Int, row:Int) -> Double {
         get {
-            return matrix[cols*row+col]
+            return matrix[cols * row + col]
         }
         set {
             matrix[cols*row+col] = newValue
@@ -441,12 +423,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 listRoute.append(route);
                 ArchiveRoute().saveData(nameProject: listRoute);
                 
-            }*/
+            }
             
-            measuringStarted = false
-
-            btnRoute.setTitle("START", forState: UIControlState.Normal);
-            stateMain = 1;
+            
             
             //println("Teste2: ");
             //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
