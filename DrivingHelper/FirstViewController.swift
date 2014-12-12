@@ -139,6 +139,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
     
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -415,40 +419,27 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             route.endTime = dateFormatter.stringFromDate(NSDate());
             
             route.endMoment = momentRoute;
+
+            btnRoute.setTitle("START", forState: UIControlState.Normal);
+            stateMain = 1;
+
             
+            let resultRoute = ArchiveRoute().retrieveData() as [Route];
+            var listRoute: [Route] = resultRoute;
             
-            //println("Valor: \(momentRoute.count)")
-            /*let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String];
-            
-            if (dirs != nil)
+            if (listRoute[0].startTime == "")
             {
                 
-                let directories:[String] = dirs!
-                let path: String = directories[0];
-                println(path);
-                let plistFilename = "myRoutes.pl";
-                let totalPath = path.stringByAppendingPathComponent(plistFilename);
-                println(totalPath);
+                listRoute.append(route);
+                listRoute.removeAtIndex(0)
+                ArchiveRoute().saveData(nameProject: listRoute);
                 
-                var myDictionary: NSMutableDictionary = ["startTime" : route.startTime , "endTime" : route.endTime, "moments": route.endMoment];
+            }
+            else
+            {
                 
-                let fileManager = (NSFileManager.defaultManager());
-                
-                if (!fileManager.fileExistsAtPath(totalPath))
-                {
-                    
-                    myDictionary.writeToFile(totalPath, atomically: true);
-                    
-                }
-                else
-                {
-                    println("plist file already found");
-                    
-                    let result: NSMutableDictionary? =  NSMutableDictionary(contentsOfFile: totalPath);
-                    println(result);
-                    
-                }
-                
+                listRoute.append(route);
+                ArchiveRoute().saveData(nameProject: listRoute);
                 
             }*/
             
@@ -457,7 +448,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
             
-            btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
+            //println("Teste2: ");
+            //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
             
         }
     }
