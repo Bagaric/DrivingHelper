@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -31,7 +31,7 @@
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPa-Z0-h9a">
                                 <rect key="frame" x="16" y="128" width="288" height="340"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -374,6 +374,45 @@
             </objects>
             <point key="canvasLocation" x="444" y="340"/>
         </scene>
+        <!--Route View Controller-->
+        <scene sceneID="Ifw-cW-gkh">
+            <objects>
+                <viewController id="NM3-NJ-XDq" customClass="RouteViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eld-ST-BQY"/>
+                        <viewControllerLayoutGuide type="bottom" id="35W-8X-czt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rCf-Sn-OIC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Z8-Go-ka9">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem title="Driving Helper" id="RdA-L2-caQ">
+                                        <barButtonItem key="rightBarButtonItem" image="icon-ios7-gear-outline-44" id="FTb-S3-lIa"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjh-dV-0vm">
+                                <rect key="frame" x="139" y="273" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NVB-Mf-GWX"/>
+                    <connections>
+                        <outlet property="lblTeste" destination="rjh-dV-0vm" id="gNR-7R-lJn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSn-Kk-0Dn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="1597"/>
+        </scene>
         <!--Timer Tips-->
         <scene sceneID="3cI-kM-v9c">
             <objects>
@@ -402,7 +441,7 @@
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtV-z4-eIX">
                                 <rect key="frame" x="16" y="125" width="288" height="340"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -495,8 +534,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
-                                    <navigationItem title="Driving Helper" id="a4f-w3-3Uz">
-                                        <barButtonItem key="leftBarButtonItem" title="?" id="Agi-0Y-50e"/>
+                                    <navigationItem title="History" id="a4f-w3-3Uz">
                                         <barButtonItem key="rightBarButtonItem" image="icon-ios7-gear-outline-44" id="N33-Gr-9pp"/>
                                     </navigationItem>
                                 </items>
@@ -556,6 +594,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="fLx-h2-TXZ" id="W4W-F7-XyJ"/>
+                        <segue destination="NM3-NJ-XDq" kind="push" identifier="segList" id="c0F-ke-tlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKY-c0-EY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
