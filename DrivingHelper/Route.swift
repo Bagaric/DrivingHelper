@@ -27,8 +27,8 @@ class Route: NSObject, NSCoding
         aCoder.encodeObject(startTime, forKey: "startTime");
         aCoder.encodeObject(endTime, forKey: "endTime");
         
-        aCoder.encodeObject(startTime, forKey: "startPoint");
-        aCoder.encodeObject(endTime, forKey: "endPoint");
+        aCoder.encodeObject(startPoint, forKey: "startPoint");
+        aCoder.encodeObject(endPoint, forKey: "endPoint");
         
         aCoder.encodeObject(rating, forKey: "rating");
         aCoder.encodeObject(speed, forKey: "speed");
