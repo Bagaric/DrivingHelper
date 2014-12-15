@@ -11,30 +11,33 @@ import CoreMotion
 import CoreLocation
 import Social
 
-class Accelerations
-{
-    
-    var acc: Double = 0;
-    var roadCondition: String = "";
-    var currentSpeed: Double = 0;
+class Matrix {
+    var cols:Int, rows:Int
+    var matrix:[Double]
     
     
+    init(cols:Int, rows:Int) {
+        self.cols = cols
+        self.rows = rows
+        matrix = Array(count:cols*rows, repeatedValue:0)
+    }
     
-}
-
-class Route
-{
+    subscript(col:Int, row:Int) -> Double {
+        get {
+            return matrix[cols * row + col]
+        }
+        set {
+            matrix[cols*row+col] = newValue
+        }
+    }
     
-    var startTime: String = "";
-    var endTime: String = "";
+    func colCount() -> Int {
+        return self.cols
+    }
     
-    var startPoint: String = "";
-    var endPoint: String = "";
-    
-    var kmDone: Int = 0;
-    
-    var endMoment: [Accelerations] = [];
-    
+    func rowCount() -> Int {
+        return self.rows
+    }
 }
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
@@ -54,6 +57,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     // Accelerometer initialization
     let motionManager = CMMotionManager()
+    var currentAccX: Double = 0.0
+    var currentAccY: Double = 0.0
+    var currentAccZ: Double = 0.0
+    var measuringStarted: Bool = false
+    var accStartingMatrix: Matrix = Matrix(cols: 4, rows: 4)
+    var currentValuesVector: Matrix = Matrix(cols: 1, rows: 4)
+    var resultVector: Matrix = Matrix(cols: 4, rows: 1)
+    var rotationMatrix: CMRotationMatrix? = nil
     
     @IBOutlet weak var btnRoute: UIButton!
     @IBOutlet weak var roadConditionLabel: UILabel!
@@ -73,6 +84,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         // Run the accelerometer in the background
         if self.motionManager.accelerometerAvailable {
@@ -84,21 +96,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                     println("\(error)")
                 }
             })
+
+            generateInitialMatrix(accStartingMatrix)
         }
         
-        // Run the gyro in the background
         if self.motionManager.gyroAvailable {
+            let ref = CMAttitudeReferenceFrameXTrueNorthZVertical
+            
             motionManager.gyroUpdateInterval = gyroUpdateInterval
             
-            motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(gyroData: CMGyroData!, error: NSError!)in
-                self.outputRotationData(gyroData.rotationRate)
+            motionManager.startDeviceMotionUpdatesUsingReferenceFrame(ref, toQueue: NSOperationQueue.mainQueue(), withHandler: { (devMotion, error) -> Void in
+       
+                self.outputRotationData(devMotion.attitude.rotationMatrix)
                 if (error != nil)
                 {
                     println("\(error)")
                 }
             })
         }
-        
         // Run the location detection
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -118,7 +133,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
          limitBraking = CGFloat(userDefaults.floatForKey("limitBraking"))
          limitTurning = CGFloat(userDefaults.floatForKey("limitTurning"))
          limitRoad = CGFloat(userDefaults.floatForKey("limitRoad"))
-        
     }
     
     /*
@@ -137,41 +151,111 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         var moment: Accelerations = Accelerations();
         moment.acc = 15;
         
-        // Change arrow colors
-        if acceleration.x > Double(0) {
-            ChangeColorRightTurn(CGFloat(acceleration.x)*limitTurning)
-        } else {
-            ChangeColorLeftTurn(CGFloat(abs(acceleration.x))*limitTurning)
-        }
-        
-        // Change car color
-        if acceleration.z > Double(0) {
-            ChangeColorCarBrake(CGFloat(acceleration.z)*limitBraking)
-        } else {
-            ChangeColorCarAccelerate(CGFloat(abs(acceleration.z))*limitBraking)
-        }
-        
-        // Set up road condition limits to fit the calibration
-        var reverseLimitRoad = 0.5 - Double(limitRoad)
-
-        // Road condition label set
-        if acceleration.y > (-1.0 + reverseLimitRoad) {
-            roadConditionLabel.text = "Bad"
-            moment.roadCondition = "Bad";
+        if !measuringStarted {
+            
+            currentAccX = acceleration.x
+            currentAccY = acceleration.y
+            currentAccZ = acceleration.z
             
         } else {
-            roadConditionLabel.text = "Good"
-            moment.roadCondition = "Good";
+            
+            accStartingMatrix[3,0] = -(currentAccX)
+            accStartingMatrix[3,1] = -(currentAccY)
+            accStartingMatrix[3,2] = -(currentAccZ)
+            
+            currentValuesVector[0,0] = acceleration.x
+            currentValuesVector[0,1] = acceleration.y
+            currentValuesVector[0,2] = acceleration.z
+            currentValuesVector[0,3] = 1.0
+            
+            resetMatrix(resultVector)
+            
+            for i in 0...3 {
+                for j in 0...3 {
+                    resultVector[i,0] += accStartingMatrix[i,j] * currentValuesVector[j,0]
+                }
+            }
+            
+            // Change arrow colors
+            if acceleration.x > Double(0) {
+                ChangeColorRightTurn(CGFloat(resultVector[0,0])*limitTurning)
+            } else {
+                ChangeColorLeftTurn(CGFloat(abs(resultVector[0,0]))*limitTurning)
+            }
+        
+            // Change car color
+            if acceleration.z > Double(0) {
+                ChangeColorCarBrake(CGFloat(resultVector[3,0])*limitBraking)
+            } else {
+                ChangeColorCarAccelerate(CGFloat(abs(resultVector[3,0]))*limitBraking)
+            }
+        
+            // Set up road condition limits to fit the calibration
+            var reverseLimitRoad = 0.5 - Double(limitRoad)
+
+            // Road condition label set
+            if resultVector[2,0] > (-1.0 + reverseLimitRoad) {
+                roadConditionLabel.text = "Bad"
+                moment.roadCondition = "Bad";
+            } else {
+                roadConditionLabel.text = "Good"
+                moment.roadCondition = "Good";
+            }
         }
         
         momentRoute.append(moment);
         
     }
     
-    func outputRotationData(rotation: CMRotationRate) {
-        println("Rotation X: \(rotation.x)")
-        //println("Rotation Y: \(rotation.y)")
-        //println("Rotation Z: \(rotation.z)")
+    func outputRotationData(mat: CMRotationMatrix)
+    {
+        if !measuringStarted {
+            
+            // I NEED TO INVERSE THIS MATRIX
+            
+            accStartingMatrix[0,0] = mat.m11
+            accStartingMatrix[0,1] = mat.m12
+            accStartingMatrix[0,2] = mat.m13
+        
+            accStartingMatrix[1,0] = mat.m21
+            accStartingMatrix[1,1] = mat.m22
+            accStartingMatrix[1,2] = mat.m23
+        
+            accStartingMatrix[2,0] = mat.m31
+            accStartingMatrix[2,1] = mat.m32
+            accStartingMatrix[2,2] = mat.m33
+        }
+    }
+    
+    func generateInitialMatrix(matrix: Matrix) {
+        
+        matrix[0,0] = 1
+        matrix[0,1] = 0
+        matrix[0,2] = 0
+        matrix[0,3] = 0
+        
+        matrix[1,0] = 0
+        matrix[1,1] = 1
+        matrix[1,2] = 0
+        matrix[1,3] = 0
+        
+        matrix[2,0] = 0
+        matrix[2,1] = 0
+        matrix[2,2] = 1
+        matrix[2,3] = 0
+        
+        matrix[3,0] = 0
+        matrix[3,1] = 0
+        matrix[3,2] = 0
+        matrix[3,3] = 1
+    }
+    
+    func resetMatrix(matrix: Matrix) {
+        
+        matrix[0,0] = 1
+        matrix[1,0] = 0
+        matrix[2,0] = 0
+        matrix[3,0] = 0
     }
     
     
@@ -225,6 +309,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Location stuff
      */
     
+    // I WILL NEED THIS CODE LATER - Josip
     /*@IBAction func detectLocation(sender: AnyObject) {
         // Run the location detection
         locationManager.delegate = self
@@ -256,11 +341,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         if let containsPlacemark = placemark {
             //stop updating location to save battery life
             locationManager.stopUpdatingLocation()
-            let locality = (containsPlacemark.locality != nil) ? containsPlacemark.locality : ""
-            let postalCode = (containsPlacemark.postalCode != nil) ? containsPlacemark.postalCode : ""
-            let administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
-            let streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
-            let country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
+            var administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
+            var streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
+            var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             println("County: \(administrativeArea)")
             println("Country: \(country)")
             println("Streetname: \(streetName)")
@@ -290,7 +373,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             let hour = components.hour
             let minutes = components.minute*/
 
-            //println("Data: \(date)");
+            //println("Data: \(date)")
             
             //Code for getting the initial point (Street)
             
@@ -299,9 +382,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             route.startTime = dateFormatter.stringFromDate(NSDate());
             
+            measuringStarted = true
+            
             stateMain = 0;
-        }
-        else {
+        } else {
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
             alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
@@ -317,47 +401,34 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             route.endTime = dateFormatter.stringFromDate(NSDate());
             
             route.endMoment = momentRoute;
-            
-            
-            //println("Valor: \(momentRoute.count)")
-            /*let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String];
-            
-            if (dirs != nil)
-            {
-                
-                let directories:[String] = dirs!
-                let path: String = directories[0];
-                println(path);
-                let plistFilename = "myRoutes.pl";
-                let totalPath = path.stringByAppendingPathComponent(plistFilename);
-                println(totalPath);
-                
-                var myDictionary: NSMutableDictionary = ["startTime" : route.startTime , "endTime" : route.endTime, "moments": route.endMoment];
-                
-                let fileManager = (NSFileManager.defaultManager());
-                
-                if (!fileManager.fileExistsAtPath(totalPath))
-                {
-                    
-                    myDictionary.writeToFile(totalPath, atomically: true);
-                    
-                }
-                else
-                {
-                    println("plist file already found");
-                    
-                    let result: NSMutableDictionary? =  NSMutableDictionary(contentsOfFile: totalPath);
-                    println(result);
-                    
-                }
-                
-                
-            }*/
 
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
+
             
-            btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
+            let resultRoute = ArchiveRoute().retrieveData() as [Route];
+            var listRoute: [Route] = resultRoute;
+            
+            if (listRoute[0].startTime == "")
+            {
+                
+                listRoute.append(route);
+                listRoute.removeAtIndex(0)
+                ArchiveRoute().saveData(nameProject: listRoute);
+                
+            }
+            else
+            {
+                
+                listRoute.append(route);
+                ArchiveRoute().saveData(nameProject: listRoute);
+                
+            }
+            
+            
+            
+            //println("Teste2: ");
+            //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
             
         }
     }
@@ -369,7 +440,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             //twitterSheet.setInitialText("Share on Twitter")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Accounts", message: "Please login to your Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -383,7 +454,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             //facebookSheet.setInitialText("Share on Facebook")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
-            var alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Accounts", message: "Please login to your Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

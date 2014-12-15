@@ -33,18 +33,32 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count;
+        
+        let resultRoute = ArchiveRoute().retrieveData() as [Route];
+        
+        if (resultRoute[0].startTime == "")
+        {
+            
+            return 0;
+            
+        }
+        
+        return resultRoute.count;
+
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "HistoryCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as CustomCell
         
-        let hotelName = items[indexPath.row]
-        cell.lblTime.text = hotelName
-        cell.lblKMDone.text = hotelName
-        cell.lblSpeed.text = hotelName
-        cell.lblRating.text = hotelName
+        let resultRoute = ArchiveRoute().retrieveData() as [Route];
+        
+        
+        //let hotelName = items[indexPath.row]
+        cell.lblTime.text = resultRoute[indexPath.row].endTime;
+        //cell.lblKMDone.text = resultRoute[indexPath.row].startTime; //String(resultRoute.kmDone)
+        //cell.lblSpeed.text = String(resultRoute[indexPath.row].speed)
+        cell.lblRating.text = String(resultRoute[indexPath.row].rating)
         
         return cell
     }
