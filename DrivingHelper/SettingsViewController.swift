@@ -22,7 +22,12 @@ class SettingsViewController: UIViewController {
     var limitTurning: Float = 0.0
     var limitRoad: Float = 0.0
     
+    @IBOutlet weak var accelerationSliderPosition: UISlider!
+    @IBOutlet weak var brakingSliderPosition: UISlider!
+    @IBOutlet weak var turningSliderPosition: UISlider!
+    @IBOutlet weak var roadSliderPosition: UISlider!
     
+ 
     @IBAction func accelerationSlider(sender: UISlider) {
         limitAccel = sender.value
         println(limitAccel)
@@ -38,22 +43,17 @@ class SettingsViewController: UIViewController {
         limitTurning = sender.value
         println(sender.value)
     }
-    
+  
     @IBAction func roadSlider(sender: UISlider) {
         limitRoad = sender.value
         println(limitRoad)
     }
     
-    @IBOutlet weak var accelerationSliderPosition: UISlider!
-    @IBOutlet weak var brakingSliderPosition: UISlider!
-    @IBOutlet weak var turningSliderPosition: UISlider!
-    @IBOutlet weak var roadSliderPosition: UISlider!
-    
     @IBAction func cancelSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func SaveSettings(sender: AnyObject) {
+     @IBAction func SaveSettings(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
         //delegate!.viewSettingsFinish(self,limitAcel: 0.5, limitLeft: 0.2, limitRight: 0.9)
         

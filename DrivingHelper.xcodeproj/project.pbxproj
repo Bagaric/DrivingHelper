@@ -24,9 +24,6 @@
 		2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */; };
 		2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF645F31A37609700FF25B3 /* CustomCell.swift */; };
 		52035C681A2975AD00A8FD52 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52035C671A2975AD00A8FD52 /* images.xcassets */; };
-		52A45D621A290C32000BC533 /* arrow-40169_640.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A45D611A290C32000BC533 /* arrow-40169_640.png */; };
-		52A45D641A290C37000BC533 /* RightArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A45D631A290C37000BC533 /* RightArrow.png */; };
-		52A45D661A290C93000BC533 /* car.png in Resources */ = {isa = PBXBuildFile; fileRef = 52A45D651A290C93000BC533 /* car.png */; };
 		52A798391A265C4800DD0CA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
 		52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */; };
@@ -34,6 +31,10 @@
 		52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A798431A265C4800DD0CA9 /* LaunchScreen.xib */; };
 		843CC6181A2AD4FA00094D37 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6171A2AD4FA00094D37 /* CoreMotion.framework */; };
 		843CC61A1A2AD50500094D37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
+		9600BA411A3F74A200BEBCE2 /* carUpdated.png in Resources */ = {isa = PBXBuildFile; fileRef = 9600BA401A3F74A200BEBCE2 /* carUpdated.png */; };
+		9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */ = {isa = PBXBuildFile; fileRef = 9600BA421A3F772300BEBCE2 /* carUpdated500.png */; };
+		96175EFF1A3F962900D77A76 /* rightArrowFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 96175EFE1A3F962900D77A76 /* rightArrowFinal.png */; };
+		96175F011A3F962D00D77A76 /* leftArrowFinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 96175F001A3F962D00D77A76 /* leftArrowFinal.png */; };
 		9626CAA01A3B3B02002F634C /* ecoModeTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */; };
 		9686C35A1A30EB6E00161A08 /* timerpdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9686C3591A30EB6E00161A08 /* timerpdf.pdf */; };
 		9695BF6A1A39F030002BD2BC /* TimerTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695BF691A39F030002BD2BC /* TimerTips.swift */; };
@@ -76,9 +77,6 @@
 		2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2CF645F31A37609700FF25B3 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52035C671A2975AD00A8FD52 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		52A45D611A290C32000BC533 /* arrow-40169_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-40169_640.png"; sourceTree = "<group>"; };
-		52A45D631A290C37000BC533 /* RightArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RightArrow.png; sourceTree = "<group>"; };
-		52A45D651A290C93000BC533 /* car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car.png; sourceTree = "<group>"; };
 		52A798331A265C4800DD0CA9 /* DrivingHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A798371A265C4800DD0CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A798381A265C4800DD0CA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +89,10 @@
 		52A798501A265C4900DD0CA9 /* ProjectoPSS_IAUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectoPSS_IAUTests.swift; sourceTree = "<group>"; };
 		843CC6171A2AD4FA00094D37 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		843CC6191A2AD50500094D37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9600BA401A3F74A200BEBCE2 /* carUpdated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carUpdated.png; sourceTree = "<group>"; };
+		9600BA421A3F772300BEBCE2 /* carUpdated500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carUpdated500.png; sourceTree = "<group>"; };
+		96175EFE1A3F962900D77A76 /* rightArrowFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrowFinal.png; sourceTree = "<group>"; };
+		96175F001A3F962D00D77A76 /* leftArrowFinal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrowFinal.png; sourceTree = "<group>"; };
 		9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ecoModeTipsViewController.swift; sourceTree = "<group>"; };
 		9686C3591A30EB6E00161A08 /* timerpdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = timerpdf.pdf; sourceTree = "<group>"; };
 		9695BF691A39F030002BD2BC /* TimerTips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTips.swift; sourceTree = "<group>"; };
@@ -134,6 +136,10 @@
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
+				96175F001A3F962D00D77A76 /* leftArrowFinal.png */,
+				96175EFE1A3F962900D77A76 /* rightArrowFinal.png */,
+				9600BA421A3F772300BEBCE2 /* carUpdated500.png */,
+				9600BA401A3F74A200BEBCE2 /* carUpdated.png */,
 				9686C3591A30EB6E00161A08 /* timerpdf.pdf */,
 				96AC6AA71A2E80760064D8F1 /* play3.png */,
 				2C5F13561A2FDA730090D33B /* Stop.png */,
@@ -143,9 +149,6 @@
 				969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */,
 				843CC6191A2AD50500094D37 /* CoreLocation.framework */,
 				843CC6171A2AD4FA00094D37 /* CoreMotion.framework */,
-				52A45D631A290C37000BC533 /* RightArrow.png */,
-				52A45D611A290C32000BC533 /* arrow-40169_640.png */,
-				52A45D651A290C93000BC533 /* car.png */,
 				52A798351A265C4800DD0CA9 /* DrivingHelper */,
 				52A7984D1A265C4900DD0CA9 /* DrivingHelperTests */,
 				52A798341A265C4800DD0CA9 /* Products */,
@@ -292,16 +295,17 @@
 			files = (
 				9686C35A1A30EB6E00161A08 /* timerpdf.pdf in Resources */,
 				969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */,
-				52A45D661A290C93000BC533 /* car.png in Resources */,
+				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
 				2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */,
 				96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */,
-				52A45D641A290C37000BC533 /* RightArrow.png in Resources */,
 				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
 				2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */,
 				52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */,
+				96175F011A3F962D00D77A76 /* leftArrowFinal.png in Resources */,
 				2C5F13571A2FDA730090D33B /* Stop.png in Resources */,
-				52A45D621A290C32000BC533 /* arrow-40169_640.png in Resources */,
+				96175EFF1A3F962900D77A76 /* rightArrowFinal.png in Resources */,
+				9600BA411A3F74A200BEBCE2 /* carUpdated.png in Resources */,
 				52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
