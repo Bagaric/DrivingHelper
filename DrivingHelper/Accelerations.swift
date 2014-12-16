@@ -13,15 +13,12 @@ class Accelerations: NSObject, NSCoding
     
     var acc: Double = 0;
     var roadCondition: String = "";
-    var currentSpeed: Double = 0;
 
     func encodeWithCoder(aCoder: NSCoder) {
         
         aCoder.encodeObject(acc, forKey: "acc");
         
         aCoder.encodeObject(roadCondition, forKey: "roadCondition");
-        
-        aCoder.encodeObject(currentSpeed, forKey: "currentSpeed");
         
     }
     
@@ -31,8 +28,6 @@ class Accelerations: NSObject, NSCoding
         acc = aDecoder.decodeObjectForKey("acc") as Double;
         
         roadCondition = aDecoder.decodeObjectForKey("roadCondition") as String;
-        
-        currentSpeed = aDecoder.decodeObjectForKey("currentSpeed") as Double;
         
         
     }

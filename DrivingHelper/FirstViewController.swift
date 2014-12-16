@@ -49,6 +49,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var momentRoute: [Accelerations] = [];
     var route = Route();
     
+    var listSpeed: [Int] = [];
     
     // Constants
     let accelerometerUpdateInterval = 0.2
@@ -368,6 +369,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
+        listSpeed.append(manager.location.speed.hashValue);
+        
         speedLabel.text = String(manager.location.speed.hashValue) + " km/h"
     }
     
@@ -438,6 +441,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             route.endMoment = momentRoute;
 
+            var tmpres: Double = 0.0
+            
+            for x in listSpeed{
+                tmpres += Double(x);
+            }
+            
+            if (listSpeed.count != 0){
+                route.speed = Int(tmpres / Double(listSpeed.count));}
+            
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
             
