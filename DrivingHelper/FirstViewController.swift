@@ -64,10 +64,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var accStartingMatrix: Matrix = Matrix(cols: 4, rows: 4)
     var inversedMatrix: Matrix = Matrix(cols: 3, rows: 3)
     
+    // Location initialization
     @IBOutlet weak var btnRoute: UIButton!
     @IBOutlet weak var roadConditionLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     var speed: CLLocationSpeed = 0.0
+    var startPoint: String? = nil
+    var endPoint: String? = nil
     
     
     // UI element declarations
@@ -113,11 +116,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 }
             })
         }
-        // Run the location detection
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
     }
     
     override func supportedInterfaceOrientations() -> Int {
@@ -184,11 +182,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 resultVector[i] = sum
             }
             
+            // Printing the rotation matrix for checking
             println("Starting Matrix:")
-            println("| \(accStartingMatrix[0,0]) | \(accStartingMatrix[1,0]) | \(accStartingMatrix[2,0]) | \(accStartingMatrix[3,0]) |")
-            println("| \(accStartingMatrix[0,1]) | \(accStartingMatrix[1,1]) | \(accStartingMatrix[2,1]) | \(accStartingMatrix[3,1]) |")
-            println("| \(accStartingMatrix[0,2]) | \(accStartingMatrix[1,2]) | \(accStartingMatrix[2,2]) | \(accStartingMatrix[3,2]) |")
-            println("| \(accStartingMatrix[0,3]) | \(accStartingMatrix[1,3]) | \(accStartingMatrix[2,3]) | \(accStartingMatrix[3,3]) |")
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", accStartingMatrix[0,0], accStartingMatrix[1,0], accStartingMatrix[2,0], accStartingMatrix[3,0]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", accStartingMatrix[0,1], accStartingMatrix[1,1], accStartingMatrix[2,1], accStartingMatrix[3,1]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", accStartingMatrix[0,2], accStartingMatrix[1,2], accStartingMatrix[2,2], accStartingMatrix[3,2]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", accStartingMatrix[0,3], accStartingMatrix[1,3], accStartingMatrix[2,3], accStartingMatrix[3,3]))
             println("Current values vector:")
             for i in 0...(currentValuesVector.count - 1) {
                 println(currentValuesVector[i])
@@ -238,9 +237,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     func outputRotationData(mat: CMRotationMatrix)
     {
         if !measuringStarted {
-            
             self.inversedMatrix = inverseMatrix(mat)
-            
         }
     }
     
@@ -344,13 +341,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      */
     
     // I WILL NEED THIS CODE LATER - Josip
-    /*@IBAction func detectLocation(sender: AnyObject) {
+    func detectLocation() {
         // Run the location detection
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-    }*/
+    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
@@ -378,14 +375,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
             var streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
             var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            println("County: \(administrativeArea)")
-            println("Country: \(country)")
-            println("Streetname: \(streetName)")
+            
+            if startPoint == nil {
+                println("Looking for starting location..")
+                startPoint = "\(streetName), \(administrativeArea), \(country)"
+                endPoint = "\(streetName), \(administrativeArea), \(country)"
+            } else {
+                println("Looking for ending location..")
+                endPoint = "\(streetName), \(administrativeArea), \(country)"
+            }
         }
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Error while updating location " + error.localizedDescription)
+        println("Error while updating location: " + error.localizedDescription)
     }
     
     override func didReceiveMemoryWarning() {
@@ -398,7 +401,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func btnStop(sender: AnyObject) {
         
-        if (stateMain == 1){
+        if (stateMain == 1) {
             btnRoute.setTitle("STOP", forState: UIControlState.Normal);
 
             //let dateTime = NSDate();
@@ -418,10 +421,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             measuringStarted = true
             
+            detectLocation()
+            
             momentRoute.removeAll(keepCapacity: false);
             
             stateMain = 0;
+            
         } else {
+            
+            measuringStarted = false
+            
+            detectLocation()
+            
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
             alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
@@ -440,7 +451,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
-            
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route];
             var listRoute: [Route] = resultRoute;
@@ -462,8 +472,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 ArchiveRoute().saveData(nameProject: listRoute);
                 
             }
-            
-            
             
             //println("Teste2: ");
             //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
