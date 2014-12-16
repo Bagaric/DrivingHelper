@@ -75,6 +75,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var LeftColor: UIImageView!
     @IBOutlet weak var carColor: UIImageView!
     
+    
     var limitAccelerate:CGFloat = 1.0
     var limitBraking:CGFloat = 1.0
     var limitTurning:CGFloat = 1.0
