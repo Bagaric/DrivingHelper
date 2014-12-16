@@ -418,6 +418,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             measuringStarted = true
             
+            momentRoute.removeAll(keepCapacity: false);
+            
             stateMain = 0;
         } else {
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
