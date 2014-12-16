@@ -190,8 +190,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             println("| \(accStartingMatrix[0,2]) | \(accStartingMatrix[1,2]) | \(accStartingMatrix[2,2]) | \(accStartingMatrix[3,2]) |")
             println("| \(accStartingMatrix[0,3]) | \(accStartingMatrix[1,3]) | \(accStartingMatrix[2,3]) | \(accStartingMatrix[3,3]) |")
             println("Current values vector:")
-            for i in 0...(currentValuesVector.count) {
+            for i in 0...(currentValuesVector.count - 1) {
                 println(currentValuesVector[i])
+            }
+            println("Resulting vector:")
+            for i in 0...(resultVector.count - 1) {
+                println(resultVector[i])
             }
             
             // Change arrow colors
