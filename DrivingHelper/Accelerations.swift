@@ -13,6 +13,6 @@ class Accelerations: NSObject
     
     var acc: Double = 0;
     var roadCondition: String = "";
-    var currentSpeed: Double = 0;
+    var currentSpeed: Double = 0; 
     
 }

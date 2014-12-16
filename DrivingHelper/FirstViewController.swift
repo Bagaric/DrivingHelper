@@ -434,10 +434,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
-
+            
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route];
             var listRoute: [Route] = resultRoute;
+            
+            //ArchiveRoute().saveData(nameProject: listRoute);
             
             if (listRoute[0].startTime == "")
             {

@@ -13,7 +13,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet
     var tableView: UITableView!
     
-    var items: [String] = ["WeTESTE", "Heart", "Swift"]
+    //var items: [String] = ["WeTESTE", "Heart", "Swift"]
+    
+    var toPass:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +67,26 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
+        
+        toPass = String(indexPath.row);
+        
+        self.performSegueWithIdentifier("segList", sender: String(indexPath.row));
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //let palavra = palavraTextFiled.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
+        var targetController = segue.destinationViewController as RouteViewController
+        targetController.rowList = sender == nil ? toPass : (sender as String)
     }
 
+    /*override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if (segue.identifier == "segueTest") {
+            var svc = segue!.destinationViewController as secondViewController;
+            
+            svc.toPass = textField.text
+            
+        }
+    }*/
     
 }
