@@ -21,6 +21,7 @@
 		2CA2B1531A3B4E7200D5F913 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2B14E1A3B4E3600D5F913 /* Route.swift */; };
 		2CA2B1551A3B4FB900D5F913 /* ArchiveRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2B1541A3B4FB900D5F913 /* ArchiveRoute.swift */; };
 		2CA2B1561A3B50FF00D5F913 /* ArchiveRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2B1541A3B4FB900D5F913 /* ArchiveRoute.swift */; };
+		2CB547AC1A3F390E00BD63E9 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */; };
 		2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */; };
 		2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF645F31A37609700FF25B3 /* CustomCell.swift */; };
 		52035C681A2975AD00A8FD52 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52035C671A2975AD00A8FD52 /* images.xcassets */; };
@@ -74,6 +75,7 @@
 		2CA2B14E1A3B4E3600D5F913 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		2CA2B1501A3B4E5E00D5F913 /* Accelerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelerations.swift; sourceTree = "<group>"; };
 		2CA2B1541A3B4FB900D5F913 /* ArchiveRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveRoute.swift; sourceTree = "<group>"; };
+		2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
 		2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2CF645F31A37609700FF25B3 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52035C671A2975AD00A8FD52 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */,
 				969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */,
 				2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */,
+				2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */,
 				96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */,
 				9695BF691A39F030002BD2BC /* TimerTips.swift */,
 				9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */,
@@ -336,6 +339,7 @@
 				969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */,
 				2CA2B1551A3B4FB900D5F913 /* ArchiveRoute.swift in Sources */,
 				9626CAA01A3B3B02002F634C /* ecoModeTipsViewController.swift in Sources */,
+				2CB547AC1A3F390E00BD63E9 /* RouteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
