@@ -109,7 +109,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     func outputAccelerationData(acceleration: CMAcceleration) {
         
         var moment: Accelerations = Accelerations();
-        moment.acc = 15;
+        //moment.acc = 15;
         
         // Change arrow colors
         if acceleration.x > Double(0) {
