@@ -44,28 +44,5 @@ class Accelerations: NSObject, NSCoding
         
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(acc, forKey: "acc");
-        aCoder.encodeObject(roadCondition, forKey: "roadCondition");
-        aCoder.encodeObject(currentSpeed, forKey: "currentSpeed");
-        
-    }
-    
-    required init (coder aDecoder: NSCoder)
-    {
-        
-        acc = aDecoder.decodeObjectForKey("acc") as Double;
-        roadCondition = aDecoder.decodeObjectForKey("roadCondition") as String;
-        currentSpeed = aDecoder.decodeObjectForKey("currentSpeed") as Double;
-        
-        
-    }
-    
-    override init()
-    {
-        
-        
-        
-    }
     
 }
