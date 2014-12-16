@@ -62,9 +62,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var currentAccZ: Double = 0.0
     var measuringStarted: Bool = false
     var accStartingMatrix: Matrix = Matrix(cols: 4, rows: 4)
-    var currentValuesVector: Matrix = Matrix(cols: 1, rows: 4)
-    var resultVector: Matrix = Matrix(cols: 4, rows: 1)
-    var rotationMatrix: CMRotationMatrix? = nil
+    var inversedMatrix: Matrix = Matrix(cols: 3, rows: 3)
     
     @IBOutlet weak var btnRoute: UIButton!
     @IBOutlet weak var roadConditionLabel: UILabel!
@@ -157,50 +155,75 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             currentAccY = acceleration.y
             currentAccZ = acceleration.z
             
+            for i in 0...2 {
+                for j in 0...2 {
+                    accStartingMatrix[j,i] = inversedMatrix[j,i]
+                }
+            }
+            
         } else {
             
             accStartingMatrix[3,0] = -(currentAccX)
             accStartingMatrix[3,1] = -(currentAccY)
             accStartingMatrix[3,2] = -(currentAccZ)
             
-            currentValuesVector[0,0] = acceleration.x
-            currentValuesVector[0,1] = acceleration.y
-            currentValuesVector[0,2] = acceleration.z
-            currentValuesVector[0,3] = 1.0
+            var currentValuesVector = Array<Double>(count: 4, repeatedValue: 0.0)
+            var resultVector = Array<Double>(count: 4, repeatedValue: 0.0)
             
-            resetMatrix(resultVector)
+            currentValuesVector[0] = acceleration.x
+            currentValuesVector[1] = acceleration.y
+            currentValuesVector[2] = acceleration.z
+            currentValuesVector[3] = 1.0
             
             for i in 0...3 {
+                var sum: Double = 0.0
                 for j in 0...3 {
-                    resultVector[i,0] += accStartingMatrix[i,j] * currentValuesVector[j,0]
+                    sum += accStartingMatrix[i,j] * currentValuesVector[j]
                 }
+                resultVector[i] = sum
+            }
+            
+            println("Starting Matrix:")
+            println("| \(accStartingMatrix[0,0]) | \(accStartingMatrix[1,0]) | \(accStartingMatrix[2,0]) | \(accStartingMatrix[3,0]) |")
+            println("| \(accStartingMatrix[0,1]) | \(accStartingMatrix[1,1]) | \(accStartingMatrix[2,1]) | \(accStartingMatrix[3,1]) |")
+            println("| \(accStartingMatrix[0,2]) | \(accStartingMatrix[1,2]) | \(accStartingMatrix[2,2]) | \(accStartingMatrix[3,2]) |")
+            println("| \(accStartingMatrix[0,3]) | \(accStartingMatrix[1,3]) | \(accStartingMatrix[2,3]) | \(accStartingMatrix[3,3]) |")
+            println("Current values vector:")
+            for i in 0...(currentValuesVector.count) {
+                println(currentValuesVector[i])
             }
             
             // Change arrow colors
             if acceleration.x > Double(0) {
-                ChangeColorRightTurn(CGFloat(resultVector[0,0])*limitTurning)
+                ChangeColorRightTurn(CGFloat(resultVector[0])*limitTurning)
             } else {
-                ChangeColorLeftTurn(CGFloat(abs(resultVector[0,0]))*limitTurning)
+                ChangeColorLeftTurn(CGFloat(abs(resultVector[0]))*limitTurning)
             }
         
             // Change car color
             if acceleration.z > Double(0) {
-                ChangeColorCarBrake(CGFloat(resultVector[3,0])*limitBraking)
+                ChangeColorCarBrake(CGFloat(resultVector[2])*limitBraking)
             } else {
-                ChangeColorCarAccelerate(CGFloat(abs(resultVector[3,0]))*limitBraking)
+                ChangeColorCarAccelerate(CGFloat(abs(resultVector[2]))*limitBraking)
             }
         
             // Set up road condition limits to fit the calibration
             var reverseLimitRoad = 0.5 - Double(limitRoad)
 
             // Road condition label set
-            if resultVector[2,0] > (-1.0 + reverseLimitRoad) {
+            if resultVector[1] > (-1.0 + reverseLimitRoad) {
                 roadConditionLabel.text = "Bad"
                 moment.roadCondition = "Bad";
             } else {
                 roadConditionLabel.text = "Good"
                 moment.roadCondition = "Good";
             }
+            
+            
+            println("X axis: Real - \(resultVector[0]), Changed - \(acceleration.x)")
+            println("Y axis: Real - \(resultVector[1]), Changed - \(acceleration.y)")
+            println("Z axis: Real - \(resultVector[2]), Changed - \(acceleration.z)")
+            
         }
         
         momentRoute.append(moment);
@@ -211,19 +234,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     {
         if !measuringStarted {
             
-            // I NEED TO INVERSE THIS MATRIX
+            self.inversedMatrix = inverseMatrix(mat)
             
-            accStartingMatrix[0,0] = mat.m11
-            accStartingMatrix[0,1] = mat.m12
-            accStartingMatrix[0,2] = mat.m13
-        
-            accStartingMatrix[1,0] = mat.m21
-            accStartingMatrix[1,1] = mat.m22
-            accStartingMatrix[1,2] = mat.m23
-        
-            accStartingMatrix[2,0] = mat.m31
-            accStartingMatrix[2,1] = mat.m32
-            accStartingMatrix[2,2] = mat.m33
         }
     }
     
@@ -250,12 +262,29 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         matrix[3,3] = 1
     }
     
-    func resetMatrix(matrix: Matrix) {
+    func inverseMatrix(mat: CMRotationMatrix) -> Matrix {
         
-        matrix[0,0] = 1
-        matrix[1,0] = 0
-        matrix[2,0] = 0
-        matrix[3,0] = 0
+        var detMatrix = mat.m11 * mat.m22 * mat.m33 + mat.m21 * mat.m32 * mat.m13
+                        + mat.m31 * mat.m12 * mat.m23 - mat.m11 * mat.m32 * mat.m23
+                        - mat.m31 * mat.m22 * mat.m13 - mat.m21 * mat.m12 * mat.m33
+        
+        var scalar = 1 / detMatrix
+        
+        var inverse: Matrix = Matrix(cols: 3, rows: 3)
+        
+        inverse[0,0] = scalar * (mat.m22 * mat.m33 - mat.m23 * mat.m32)
+        inverse[1,0] = scalar * (mat.m13 * mat.m32 - mat.m12 * mat.m33)
+        inverse[2,0] = scalar * (mat.m12 * mat.m23 - mat.m13 * mat.m22)
+        
+        inverse[0,1] = scalar * (mat.m23 * mat.m31 - mat.m21 * mat.m33)
+        inverse[1,1] = scalar * (mat.m11 * mat.m33 - mat.m13 * mat.m31)
+        inverse[2,1] = scalar * (mat.m13 * mat.m21 - mat.m11 * mat.m23)
+        
+        inverse[0,2] = scalar * (mat.m21 * mat.m32 - mat.m22 * mat.m31)
+        inverse[1,2] = scalar * (mat.m12 * mat.m31 - mat.m11 * mat.m32)
+        inverse[2,2] = scalar * (mat.m11 * mat.m22 - mat.m12 * mat.m21)
+        
+        return inverse
     }
     
     
