@@ -62,13 +62,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var currentAccY: Double = 0.0
     var currentAccZ: Double = 0.0
     var measuringStarted: Bool = false
-    var accStartingMatrix: Matrix = Matrix(cols: 4, rows: 4)
-    var inversedMatrix: Matrix = Matrix(cols: 3, rows: 3)
+    var rotMatrix: Matrix = Matrix(cols: 3, rows: 3)
     
+    // Location initialization
     @IBOutlet weak var btnRoute: UIButton!
     @IBOutlet weak var roadConditionLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     var speed: CLLocationSpeed = 0.0
+    var startPoint: String? = nil
+    var endPoint: String? = nil
     
     
     // UI element declarations
@@ -97,7 +99,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 }
             })
 
-            generateInitialMatrix(accStartingMatrix)
         }
         
         if self.motionManager.gyroAvailable {
@@ -107,18 +108,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             motionManager.startDeviceMotionUpdatesUsingReferenceFrame(ref, toQueue: NSOperationQueue.mainQueue(), withHandler: { (devMotion, error) -> Void in
        
-                self.outputRotationData(devMotion.attitude.rotationMatrix)
+                if devMotion != nil{
+                    self.outputRotationData(devMotion.attitude.rotationMatrix)
+                }
                 if (error != nil)
                 {
                     println("\(error)")
                 }
             })
         }
-        // Run the location detection
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
     }
     
     override func supportedInterfaceOrientations() -> Int {
@@ -157,17 +155,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             currentAccY = acceleration.y
             currentAccZ = acceleration.z
             
-            for i in 0...2 {
-                for j in 0...2 {
-                    accStartingMatrix[j,i] = inversedMatrix[j,i]
-                }
-            }
-            
         } else {
-            
-            accStartingMatrix[3,0] = -(currentAccX)
-            accStartingMatrix[3,1] = -(currentAccY)
-            accStartingMatrix[3,2] = -(currentAccZ)
             
             var currentValuesVector = Array<Double>(count: 4, repeatedValue: 0.0)
             var resultVector = Array<Double>(count: 4, repeatedValue: 0.0)
@@ -175,21 +163,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             currentValuesVector[0] = acceleration.x
             currentValuesVector[1] = acceleration.y
             currentValuesVector[2] = acceleration.z
-            currentValuesVector[3] = 1.0
             
-            for i in 0...3 {
+            for i in 0...2 {
                 var sum: Double = 0.0
-                for j in 0...3 {
-                    sum += accStartingMatrix[i,j] * currentValuesVector[j]
+                for j in 0...2 {
+                    sum += rotMatrix[i,j] * currentValuesVector[j]
                 }
                 resultVector[i] = sum
             }
             
+            // Printing the rotation matrix for checking
             println("Starting Matrix:")
-            println("| \(accStartingMatrix[0,0]) | \(accStartingMatrix[1,0]) | \(accStartingMatrix[2,0]) | \(accStartingMatrix[3,0]) |")
-            println("| \(accStartingMatrix[0,1]) | \(accStartingMatrix[1,1]) | \(accStartingMatrix[2,1]) | \(accStartingMatrix[3,1]) |")
-            println("| \(accStartingMatrix[0,2]) | \(accStartingMatrix[1,2]) | \(accStartingMatrix[2,2]) | \(accStartingMatrix[3,2]) |")
-            println("| \(accStartingMatrix[0,3]) | \(accStartingMatrix[1,3]) | \(accStartingMatrix[2,3]) | \(accStartingMatrix[3,3]) |")
+            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,0], rotMatrix[1,0], rotMatrix[2,0]))
+            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,1], rotMatrix[1,1], rotMatrix[2,1]))
+            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,2], rotMatrix[1,2], rotMatrix[2,2]))
             println("Current values vector:")
             for i in 0...(currentValuesVector.count - 1) {
                 println(currentValuesVector[i])
@@ -226,9 +213,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             
-            println("X axis: Real - \(resultVector[0]), Changed - \(acceleration.x)")
-            println("Y axis: Real - \(resultVector[1]), Changed - \(acceleration.y)")
-            println("Z axis: Real - \(resultVector[2]), Changed - \(acceleration.z)")
+            println("X axis: Real - \(acceleration.x), Changed - \(resultVector[0])")
+            println("Y axis: Real - \(acceleration.y), Changed - \(resultVector[1])")
+            println("Z axis: Real - \(acceleration.z), Changed - \(resultVector[2])")
             
         }
         
@@ -239,9 +226,17 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     func outputRotationData(mat: CMRotationMatrix)
     {
         if !measuringStarted {
-            
-            self.inversedMatrix = inverseMatrix(mat)
-            
+            rotMatrix[0,0] = mat.m11
+            rotMatrix[1,0] = mat.m12
+            rotMatrix[2,0] = mat.m13
+        
+            rotMatrix[0,1] = mat.m21
+            rotMatrix[1,1] = mat.m22
+            rotMatrix[2,1] = mat.m23
+        
+            rotMatrix[0,2] = mat.m31
+            rotMatrix[1,2] = mat.m32
+            rotMatrix[2,2] = mat.m33
         }
     }
     
@@ -268,7 +263,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         matrix[3,3] = 1
     }
     
-    func inverseMatrix(mat: CMRotationMatrix) -> Matrix {
+    /*func inverseMatrix(mat: CMRotationMatrix) -> Matrix {
         
         var detMatrix = mat.m11 * mat.m22 * mat.m33 + mat.m21 * mat.m32 * mat.m13
                         + mat.m31 * mat.m12 * mat.m23 - mat.m11 * mat.m32 * mat.m23
@@ -291,7 +286,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         inverse[2,2] = scalar * (mat.m11 * mat.m22 - mat.m12 * mat.m21)
         
         return inverse
-    }
+    }*/
     
     
     
@@ -345,13 +340,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      */
     
     // I WILL NEED THIS CODE LATER - Josip
-    /*@IBAction func detectLocation(sender: AnyObject) {
+    func detectLocation() {
         // Run the location detection
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-    }*/
+    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: {(placemarks, error)->Void in
@@ -381,14 +376,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var administrativeArea = (containsPlacemark.administrativeArea != nil) ? containsPlacemark.administrativeArea : ""
             var streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
             var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
-            println("County: \(administrativeArea)")
-            println("Country: \(country)")
-            println("Streetname: \(streetName)")
+            
+            if startPoint == nil {
+                println("Looking for starting location..")
+                startPoint = "\(streetName), \(administrativeArea), \(country)"
+                endPoint = "\(streetName), \(administrativeArea), \(country)"
+            } else {
+                println("Looking for ending location..")
+                endPoint = "\(streetName), \(administrativeArea), \(country)"
+            }
         }
     }
     
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Error while updating location " + error.localizedDescription)
+        println("Error while updating location: " + error.localizedDescription)
     }
     
     override func didReceiveMemoryWarning() {
@@ -401,7 +402,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func btnStop(sender: AnyObject) {
         
-        if (stateMain == 1){
+        if (stateMain == 1) {
             btnRoute.setTitle("STOP", forState: UIControlState.Normal);
 
             //let dateTime = NSDate();
@@ -421,10 +422,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             measuringStarted = true
             
+            detectLocation()
+            
             momentRoute.removeAll(keepCapacity: false);
             
             stateMain = 0;
+            
         } else {
+            
+            measuringStarted = false
+            
+            detectLocation()
+            
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
             alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
@@ -453,7 +462,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             btnRoute.setTitle("START", forState: UIControlState.Normal);
             stateMain = 1;
             
-            
             let resultRoute = ArchiveRoute().retrieveData() as [Route];
             var listRoute: [Route] = resultRoute;
             
@@ -474,8 +482,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 ArchiveRoute().saveData(nameProject: listRoute);
                 
             }
-            
-            
             
             //println("Teste2: ");
             //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
