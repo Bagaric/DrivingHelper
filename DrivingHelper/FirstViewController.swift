@@ -61,7 +61,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var currentAccY: Double = 0.0
     var currentAccZ: Double = 0.0
     var measuringStarted: Bool = false
-    var rotMatrix: Matrix = Matrix(cols: 3, rows: 3)
+    var rotMatrix: Matrix = Matrix(cols: 4, rows: 3)
     
     // Location initialization
     @IBOutlet weak var btnRoute: UIButton!
@@ -101,7 +101,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if self.motionManager.gyroAvailable {
-            let ref = CMAttitudeReferenceFrameXTrueNorthZVertical
+            let ref = CMAttitudeReferenceFrameXArbitraryZVertical
             
             motionManager.gyroUpdateInterval = gyroUpdateInterval
             
@@ -156,14 +156,18 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
         } else {
             
-            var currentValuesVector = Array<Double>(count: 4, repeatedValue: 0.0)
+            var currentValuesVector = Array<Double>(count: 3, repeatedValue: 0.0)
             var resultVector = Array<Double>(count: 4, repeatedValue: 0.0)
             
             currentValuesVector[0] = acceleration.x
             currentValuesVector[1] = acceleration.y
             currentValuesVector[2] = acceleration.z
             
-            for i in 0...2 {
+            rotMatrix[3,0] = -acceleration.x
+            rotMatrix[3,1] = -acceleration.y
+            rotMatrix[3,2] = -acceleration.z
+            
+            for i in 0...3 {
                 var sum: Double = 0.0
                 for j in 0...2 {
                     sum += rotMatrix[i,j] * currentValuesVector[j]
@@ -173,9 +177,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             // Printing the rotation matrix for checking
             println("Starting Matrix:")
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,0], rotMatrix[1,0], rotMatrix[2,0]))
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,1], rotMatrix[1,1], rotMatrix[2,1]))
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,2], rotMatrix[1,2], rotMatrix[2,2]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", rotMatrix[0,0], rotMatrix[1,0], rotMatrix[2,0], rotMatrix[3,0]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", rotMatrix[0,1], rotMatrix[1,1], rotMatrix[2,1], rotMatrix[3,1]))
+            println(String(format: "| %.4f | %.4f | %.4f | %.4f |", rotMatrix[0,2], rotMatrix[1,2], rotMatrix[2,2], rotMatrix[3,2]))
             println("Current values vector:")
             for i in 0...(currentValuesVector.count - 1) {
                 println(currentValuesVector[i])
