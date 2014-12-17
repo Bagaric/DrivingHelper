@@ -69,8 +69,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var roadConditionLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     var speed: CLLocationSpeed = 0.0
-    var startPoint: String? = nil
-    var endPoint: String? = nil
+    var startPoint: String = "Vazio!"
+    var endPoint: String = "Vazio!"
     
     
     // UI element declarations
@@ -377,7 +377,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
             var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             
-            if startPoint == nil {
+            if startPoint == "Vazio!" {
                 println("Looking for starting location..")
                 startPoint = "\(streetName), \(administrativeArea), \(country)"
                 endPoint = "\(streetName), \(administrativeArea), \(country)"
@@ -466,6 +466,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var listRoute: [Route] = resultRoute;
             
             //ArchiveRoute().saveData(nameProject: listRoute);
+            
+            route.startPoint = self.startPoint;
+            route.endPoint = self.endPoint;
             
             if (listRoute[0].startTime == "")
             {
