@@ -486,6 +486,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 
             }
             
+            startPoint = "Vazio!";
+            endPoint = "Vazio!";
+            
             //println("Teste2: ");
             //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
             
