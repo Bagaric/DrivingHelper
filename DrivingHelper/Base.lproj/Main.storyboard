@@ -121,10 +121,6 @@
                                 <rect key="frame" x="184" y="226" width="120" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYl-ma-3Td">
-                                <rect key="frame" x="26" y="65" width="294" height="153"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeI-zG-ih0">
                                 <rect key="frame" x="150" y="226" width="20" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,6 +154,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYl-ma-3Td">
+                                <rect key="frame" x="26" y="65" width="294" height="153"/>
+                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -182,6 +182,7 @@
                             <constraint firstItem="iYN-uA-W8v" firstAttribute="top" secondItem="dk4-St-MT5" secondAttribute="bottom" constant="27" id="WrH-MR-rMR"/>
                             <constraint firstItem="b4V-Yb-1Io" firstAttribute="trailing" secondItem="iYl-ma-3Td" secondAttribute="trailing" id="bJ3-La-HEI"/>
                             <constraint firstItem="b4V-Yb-1Io" firstAttribute="centerX" secondItem="aeI-zG-ih0" secondAttribute="centerX" id="bKc-Xm-WNX"/>
+                            <constraint firstItem="b7Q-az-95j" firstAttribute="top" secondItem="FSe-4V-AXW" secondAttribute="bottom" id="bfx-Wi-yeU"/>
                             <constraint firstItem="O2H-Mh-3B1" firstAttribute="top" secondItem="lzi-h8-jen" secondAttribute="bottom" constant="8" symbolic="YES" id="bpj-RI-waT"/>
                             <constraint firstItem="b4V-Yb-1Io" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="c5V-jH-ZMi"/>
                             <constraint firstItem="O2H-Mh-3B1" firstAttribute="leading" secondItem="dk4-St-MT5" secondAttribute="leading" id="enk-RE-GPA"/>
@@ -197,7 +198,6 @@
                             <constraint firstAttribute="centerX" secondItem="FSe-4V-AXW" secondAttribute="centerX" id="sSP-j3-SNP"/>
                             <constraint firstItem="iYN-uA-W8v" firstAttribute="leading" secondItem="O2H-Mh-3B1" secondAttribute="trailing" constant="8" symbolic="YES" id="uhG-qP-f55"/>
                             <constraint firstItem="dk4-St-MT5" firstAttribute="leading" secondItem="b7Q-az-95j" secondAttribute="leading" id="urG-qx-jTm"/>
-                            <constraint firstItem="b7Q-az-95j" firstAttribute="top" secondItem="FSe-4V-AXW" secondAttribute="bottom" id="vbh-rh-0Hd"/>
                             <constraint firstItem="O2H-Mh-3B1" firstAttribute="baseline" secondItem="iYN-uA-W8v" secondAttribute="firstBaseline" id="vkl-ws-DCt"/>
                             <constraint firstItem="iYl-ma-3Td" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="10" id="wyF-RB-nQg"/>
                             <constraint firstItem="nhw-NF-P4e" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="xk8-SK-O11"/>
