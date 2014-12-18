@@ -325,9 +325,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
-        listSpeed.append(manager.location.speed.hashValue);
+        listSpeed.append(manager.location.speed.description.toInt()!);
         
-        speedLabel.text = String(manager.location.speed.hashValue) + " km/h"
+        speedLabel.text = String(manager.location.speed.description) + " km/h"
     }
     
     func displayLocationInfo(placemark: CLPlacemark?) {
