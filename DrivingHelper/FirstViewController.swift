@@ -11,7 +11,7 @@ import CoreMotion
 import CoreLocation
 import Social
 
-class Matrix {
+/*class Matrix {
     var cols:Int, rows:Int
     var matrix:[Double]
     
@@ -38,7 +38,7 @@ class Matrix {
     func rowCount() -> Int {
         return self.rows
     }
-}
+}*/
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -52,17 +52,22 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var listSpeed: [Int] = [];
     
     // Constants
-    let accelerometerUpdateInterval = 0.2
-    let gyroUpdateInterval = 0.2
+    let motionUpdateInterval: Double = 0.2
     
     
-    // Accelerometer initialization
+    // Accelerometer and gyro initialization
     let motionManager = CMMotionManager()
-    var currentAccX: Double = 0.0
-    var currentAccY: Double = 0.0
-    var currentAccZ: Double = 0.0
+    var startingAccX: Double = 0.0
+    var startingAccY: Double = 0.0
+    var startingAccZ: Double = 0.0
+    var currRelativeAccX: Double = 0.0
+    var currRelativeAccY: Double = 0.0
+    var currRelativeAccZ: Double = 0.0
     var measuringStarted: Bool = false
-    var rotMatrix: Matrix = Matrix(cols: 3, rows: 3)
+    //var rotMatrix: Matrix = Matrix(cols: 3, rows: 3)
+    var startingPitch: Double = 0.0
+    var startingRoll: Double = 0.0
+    var startingYaw: Double = 0.0
     
     // Location initialization
     @IBOutlet weak var btnRoute: UIButton!
@@ -87,29 +92,16 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Run the accelerometer in the background
-        if self.motionManager.accelerometerAvailable {
-            motionManager.accelerometerUpdateInterval = accelerometerUpdateInterval
+        // Enclosure that get the accelerometer and gyro data
+        if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
+            let ref = CMAttitudeReferenceFrameXArbitraryZVertical
             
-            motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
-                self.outputAccelerationData(accelerometerData.acceleration)
-                if (error != nil) {
-                    println("\(error)")
-                }
-            })
-
-        }
-        
-        if self.motionManager.gyroAvailable {
-            let ref = CMAttitudeReferenceFrameXTrueNorthZVertical
-            
-            motionManager.gyroUpdateInterval = gyroUpdateInterval
+            motionManager.deviceMotionUpdateInterval = motionUpdateInterval
             
             motionManager.startDeviceMotionUpdatesUsingReferenceFrame(ref, toQueue: NSOperationQueue.mainQueue(), withHandler: { (devMotion, error) -> Void in
        
-                if devMotion != nil{
-                    self.outputRotationData(devMotion.attitude.rotationMatrix)
+                if devMotion != nil {
+                    self.outputMotionData(devMotion)
                 }
                 if (error != nil)
                 {
@@ -143,104 +135,73 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    // Processes data taken from the accelerometer
-    func outputAccelerationData(acceleration: CMAcceleration) {
-        
-        var moment: Accelerations = Accelerations();
-        //moment.acc = 15;
+    func outputMotionData(devMot: CMDeviceMotion)
+    {
+        var moment: Accelerations = Accelerations()
+        //moment.acc = 15
+
         
         if !measuringStarted {
             
-            currentAccX = acceleration.x
-            currentAccY = acceleration.y
-            currentAccZ = acceleration.z
+            startingPitch = devMot.attitude.pitch
+            startingRoll = devMot.attitude.roll
+            startingYaw = devMot.attitude.yaw
+            
             
         } else {
             
-            var currentValuesVector = Array<Double>(count: 4, repeatedValue: 0.0)
-            var resultVector = Array<Double>(count: 4, repeatedValue: 0.0)
+            /*var x2 = (devMot.userAcceleration.x * cos(startingPitch)) - (devMot.userAcceleration.y * sin(startingPitch))
+            var y2 = (devMot.userAcceleration.x * sin(startingPitch)) + (devMot.userAcceleration.y * cos(startingPitch))
+            var z2 = devMot.userAcceleration.z
             
-            currentValuesVector[0] = acceleration.x
-            currentValuesVector[1] = acceleration.y
-            currentValuesVector[2] = acceleration.z
+            var y3 = (y2 * cos(startingRoll)) - (z2 * sin(startingRoll))
+            var z3 = (y2 * sin(startingRoll)) + (z2 * cos(startingRoll))
+            var x3 = x2
             
-            for i in 0...2 {
-                var sum: Double = 0.0
-                for j in 0...2 {
-                    sum += rotMatrix[i,j] * currentValuesVector[j]
-                }
-                resultVector[i] = sum
-            }
+            var z = (z3 * cos(startingYaw)) - (x3 * sin(startingYaw))
+            var x = (z3 * sin(startingYaw)) + (x3 * cos(startingYaw))
+            var y = y3*/
             
-            // Printing the rotation matrix for checking
-            println("Starting Matrix:")
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,0], rotMatrix[1,0], rotMatrix[2,0]))
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,1], rotMatrix[1,1], rotMatrix[2,1]))
-            println(String(format: "| %.4f | %.4f | %.4f |", rotMatrix[0,2], rotMatrix[1,2], rotMatrix[2,2]))
-            println("Current values vector:")
-            for i in 0...(currentValuesVector.count - 1) {
-                println(currentValuesVector[i])
-            }
-            println("Resulting vector:")
-            for i in 0...(resultVector.count - 1) {
-                println(resultVector[i])
-            }
+            var z = devMot.userAcceleration.z
+            var x = devMot.userAcceleration.x
+            var y = devMot.userAcceleration.y
+            
+            //println(String(format: "\nPitch \t- X: \t%.2f \nRoll \t- Y: \t%.2f \nYaw \t- Z: \t%.2f", att.pitch, att.roll, att.yaw))
+            
+            println(String(format: "\nAcc \t- X: \t%.2f \t %.2f \n\t \t- Y: \t%.2f \t %.2f\n\t \t- Z: \t%.2f \t %.2f", devMot.userAcceleration.x, x, devMot.userAcceleration.y, y, devMot.userAcceleration.z, z))
+            
             
             // Change arrow colors
-            if acceleration.x > Double(0) {
-                ChangeColorRightTurn(CGFloat(resultVector[0])*limitTurning)
+            if x > Double(0) {
+                ChangeColorRightTurn(CGFloat(x)*limitTurning)
             } else {
-                ChangeColorLeftTurn(CGFloat(abs(resultVector[0]))*limitTurning)
+                ChangeColorLeftTurn(CGFloat(abs(x))*limitTurning)
             }
-        
+            
             // Change car color
-            if acceleration.z > Double(0) {
-                ChangeColorCarBrake(CGFloat(resultVector[2])*limitBraking)
+            if z > Double(0) {
+                ChangeColorCarBrake(CGFloat(z)*limitBraking)
             } else {
-                ChangeColorCarAccelerate(CGFloat(abs(resultVector[2]))*limitBraking)
+                ChangeColorCarAccelerate(CGFloat(abs(z))*limitAccelerate)
             }
-        
+            
             // Set up road condition limits to fit the calibration
-            var reverseLimitRoad = 0.5 - Double(limitRoad)
-
+            var reverseLimitRoad = 0.7 - limitRoad / 2.0
+            
             // Road condition label set
-            if resultVector[1] > (-1.0 + reverseLimitRoad) {
+            if devMot.userAcceleration.y > Double(reverseLimitRoad) {
                 roadConditionLabel.text = "Bad"
-                moment.roadCondition = "Bad";
+                moment.roadCondition = "Bad"
             } else {
                 roadConditionLabel.text = "Good"
-                moment.roadCondition = "Good";
+                moment.roadCondition = "Good"
             }
-            
-            
-            println("X axis: Real - \(acceleration.x), Changed - \(resultVector[0])")
-            println("Y axis: Real - \(acceleration.y), Changed - \(resultVector[1])")
-            println("Z axis: Real - \(acceleration.z), Changed - \(resultVector[2])")
-            
         }
         
-        momentRoute.append(moment);
-        
+        momentRoute.append(moment)
     }
     
-    func outputRotationData(mat: CMRotationMatrix)
-    {
-        if !measuringStarted {
-            rotMatrix[0,0] = mat.m11
-            rotMatrix[1,0] = mat.m12
-            rotMatrix[2,0] = mat.m13
-        
-            rotMatrix[0,1] = mat.m21
-            rotMatrix[1,1] = mat.m22
-            rotMatrix[2,1] = mat.m23
-        
-            rotMatrix[0,2] = mat.m31
-            rotMatrix[1,2] = mat.m32
-            rotMatrix[2,2] = mat.m33
-        }
-    }
-    
-    func generateInitialMatrix(matrix: Matrix) {
+    /*func generateInitialMatrix(matrix: Matrix) {
         
         matrix[0,0] = 1
         matrix[0,1] = 0
@@ -261,7 +222,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         matrix[3,1] = 0
         matrix[3,2] = 0
         matrix[3,3] = 1
-    }
+    }*/
     
     /*func inverseMatrix(mat: CMRotationMatrix) -> Matrix {
         
@@ -304,14 +265,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Changing colors of the interface
      */
     func ChangeColorLeftTurn(speed: CGFloat) {
-        UIView.animateWithDuration(accelerometerUpdateInterval, animations:{
+        UIView.animateWithDuration(motionUpdateInterval, animations:{
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.LeftColor.backgroundColor = color})
     }
     func ChangeColorRightTurn(speed: CGFloat) {
-        UIView.animateWithDuration(accelerometerUpdateInterval, animations:{
+        UIView.animateWithDuration(motionUpdateInterval, animations:{
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
@@ -319,7 +280,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     func ChangeColorCarAccelerate(speed: CGFloat) {
-        UIView.animateWithDuration(accelerometerUpdateInterval, animations:{
+        UIView.animateWithDuration(motionUpdateInterval, animations:{
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
@@ -327,7 +288,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     func ChangeColorCarBrake(speed: CGFloat) {
-        UIView.animateWithDuration(accelerometerUpdateInterval, animations:{
+        UIView.animateWithDuration(motionUpdateInterval, animations:{
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
