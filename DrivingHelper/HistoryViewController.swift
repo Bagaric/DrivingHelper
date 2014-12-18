@@ -55,12 +55,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let resultRoute = ArchiveRoute().retrieveData() as [Route];
         
+        //println ("Valur: \(resultRoute.count - indexPath.row - 1)")
+        
+        println ("\(resultRoute.count - indexPath.row - 1)")
         
         //let hotelName = items[indexPath.row]
-        cell.lblTime.text = resultRoute[indexPath.row].endTime;
+        cell.lblTime.text = resultRoute[resultRoute.count - indexPath.row - 1].endTime;
         //cell.lblKMDone.text = resultRoute[indexPath.row].startTime; //String(resultRoute.kmDone)
         //cell.lblSpeed.text = String(resultRoute[indexPath.row].speed)
-        cell.lblRating.text = String(resultRoute[indexPath.row].rating)
+        cell.lblRating.text = String(resultRoute[resultRoute.count - indexPath.row - 1].rating)
         
         return cell
     }

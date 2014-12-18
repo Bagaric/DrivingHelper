@@ -325,7 +325,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
-        listSpeed.append(manager.location.speed.description.toInt()!);
+        //listSpeed.append(manager.location.speed.description.toInt()!);
         
         speedLabel.text = String(manager.location.speed.description) + " km/h"
     }
@@ -422,7 +422,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 route.speed = Int(tmpres / Double(listSpeed.count));}
             
             btnRoute.setTitle("START", forState: UIControlState.Normal);
-            stateMain = 1;
+            
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route];
             var listRoute: [Route] = resultRoute;
@@ -451,6 +451,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             startPoint = "Vazio!";
             endPoint = "Vazio!";
             
+            stateMain = 1;
+            
             //println("Teste2: ");
             //btnRoute.setTitle(String(momentRoute.count), forState: UIControlState.Normal);
             
@@ -468,6 +470,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+
+
     }
     
     func ShareFacebook()
@@ -484,6 +488,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
         
     }
+
     
     
 }
