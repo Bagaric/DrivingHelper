@@ -80,7 +80,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!
-    @IBOutlet weak var carColor: UIImageView!
+    @IBOutlet weak var carColor: UIView!
     
     
     var limitAccelerate:CGFloat = 1.0
@@ -259,6 +259,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         ChangeColorCarAccelerate(0)
         ChangeColorRightTurn(0)
     }
+ 
     
     /*
      *  Changing colors of the interface
