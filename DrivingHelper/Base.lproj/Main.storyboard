@@ -210,6 +210,7 @@
                         <outlet property="LeftColor" destination="b7Q-az-95j" id="3dF-lV-wwL"/>
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
                         <outlet property="btnRoute" destination="nhw-NF-P4e" id="Cfl-fa-Sg5"/>
+                        <outlet property="carColor" destination="FSe-4V-AXW" id="QRM-PM-57U"/>
                         <outlet property="roadConditionLabel" destination="u3P-ea-jkY" id="IzR-fC-oD1"/>
                         <outlet property="speedLabel" destination="iYN-uA-W8v" id="IbK-3E-ub0"/>
                     </connections>
