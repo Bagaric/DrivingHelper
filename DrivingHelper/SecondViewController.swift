@@ -52,8 +52,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("RectHeight:\(rectangle?.size.height)\nRectWidth: \(rectangle?.size.width)\n OriginX: \(rectangle?.origin.x) OriginY: \(rectangle?.origin.y)")
-        
         let img = UIImage(named: "GMeterBall2")
         imgBallView = UIImageView(image: img)
         imgBallView.frame = CGRect(x: imgGBase.frame.origin.x, y: imgGBase.frame.origin.y, width: 20, height: 20)
@@ -67,24 +65,23 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
         
         println("\(imgBallView.center)")
         
-        // Check if the accelerometer is inactive and available
-        if self.motionManager.accelerometerActive {
-            self.stopAccelerometer()
-            return
-        }
-        if !self.motionManager.accelerometerAvailable {
-            println("No accelerometer detected.")
-            return
-        }
-        
         // Run the accelerometer in the background
-        motionManager.accelerometerUpdateInterval = gmeterUpdateInterval
-        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler: {(accelerometerData: CMAccelerometerData!, error:NSError!)in
-            self.outputAccelerationData(accelerometerData.acceleration)
-            if (error != nil) {
-                println("\(error)")
-            }
-        })
+        if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
+            let ref = CMAttitudeReferenceFrameXArbitraryZVertical
+            
+            motionManager.deviceMotionUpdateInterval = gmeterUpdateInterval
+            
+            motionManager.startDeviceMotionUpdatesUsingReferenceFrame(ref, toQueue: NSOperationQueue.mainQueue(), withHandler: { (devMotion, error) -> Void in
+                
+                if devMotion != nil{
+                    self.outputAccelerationData(devMotion)
+                }
+                if (error != nil)
+                {
+                    println("\(error)")
+                }
+            })
+        }
         
         // Run the location detection
         locationManager.delegate = self
@@ -110,8 +107,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // Processes data taken from the accelerometer
-    func outputAccelerationData(acceleration:CMAcceleration) {
-        updateGmeter((CGFloat(acceleration.x * 90) * limitGmeter), valueY: (CGFloat(acceleration.z * 90) * limitGmeter))
+    func outputAccelerationData(devMot: CMDeviceMotion) {
+        updateGmeter((CGFloat(devMot.userAcceleration.x * 90) * limitGmeter), valueY: (CGFloat(devMot.userAcceleration.z * 90) * limitGmeter))
     }
     
     func updateGmeter(valueX: CGFloat, valueY: CGFloat){
@@ -196,7 +193,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        speedLabel.text = String(manager.location.speed.hashValue) + " km/h"
+        speedLabel.text = String(manager.location.speed.description) + " km/h"
     }
     
     
