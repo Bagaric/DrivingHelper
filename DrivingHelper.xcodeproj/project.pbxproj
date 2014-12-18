@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1925EAFD1A433EA10046856B /* navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1925EAFC1A433EA00046856B /* navbar.swift */; };
 		19F0F15A1A2E2EE100D1BB35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
 		19F0F15C1A2E308C00D1BB35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		19F0F15D1A2E309000D1BB35 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1925EAFC1A433EA00046856B /* navbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navbar.swift; sourceTree = "<group>"; };
 		2C5F13561A2FDA730090D33B /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
 		2C5F135C1A2FE4710090D33B /* GMeterBase2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBase2.png; sourceTree = "<group>"; };
 		2C5F135E1A2FE4790090D33B /* GMeterBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBall2.png; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */,
 				52035C671A2975AD00A8FD52 /* images.xcassets */,
 				52A7983E1A265C4800DD0CA9 /* Main.storyboard */,
+				1925EAFC1A433EA00046856B /* navbar.swift */,
 				52A798431A265C4800DD0CA9 /* LaunchScreen.xib */,
 				52A798361A265C4800DD0CA9 /* Supporting Files */,
 				2CF645F31A37609700FF25B3 /* CustomCell.swift */,
@@ -339,6 +342,7 @@
 				2CA2B1551A3B4FB900D5F913 /* ArchiveRoute.swift in Sources */,
 				9626CAA01A3B3B02002F634C /* ecoModeTipsViewController.swift in Sources */,
 				2CB547AC1A3F390E00BD63E9 /* RouteViewController.swift in Sources */,
+				1925EAFD1A433EA10046856B /* navbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
