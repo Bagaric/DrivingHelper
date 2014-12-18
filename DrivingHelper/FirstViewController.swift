@@ -75,7 +75,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var speed: CLLocationSpeed = 0.0
     var startPoint: String? = nil
     var endPoint: String? = nil
-    
+
     
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
@@ -90,6 +90,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.barTintColor = UIColor.greenColor()
 
         // Enclosure that get the accelerometer and gyro data
         if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
