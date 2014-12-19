@@ -208,7 +208,13 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        speedLabel.text = String(manager.location.speed.description) + " km/h"
+        
+        var tmp = (manager.location.speed.description as NSString).doubleValue
+        tmp = tmp * 3.6;
+        
+        listSpeed.append(tmp);
+        
+        speedLabel.text = String(format: "%.1f",tmp) + " km/h"
     }
     
     
