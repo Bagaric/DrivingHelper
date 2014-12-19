@@ -49,7 +49,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var momentRoute: [Accelerations] = [];
     var route = Route();
     
-    var listSpeed: [Int] = [];
+    var listSpeed: [Double] = [];
     
     // Constants
     let motionUpdateInterval: Double = 0.2
@@ -343,9 +343,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         var tmp = (manager.location.speed.description as NSString).doubleValue
         tmp = tmp * 3.6;
         
-        listSpeed.append(Int(tmp));
+        listSpeed.append(tmp);
         
-        speedLabel.text = String(manager.location.speed.description) + " km/h"
+        speedLabel.text = String(format: "%.1f",tmp) + " km/h"
     }
     
     func displayLocationInfo(placemark: CLPlacemark?) {

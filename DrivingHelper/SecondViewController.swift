@@ -17,6 +17,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     var limitGmeter: CGFloat = 1.0
     
+    var listSpeed: [Double] = [];
+    
     // Constants
     let gmeterUpdateInterval = 0.2
     // Accelerometer initialization
