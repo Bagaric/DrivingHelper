@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     var delegate:ViewSettingsControllerDelegate?
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
+
     var limitAccel: Float = 0.0
     var limitBraking: Float = 0.0
     var limitTurning: Float = 0.0
@@ -29,23 +30,23 @@ class SettingsViewController: UIViewController {
     
  
     @IBAction func accelerationSlider(sender: UISlider) {
-        limitAccel = sender.value
+        limitAccel = sender.value * 2
         println(limitAccel)
         
     }
     
     @IBAction func brakingSlider(sender: UISlider) {
-        limitBraking = sender.value
+        limitBraking = sender.value * 2
         println(limitBraking)
     }
     
     @IBAction func turningSlider(sender: UISlider) {
-        limitTurning = sender.value
-        println(sender.value)
+        limitTurning = sender.value * 2
+        println(limitTurning)
     }
   
     @IBAction func roadSlider(sender: UISlider) {
-        limitRoad = sender.value
+        limitRoad = sender.value * 2
         println(limitRoad)
     }
     
@@ -60,10 +61,10 @@ class SettingsViewController: UIViewController {
         
         
         //NSUserDefaults
-        userDefaults.setFloat(limitAccel * 2, forKey: "limitAccel");
-        userDefaults.setFloat(limitBraking * 2, forKey: "limitBraking");
-        userDefaults.setFloat(limitTurning * 2, forKey: "limitTurning");
-        userDefaults.setFloat(limitRoad * 2, forKey: "limitRoad");
+        userDefaults.setFloat(limitAccel , forKey: "limitAccel");
+        userDefaults.setFloat(limitBraking , forKey: "limitBraking");
+        userDefaults.setFloat(limitTurning , forKey: "limitTurning");
+        userDefaults.setFloat(limitRoad , forKey: "limitRoad");
         userDefaults.synchronize();
         
         println("Set Acceleration to: \(limitAccel)")
@@ -108,15 +109,15 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func resetValues(sender: UIButton) {
-        limitAccel = 0.5
-        limitBraking = 0.5
-        limitTurning = 0.5
-        limitRoad = 0.5
+        limitAccel = 1
+        limitBraking = 1
+        limitTurning = 1
+        limitRoad = 1
         
-        accelerationSliderPosition.value = limitAccel
-        brakingSliderPosition.value = limitBraking
-        turningSliderPosition.value = limitTurning
-        roadSliderPosition.value = limitRoad
+        accelerationSliderPosition.value = limitAccel / 2
+        brakingSliderPosition.value = limitBraking / 2
+        turningSliderPosition.value = limitTurning / 2
+        roadSliderPosition.value = limitRoad / 2
     }
     
     override func didReceiveMemoryWarning() {

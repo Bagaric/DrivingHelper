@@ -206,9 +206,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if devMot.userAcceleration.y > Double(reverseLimitRoad) {
                 roadConditionLabel.text = "Bad"
                 moment.roadCondition = "Bad"
+                roadConditionLabel.textColor = UIColor.redColor()
             } else {
                 roadConditionLabel.text = "Good"
                 moment.roadCondition = "Good"
+                roadConditionLabel.textColor = UIColor.greenColor()
             }
         }
         
@@ -315,7 +317,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Location stuff
      */
     
-    // I WILL NEED THIS CODE LATER - Josip
     func detectLocation() {
         // Run the location detection
         locationManager.delegate = self
