@@ -60,10 +60,10 @@ class SettingsViewController: UIViewController {
         
         
         //NSUserDefaults
-        userDefaults.setFloat(limitAccel, forKey: "limitAccel");
-        userDefaults.setFloat(limitBraking, forKey: "limitBraking");
-        userDefaults.setFloat(limitTurning, forKey: "limitTurning");
-        userDefaults.setFloat(limitRoad, forKey: "limitRoad");
+        userDefaults.setFloat(limitAccel * 2, forKey: "limitAccel");
+        userDefaults.setFloat(limitBraking * 2, forKey: "limitBraking");
+        userDefaults.setFloat(limitTurning * 2, forKey: "limitTurning");
+        userDefaults.setFloat(limitRoad * 2, forKey: "limitRoad");
         userDefaults.synchronize();
         
         println("Set Acceleration to: \(limitAccel)")
@@ -96,10 +96,10 @@ class SettingsViewController: UIViewController {
         limitTurning = userDefaults.floatForKey("limitTurning")
         limitRoad = userDefaults.floatForKey("limitRoad")
         
-        accelerationSliderPosition.value = limitAccel
-        brakingSliderPosition.value = limitBraking
-        turningSliderPosition.value = limitTurning
-        roadSliderPosition.value = limitRoad
+        accelerationSliderPosition.value = limitAccel / 2
+        brakingSliderPosition.value = limitBraking / 2
+        turningSliderPosition.value = limitTurning / 2
+        roadSliderPosition.value = limitRoad / 2
     }
     
     override func viewDidLoad() {
