@@ -192,11 +192,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 ChangeColorLeftTurn(CGFloat(abs(x))*limitTurning)
             }
             
+            
+            moment.acc = z
             // Change car color
             if z > Double(0) {
                 ChangeColorCarBrake(CGFloat(z)*limitBraking)
+                //moment.acc = Double(z)
             } else {
                 ChangeColorCarAccelerate(CGFloat(abs(z))*limitAccelerate)
+                //moment.acc = Double(z)
             }
             
             // Set up road condition limits to fit the calibration
@@ -269,6 +273,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     /*
      *  Interface
+    
      */
     
     @IBAction func ChangeColor(sender: AnyObject) {

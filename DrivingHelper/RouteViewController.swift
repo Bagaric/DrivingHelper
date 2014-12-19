@@ -36,7 +36,11 @@ class RouteViewController: UIViewController {
         
         let resultRoute = ArchiveRoute().retrieveData() as [Route];
         
+        
+        
         var index = rowList.toInt()!;
+        
+        //var mtz = resultRoute[index].endMoment;
         
         lblStartTime.text = resultRoute[index].startTime;
         lblEndTime.text = resultRoute[index].endTime;
@@ -47,10 +51,42 @@ class RouteViewController: UIViewController {
         lblKMDone.text = String(resultRoute[index].kmDone);
         lblAVGSpeed.text = String(resultRoute[index].speed);
         
-        lblAcceleration.text = String(resultRoute[index].endMoment.count)
+        var res = averageValue(resultRoute[index])
+        
+        lblAcceleration.text = String(format: "%.2f",res.0);
+        
+        lblBraking.text = String(format: "%.2f",res.1);
+        
+        //lblAcceleration.text = String(resultRoute[index].endMoment.count)
         
     }
 
+    func averageValue(r:Route)->(Double, Double){
+        var resultBrk: Double = 0
+        var resultAcc: Double = 0
+        var countAcc: Int = 0;
+        var countBrk: Int = 0;
+        
+        for x in r.endMoment
+        {
+            if (x.acc > Double(0))
+            {
+                resultBrk += Double(x.acc);
+                countBrk++;
+            }
+            else
+            {
+                resultAcc += Double(x.acc);
+                countAcc++;
+            }
+        }
+        
+        resultBrk = resultBrk / Double(countBrk);
+        resultAcc = resultAcc / Double(countAcc);
+        
+        return (abs(resultAcc),resultBrk);
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

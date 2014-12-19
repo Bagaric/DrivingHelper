@@ -123,10 +123,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     // Processes data taken from the accelerometer
     func outputAccelerationData(devMot: CMDeviceMotion) {
-        updateGmeter((CGFloat(devMot.userAcceleration.x * 90) * limitGmeter), valueY: (CGFloat(devMot.userAcceleration.z * 90) * limitGmeter))
-        
-        println("Valores: %.2f", devMot.userAcceleration.z);
-        
+        updateGmeter((CGFloat(devMot.userAcceleration.x * 90) * limitGmeter), valueY: (CGFloat(devMot.userAcceleration.z * 90) * limitGmeter))        
     }
     
     func updateGmeter(valueX: CGFloat, valueY: CGFloat){
