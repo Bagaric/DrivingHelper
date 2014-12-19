@@ -434,7 +434,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var tmpres: Double = 0.0
             
             for x in listSpeed{
-                tmpres += Double(x);
+                tmpres += x;
             }
             
             if (listSpeed.count != 0){
