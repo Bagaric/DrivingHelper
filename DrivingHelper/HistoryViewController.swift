@@ -16,12 +16,32 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //var items: [String] = ["WeTESTE", "Heart", "Swift"]
     
     var toPass:String!
+
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        //self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        //dispatch_async(dispatch_get_main_queue(), {
+            
+            
+            self.tableView.reloadData()
+            
+            // Masquer l'icône de chargement dans la barre de status
+            //UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        //})
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        
         
     }
     
@@ -56,6 +76,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         }
         
+        /*dispatch_async(dispatch_get_main_queue(), {
+            
+            
+            self.tableView.reloadData()
+            
+            // Masquer l'icône de chargement dans la barre de status
+            //UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })*/
+
         return resultRoute.count;
 
     }
@@ -68,23 +97,25 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //println ("Valur: \(resultRoute.count - indexPath.row - 1)")
         
-        println ("\(resultRoute.count - indexPath.row - 1)")
+        println ("\(indexPath.row)")
         
         //let hotelName = items[indexPath.row]
-        cell.lblTime.text = resultRoute[resultRoute.count - indexPath.row - 1].endTime;
+        cell.lblTime.text = resultRoute[indexPath.row].endTime;
         //cell.lblKMDone.text = resultRoute[indexPath.row].startTime; //String(resultRoute.kmDone)
         //cell.lblSpeed.text = String(resultRoute[indexPath.row].speed)
-        cell.lblRating.text = String(resultRoute[resultRoute.count - indexPath.row - 1].rating)
+        cell.lblRating.text = String(resultRoute[indexPath.row].rating)
+
+        
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
-        
+
         toPass = String(indexPath.row);
         
-        self.performSegueWithIdentifier("segList", sender: String(indexPath.row));
+        self.performSegueWithIdentifier("segList", sender: String(indexPath.row ));
         
     }
     

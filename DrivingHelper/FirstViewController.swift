@@ -74,9 +74,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var roadConditionLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
     var speed: CLLocationSpeed = 0.0
-    var startPoint: String = "Vazio!"
-    var endPoint: String = "Vazio!"
-    
+    var startPoint: String = "Unknown"
+    var endPoint: String = "Unknown"
     
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
@@ -129,6 +128,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        UIApplication.sharedApplication().idleTimerDisabled = true
         
         //Loading
          limitAccelerate = CGFloat(userDefaults.floatForKey("limitAccel"))
@@ -339,7 +340,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
-        //listSpeed.append(manager.location.speed.description.toInt()!);
+        var tmp = (manager.location.speed.description as NSString).doubleValue
+        tmp = tmp * 3.6;
+        
+        listSpeed.append(Int(tmp));
         
         speedLabel.text = String(manager.location.speed.description) + " km/h"
     }
@@ -352,7 +356,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var streetName = (containsPlacemark.thoroughfare != nil) ? containsPlacemark.thoroughfare : ""
             var country = (containsPlacemark.country != nil) ? containsPlacemark.country : ""
             
-            if startPoint == "Vazio!" {
+            if startPoint == "Unknown" {
                 println("Looking for starting location..")
                 startPoint = "\(streetName), \(administrativeArea), \(country)"
                 endPoint = "\(streetName), \(administrativeArea), \(country)"
@@ -449,21 +453,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if (listRoute[0].startTime == "")
             {
                 
-                listRoute.append(route);
-                listRoute.removeAtIndex(0)
+                //listRoute.append(route);
+                listRoute.insert(route, atIndex: 0)
+                listRoute.removeAtIndex(1)
+                
                 ArchiveRoute().saveData(nameProject: listRoute);
                 
             }
             else
             {
                 
-                listRoute.append(route);
+                //listRoute.append(route);
+                listRoute.insert(route, atIndex: 0)
                 ArchiveRoute().saveData(nameProject: listRoute);
                 
             }
             
-            startPoint = "Vazio!";
-            endPoint = "Vazio!";
+            startPoint = "Unknown";
+            endPoint = "Unknown";
             
             stateMain = 1;
             

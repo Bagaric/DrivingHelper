@@ -108,6 +108,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         //Loading
         limitGmeter = CGFloat(userDefaults.floatForKey("limitG"))
         
