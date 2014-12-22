@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreMotion
+import Social
 
 class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -18,6 +19,9 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     var limitGmeter: CGFloat = 1.0
     
     var listSpeed: [Double] = [];
+    var listLapTimes: [String] = [];
+    var listTurning: [Double] = [];
+    var listBraking: [Double] = [];
     
     // Constants
     let gmeterUpdateInterval = 0.2
@@ -26,7 +30,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-    
+    var statTrack = 0;
     
     @IBOutlet weak var imgGBall: UIImageView!
     @IBOutlet weak var imgGBase: UIImageView!
@@ -40,6 +44,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var stopwatch: UILabel!
     @IBOutlet weak var lastLapTime: UILabel!
     
+    @IBOutlet weak var btnTrackDay: UIButton!
     @IBOutlet weak var speedLabel: UILabel!
     
     var startTime = NSTimeInterval()
@@ -123,7 +128,11 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     // Processes data taken from the accelerometer
     func outputAccelerationData(devMot: CMDeviceMotion) {
-        updateGmeter((CGFloat(devMot.userAcceleration.x * 90) * limitGmeter), valueY: (CGFloat(devMot.userAcceleration.z * 90) * limitGmeter))        
+        
+        listBraking.append(devMot.userAcceleration.z);
+        listTurning.append(devMot.userAcceleration.x);
+        
+        updateGmeter((CGFloat(devMot.userAcceleration.x * 90) * limitGmeter), valueY: (CGFloat(devMot.userAcceleration.z * 90) * limitGmeter))
     }
     
     func updateGmeter(valueX: CGFloat, valueY: CGFloat){
@@ -158,6 +167,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             lapButton.setTitle("Stop Lap", forState: UIControlState.Normal);
             if (!timer.valid) {
                 var lastLap = stopwatch.text
+                listLapTimes.append(lastLap!);
                 lastLapTime.text = "Last lap: \(lastLap!)"
                 let aSelector : Selector = "updateTime"
                 timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: aSelector, userInfo: nil, repeats: true)
@@ -221,13 +231,139 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Error while updating location " + error.localizedDescription)
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func lblTrackDay(sender: AnyObject) {
+
+        
+        if (statTrack == 0)
+        {
+            btnTrackDay.setTitle("Stop Trackday", forState: UIControlState.Normal)
+            
+            statTrack = 1;
+        }
+        else
+        {
+            
+            var maxLateral: Double = 0.0;
+            var maxBraking: Double = 0.0;
+            var fastestLap: String = "99:99:99";
+            var maxSpeed: Double = 0.0;
+            
+            for x in listTurning
+            {
+                if (maxLateral > x)
+                {
+                    maxLateral = abs(x);
+                }
+            }
+            
+            println("MaxLateral: \(maxLateral)");
+            
+            for x in listBraking
+            {
+                if (maxBraking > x)
+                {
+                    maxBraking = abs(x);
+                }
+            }
+            
+            println("MaxBraking: \(maxBraking)");
+            
+            if (listLapTimes.count > 0)
+            {
+                listLapTimes.removeAtIndex(0);
+            }
+            
+            
+            for x in listLapTimes
+            {
+                
+                var arrLaptime = x.componentsSeparatedByString(":");
+                var tmpLap = fastestLap.componentsSeparatedByString(":");
+                println("Tempo: \(x)");
+                println("Minutos: \(arrLaptime[0])");
+                println("Segundos: \(arrLaptime[1])");
+                println("Frag: \(arrLaptime[2])\n\n");
+                
+                if (arrLaptime[0].toInt() < tmpLap[0].toInt())
+                {
+                    fastestLap = x;
+                } else if (arrLaptime[1].toInt() < tmpLap[1].toInt())
+                {
+                    fastestLap = x;
+                } else if (arrLaptime[2].toInt() < tmpLap[2].toInt())
+                {
+                    fastestLap = x;
+                }
+                
+                
+            }
+            
+            for x in listSpeed
+            {
+                if (maxSpeed > x)
+                {
+                    maxSpeed = x;
+                }
+            }
+            
+            println("Top Speed: \(maxSpeed)");
+            
+            println ("FastestLap: \(fastestLap)");
+            
+            var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
+            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            btnTrackDay.setTitle("Start Trackday", forState: UIControlState.Normal)
+            
+            listLapTimes.removeAll(keepCapacity: false);
+            listSpeed.removeAll(keepCapacity: false);
+            listTurning.removeAll(keepCapacity: false);
+            listBraking.removeAll(keepCapacity: false);
+            
+            statTrack = 0;
+        }
+        
+    }
+    
+    func Tweet()
+    {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            //twitterSheet.setInitialText("Share on Twitter")
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to your Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        
+    }
+    
+    func ShareFacebook()
+    {
+        
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            //facebookSheet.setInitialText("Share on Facebook")
+            self.presentViewController(facebookSheet, animated: true, completion: nil)
+        } else {
+            var alert = UIAlertController(title: "Accounts", message: "Please login to your Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
     
 }
 

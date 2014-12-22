@@ -25,6 +25,11 @@ class RouteViewController: UIViewController {
     @IBOutlet weak var lblBraking: UILabel!
     
     
+    @IBOutlet weak var lblMaxAcceleration: UILabel!
+    @IBOutlet weak var lblMaxBraking: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,17 +56,21 @@ class RouteViewController: UIViewController {
         lblKMDone.text = String(resultRoute[index].kmDone);
         lblAVGSpeed.text = String(resultRoute[index].speed);
         
-        var res = averageValue(resultRoute[index])
+        var resAvg = AverageValue(resultRoute[index]);
+        var maxValues = MaxValue(resultRoute[index]);
         
-        lblAcceleration.text = String(format: "%.2f",res.0);
+        lblAcceleration.text = String(format: "%.2f",resAvg.0);
+        lblMaxAcceleration.text = String(format: "%.2f",maxValues.0);
         
-        lblBraking.text = String(format: "%.2f",res.1);
+        lblBraking.text = String(format: "%.2f",resAvg.1);
+        lblMaxBraking.text = String(format: "%.2f",maxValues.1);
+        
         
         //lblAcceleration.text = String(resultRoute[index].endMoment.count)
         
     }
 
-    func averageValue(r:Route)->(Double, Double){
+    func AverageValue(r:Route)->(Double, Double){
         var resultBrk: Double = 0
         var resultAcc: Double = 0
         var countAcc: Int = 0;
@@ -87,6 +96,31 @@ class RouteViewController: UIViewController {
         return (abs(resultAcc),resultBrk);
     }
     
+    func MaxValue(r:Route)->(Double, Double){
+        var maxBrk: Double = 0
+        var maxAcc: Double = 0
+        
+        for x in r.endMoment
+        {
+            if (x.acc > Double(0))
+            {
+                if (x.acc > maxBrk)
+                {
+                    maxBrk = x.acc;
+                }
+            }
+            else
+            {
+                if (abs(x.acc) > abs(maxAcc))
+                {
+                    maxAcc = abs(x.acc);
+                }
+            }
+        }
+
+        
+        return (abs(maxAcc),maxBrk);
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -106,6 +140,20 @@ class RouteViewController: UIViewController {
     @IBAction func itmDismissView(sender: AnyObject) {
         
         self.dismissViewControllerAnimated(true, completion: nil);
+        
+    }
+    
+    @IBAction func itmDeleteRoute(sender: AnyObject) {
+        
+        var resultRoute = ArchiveRoute().retrieveData() as [Route];
+        var index = rowList.toInt()!;
+        
+        println("Valor: \(index)")
+        
+        self.dismissViewControllerAnimated(true, completion: nil);
+        
+        //resultRoute.removeAtIndex(index);
+        
         
     }
     

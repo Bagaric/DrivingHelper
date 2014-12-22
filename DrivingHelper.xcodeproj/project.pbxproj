@@ -267,6 +267,7 @@
 				TargetAttributes = {
 					52A798321A265C4800DD0CA9 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 7F5EN92372;
 					};
 					52A798491A265C4900DD0CA9 = {
 						CreatedOnToolsVersion = 6.1;
@@ -476,6 +477,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DrivingHelper;
 				PROVISIONING_PROFILE = "";
@@ -490,6 +492,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = DrivingHelper;
 				PROVISIONING_PROFILE = "";
