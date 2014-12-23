@@ -42,6 +42,8 @@ import Social
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
+    var toPass:String!
+    
     let locationManager = CLLocationManager()
     
     let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -388,7 +390,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func btnStop(sender: AnyObject) {
         
         if (stateMain == 1) {
-            btnRoute.setTitle("STOP", forState: UIControlState.Normal);
+            btnRoute.setTitle("STOP ROUTE", forState: UIControlState.Normal);
 
             //let dateTime = NSDate();
             /*let calendar = NSCalendar.currentCalendar()
@@ -420,9 +422,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             detectLocation()
 
             
-            var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
-            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            var alert = UIAlertController(title: "Route complete", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            alert.addAction(UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
+            alert.addAction(UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            alert.addAction(UIAlertAction(title: "See Report", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.performSegueWithIdentifier("segReport", sender: String(0)))}))
             alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
@@ -445,7 +448,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if (listSpeed.count != 0){
                 route.speed = Int(tmpres / Double(listSpeed.count));}
             
-            btnRoute.setTitle("START", forState: UIControlState.Normal);
+            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal);
             
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route];
@@ -516,6 +519,19 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
     }
 
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //let palavra = palavraTextFiled.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
+        
+        println("Teste: \(segue.identifier)");
+        if (segue.identifier! == "segReport")
+        {
+        var targetController = segue.destinationViewController as RouteViewController
+        targetController.rowList = sender == nil ? toPass : (sender as String)
+        }
+        else
+        {
+            var targetController = segue.destinationViewController as SettingsViewController
+        }
+    }
     
 }

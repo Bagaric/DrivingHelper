@@ -45,6 +45,7 @@
 		96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA51A2E76A40064D8F1 /* timer31.png */; };
 		96AC6AA81A2E80760064D8F1 /* play3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA71A2E80760064D8F1 /* play3.png */; };
 		96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */; };
+		FB94B5911A49F634000E0233 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,6 +354,7 @@
 			files = (
 				2CA2B1521A3B4E7000D5F913 /* Accelerations.swift in Sources */,
 				2CA2B1561A3B50FF00D5F913 /* ArchiveRoute.swift in Sources */,
+				FB94B5911A49F634000E0233 /* RouteViewController.swift in Sources */,
 				19F0F15F1A2E309900D1BB35 /* SettingsViewController.swift in Sources */,
 				19F0F15E1A2E309600D1BB35 /* SecondViewController.swift in Sources */,
 				2CA2B1531A3B4E7200D5F913 /* Route.swift in Sources */,
