@@ -932,18 +932,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKN-9d-Ny7">
-                                <rect key="frame" x="258" y="530" width="46" height="30"/>
-                                <state key="normal" title="Twitter">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKN-9d-Ny7">
+                                <rect key="frame" x="266" y="88" width="38" height="38"/>
+                                <state key="normal" title="Twitter" image="hearthstone_logo_twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="Tweet:" destination="rjr-Wg-CTd" eventType="touchUpInside" id="ZGf-Kp-yHv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7I-Mj-FcI">
-                                <rect key="frame" x="182" y="530" width="68" height="30"/>
-                                <state key="normal" title="Facebook">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7I-Mj-FcI">
+                                <rect key="frame" x="266" y="134" width="42" height="42"/>
+                                <state key="normal" title="Facebook" image="facebook_icon_by_x_1337_x-d5ikwkm">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1023,7 +1023,9 @@
         <image name="GMeterBall2" width="74" height="74"/>
         <image name="GMeterBase2" width="496" height="496"/>
         <image name="carUpdated500" width="500" height="265"/>
+        <image name="facebook_icon_by_x_1337_x-d5ikwkm" width="971" height="1000"/>
         <image name="first" width="30" height="30"/>
+        <image name="hearthstone_logo_twitter" width="693" height="693"/>
         <image name="icon-ios7-gear-outline-44" width="44" height="44"/>
         <image name="leftArrowFinalWhiteBack.png" width="2500" height="2500"/>
         <image name="rightArrowFinalWhiteBack.png" width="2500" height="2500"/>

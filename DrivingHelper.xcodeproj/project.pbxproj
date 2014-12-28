@@ -46,6 +46,8 @@
 		96AC6AA81A2E80760064D8F1 /* play3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA71A2E80760064D8F1 /* play3.png */; };
 		96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */; };
 		FB94B5911A49F634000E0233 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */; };
+		FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */ = {isa = PBXBuildFile; fileRef = FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */; };
+		FB94EE1B1A508D9300B370A0 /* hearthstone_logo_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		96AC6AA51A2E76A40064D8F1 /* timer31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer31.png; sourceTree = "<group>"; };
 		96AC6AA71A2E80760064D8F1 /* play3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play3.png; sourceTree = "<group>"; };
 		96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmeterSettings.swift; sourceTree = "<group>"; };
+		FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_icon_by_x_1337_x-d5ikwkm.png"; sourceTree = "<group>"; };
+		FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearthstone_logo_twitter.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +146,9 @@
 			isa = PBXGroup;
 			children = (
 				960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */,
+				FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */,
 				960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */,
+				FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */,
 				9600BA421A3F772300BEBCE2 /* carUpdated500.png */,
 				9600BA401A3F74A200BEBCE2 /* carUpdated.png */,
 				9686C3591A30EB6E00161A08 /* timerpdf.pdf */,
@@ -306,6 +312,8 @@
 				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
 				2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */,
+				FB94EE1B1A508D9300B370A0 /* hearthstone_logo_twitter.png in Resources */,
+				FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */,
 				96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */,
 				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
 				2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */,
