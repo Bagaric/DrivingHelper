@@ -92,6 +92,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //UINavigationBar.appearance().barTintColor = UIColor.grayColor()
+        tabBarController?.tabBar.barTintColor = UIColor.blackColor()
+        tabBarController?.tabBar.tintColor = UIColor.whiteColor()
 
         // Enclosure that get the accelerometer and gyro data
         if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
@@ -112,6 +116,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
     
     override func shouldAutorotate() -> Bool {
         if (UIDevice.currentDevice().orientation == UIDeviceOrientation.LandscapeLeft ||

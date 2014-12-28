@@ -14,6 +14,8 @@ class Navbar: UITabBarController, UIViewControllerTransitioningDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        tabBarController?.navigationController?.navigationBar.barTintColor = UIColor.grayColor()
         
     }
 }
