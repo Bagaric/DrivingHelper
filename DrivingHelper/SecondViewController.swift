@@ -331,7 +331,7 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             
             statTrack = 0;
         }
-        
+    
     }
     
     func Tweet()
@@ -345,13 +345,10 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     func ShareFacebook()
     {
-        
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
             var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             //facebookSheet.setInitialText("Share on Facebook")
@@ -361,7 +358,6 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-        
     }
     
     

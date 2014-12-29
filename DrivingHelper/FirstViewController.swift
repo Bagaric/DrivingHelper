@@ -117,7 +117,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.Default
     }
     
     override func shouldAutorotate() -> Bool {

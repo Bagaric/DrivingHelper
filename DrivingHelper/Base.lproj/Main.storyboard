@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="-47" y="-733"/>
         </scene>
-        <!--First View Controller-->
+        <!--Helper-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -214,7 +214,7 @@
                             <constraint firstItem="nhw-NF-P4e" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="xk8-SK-O11"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Helper" image="Helper" id="acW-dT-cKf"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -365,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="1235" y="-524"/>
         </scene>
-        <!--Timer-->
+        <!--Track Day-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="DrivingHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -511,7 +511,7 @@
                             <constraint firstItem="spu-ON-eCu" firstAttribute="centerX" secondItem="uFw-s1-Ju6" secondAttribute="centerX" id="zOQ-Gu-7zp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" image="timerpdf" selectedImage="timerpdf" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Track Day" image="Trackday" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="btnTrackDay" destination="zkk-nP-vOL" id="rMe-Bz-glS"/>
                         <outlet property="imgGBase" destination="uFw-s1-Ju6" id="RMR-fg-cci"/>
@@ -768,7 +768,7 @@
                             <constraint firstItem="pHs-6M-ys1" firstAttribute="top" secondItem="wlo-fG-PEH" secondAttribute="bottom" id="wFL-Sd-Yr6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" image="first" selectedImage="GMeterBall2" id="mA4-Rg-BsX"/>
+                    <tabBarItem key="tabBarItem" title="History" image="History" id="mA4-Rg-BsX"/>
                     <navigationItem key="navigationItem" id="CaD-tR-Uel"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -789,7 +789,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o9W-In-1Jl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6a0-Eu-Wxn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0Y-Fk-Jbj">
@@ -1024,16 +1024,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="GMeterBall2" width="74" height="74"/>
         <image name="GMeterBase2" width="496" height="496"/>
+        <image name="Helper" width="30" height="30"/>
+        <image name="History" width="30" height="30"/>
+        <image name="Trackday" width="30" height="30"/>
         <image name="carUpdated500" width="500" height="265"/>
         <image name="facebook_icon_by_x_1337_x-d5ikwkm" width="971" height="1000"/>
-        <image name="first" width="30" height="30"/>
         <image name="hearthstone_logo_twitter" width="693" height="693"/>
         <image name="icon-ios7-gear-outline-44" width="44" height="44"/>
         <image name="leftArrowFinalWhiteBack.png" width="2500" height="2500"/>
         <image name="rightArrowFinalWhiteBack.png" width="2500" height="2500"/>
-        <image name="timerpdf" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1041,6 +1041,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Af1-IH-jN9"/>
+        <segue reference="yTg-jQ-Mgh"/>
     </inferredMetricsTieBreakers>
 </document>
