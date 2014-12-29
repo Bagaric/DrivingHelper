@@ -535,10 +535,16 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         var targetController = segue.destinationViewController as RouteViewController
         targetController.rowList = sender == nil ? toPass : (sender as String)
         }
-        else
+        else if (segue.identifier! == "segSettings")
         {
             var targetController = segue.destinationViewController as SettingsViewController
         }
+        else if (segue.identifier! == "segTipsHelper")
+        {
+            var targetController = segue.destinationViewController as ecoModeTipsViewController
+        }
+        
+        
     }
     
 }
