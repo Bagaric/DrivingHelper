@@ -163,8 +163,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem id="JcY-A2-6D0">
-                                        <nil key="title"/>
+                                    <navigationItem title="Driving Helper" id="JcY-A2-6D0">
                                         <barButtonItem key="leftBarButtonItem" title="Tips" style="plain" id="JLo-nV-Oqa">
                                             <connections>
                                                 <segue destination="Clx-13-NB7" kind="modal" id="CMo-Ea-fIy"/>
@@ -482,7 +481,7 @@
                                     <color key="textShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="Driving Helper" id="xKf-GK-zWD">
+                                    <navigationItem title="Track Day" id="xKf-GK-zWD">
                                         <barButtonItem key="leftBarButtonItem" title="Tips" id="4qB-0O-OTc">
                                             <connections>
                                                 <segue destination="vWH-gr-vNe" kind="modal" id="Fr4-wi-W6x"/>
@@ -824,7 +823,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o9W-In-1Jl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6a0-Eu-Wxn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0Y-Fk-Jbj">
@@ -1076,6 +1075,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yTg-jQ-Mgh"/>
+        <segue reference="Af1-IH-jN9"/>
     </inferredMetricsTieBreakers>
 </document>
