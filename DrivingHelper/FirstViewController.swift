@@ -93,9 +93,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //UINavigationBar.appearance().barTintColor = UIColor.grayColor()
-        tabBarController?.tabBar.barTintColor = UIColor.blackColor()
-        tabBarController?.tabBar.tintColor = UIColor.whiteColor()
+        
 
         // Enclosure that get the accelerometer and gyro data
         if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
@@ -117,7 +115,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.Default
+        return UIStatusBarStyle.LightContent
     }
     
     override func shouldAutorotate() -> Bool {
@@ -532,8 +530,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         println("Teste: \(segue.identifier)");
         if (segue.identifier! == "segReport")
         {
-        var targetController = segue.destinationViewController as RouteViewController
-        targetController.rowList = sender == nil ? toPass : (sender as String)
+            var targetController = segue.destinationViewController as RouteViewController
+            targetController.rowList = sender == nil ? toPass : (sender as String)
         }
         else
         {
