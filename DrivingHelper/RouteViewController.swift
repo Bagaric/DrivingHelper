@@ -70,6 +70,10 @@ class RouteViewController: UIViewController {
         //lblAcceleration.text = String(resultRoute[index].endMoment.count)
         
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     func AverageValue(r:Route)->(Double, Double){
         var resultBrk: Double = 0
