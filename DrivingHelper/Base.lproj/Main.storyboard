@@ -21,7 +21,6 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EO4-7t-gZT">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="yG1-Hr-E9A"/>
                                 </constraints>
@@ -262,68 +261,54 @@
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DTC-T8-WYt">
                                 <rect key="frame" x="14" y="286" width="386" height="31"/>
+                                <color key="tintColor" red="1" green="0.66480364150000004" blue="0.00056571756369999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="accelerationSlider:" destination="fpI-Fz-aqq" eventType="valueChanged" id="VC5-Bj-hXX"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="kfW-VU-HXY">
                                 <rect key="frame" x="14" y="353" width="386" height="31"/>
+                                <color key="tintColor" red="1" green="0.66480364150000004" blue="0.00056571756369999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="brakingSlider:" destination="fpI-Fz-aqq" eventType="valueChanged" id="hWs-Z4-ZgO"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0yl-3t-XRe">
                                 <rect key="frame" x="12" y="420" width="386" height="31"/>
+                                <color key="tintColor" red="1" green="0.66480364150000004" blue="0.00056571756369999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="turningSlider:" destination="fpI-Fz-aqq" eventType="valueChanged" id="LfD-JK-wNc"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelaration Sensivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTM-ia-q8z">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acceleration Sensitivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTM-ia-q8z">
                                 <rect key="frame" x="16" y="257" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Braking Sensivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqg-OS-rGQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Braking Sensitivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqg-OS-rGQ">
                                 <rect key="frame" x="15" y="324" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turning Sensivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZQ-3p-a9d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turning Sensitivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZQ-3p-a9d">
                                 <rect key="frame" x="14" y="391" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road Sensivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZx-sd-KOm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Road Sensitivity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZx-sd-KOm">
                                 <rect key="frame" x="12" y="458" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-82-BVS">
-                                <rect key="frame" x="10" y="493" width="388" height="31"/>
-                                <connections>
-                                    <action selector="roadSlider:" destination="fpI-Fz-aqq" eventType="valueChanged" id="m6v-xu-dUH"/>
-                                </connections>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQ6-CS-9js">
-                                <rect key="frame" x="108" y="531" width="197" height="30"/>
-                                <state key="normal" title="Default Values">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetValues:" destination="fpI-Fz-aqq" eventType="touchUpInside" id="HfM-Lk-QU3"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3qs-MO-puO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
-                                <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3z-Hq-P2c">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
@@ -344,6 +329,27 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CXb-82-BVS">
+                                <rect key="frame" x="10" y="493" width="388" height="31"/>
+                                <color key="tintColor" red="1" green="0.66480364150000004" blue="0.00056571756369999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="roadSlider:" destination="fpI-Fz-aqq" eventType="valueChanged" id="m6v-xu-dUH"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3qs-MO-puO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQ6-CS-9js">
+                                <rect key="frame" x="109" y="546" width="197" height="30"/>
+                                <state key="normal" title="Default Values">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetValues:" destination="fpI-Fz-aqq" eventType="touchUpInside" id="HfM-Lk-QU3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -359,8 +365,8 @@
                             <constraint firstItem="WZQ-3p-a9d" firstAttribute="top" secondItem="kfW-VU-HXY" secondAttribute="bottom" constant="8" symbolic="YES" id="L2j-GF-1Oy"/>
                             <constraint firstItem="DTC-T8-WYt" firstAttribute="top" secondItem="oTM-ia-q8z" secondAttribute="bottom" constant="8" symbolic="YES" id="NuC-J9-sh5"/>
                             <constraint firstItem="kfW-VU-HXY" firstAttribute="centerY" secondItem="7aN-Ok-R56" secondAttribute="centerY" id="Oun-eL-CLw"/>
-                            <constraint firstItem="XQ6-CS-9js" firstAttribute="centerX" secondItem="tqg-OS-rGQ" secondAttribute="centerX" id="OzJ-AN-vaA"/>
-                            <constraint firstItem="XQ6-CS-9js" firstAttribute="top" secondItem="CXb-82-BVS" secondAttribute="bottom" constant="8" symbolic="YES" id="PfR-d8-RJ7"/>
+                            <constraint firstItem="XQ6-CS-9js" firstAttribute="centerX" secondItem="tqg-OS-rGQ" secondAttribute="centerX" constant="1.5" id="OzJ-AN-vaA"/>
+                            <constraint firstItem="XQ6-CS-9js" firstAttribute="top" secondItem="CXb-82-BVS" secondAttribute="bottom" constant="23" id="PfR-d8-RJ7"/>
                             <constraint firstItem="WZQ-3p-a9d" firstAttribute="trailing" secondItem="0yl-3t-XRe" secondAttribute="trailing" id="aaU-BT-OXL"/>
                             <constraint firstItem="tqg-OS-rGQ" firstAttribute="leading" secondItem="7aN-Ok-R56" secondAttribute="leadingMargin" constant="-1" id="bWP-aq-ESn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fZx-sd-KOm" secondAttribute="trailing" constant="4" id="cNR-ex-55P"/>
@@ -374,7 +380,7 @@
                             <constraint firstItem="DTC-T8-WYt" firstAttribute="leading" secondItem="kfW-VU-HXY" secondAttribute="leading" id="mnl-sq-0yv"/>
                             <constraint firstItem="DTC-T8-WYt" firstAttribute="trailing" secondItem="kfW-VU-HXY" secondAttribute="trailing" id="ocx-Ht-Qqs"/>
                             <constraint firstItem="kfW-VU-HXY" firstAttribute="centerX" secondItem="M3z-Hq-P2c" secondAttribute="centerX" id="ogo-Dj-UkA"/>
-                            <constraint firstItem="XQ6-CS-9js" firstAttribute="leading" secondItem="7aN-Ok-R56" secondAttribute="leadingMargin" constant="92" id="sKB-wE-Se7"/>
+                            <constraint firstItem="XQ6-CS-9js" firstAttribute="leading" secondItem="7aN-Ok-R56" secondAttribute="leadingMargin" constant="93" id="sKB-wE-Se7"/>
                             <constraint firstItem="tqg-OS-rGQ" firstAttribute="top" secondItem="DTC-T8-WYt" secondAttribute="bottom" constant="8" symbolic="YES" id="vxS-RS-3mw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WZQ-3p-a9d" secondAttribute="trailing" constant="2" id="zWR-HZ-opi"/>
                         </constraints>
@@ -591,7 +597,6 @@
                             </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epF-6Q-E2c">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
@@ -646,12 +651,13 @@
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Syh-q3-iIx">
                                 <rect key="frame" x="14" y="269" width="292" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="getSlideValue:" destination="skl-1j-CXC" eventType="valueChanged" id="QfM-fO-7u1"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="G-meter Sensivity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-5y-JKq">
-                                <rect key="frame" x="90" y="240" width="140" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G-meter Sensitivity" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzB-5y-JKq">
+                                <rect key="frame" x="87" y="240" width="147" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -662,7 +668,6 @@
                             </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92s-4q-EsC">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
