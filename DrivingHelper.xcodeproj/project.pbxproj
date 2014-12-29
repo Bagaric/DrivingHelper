@@ -57,6 +57,7 @@
 		FB94B5911A49F634000E0233 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */; };
 		FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */ = {isa = PBXBuildFile; fileRef = FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */; };
 		FB94EE1B1A508D9300B370A0 /* hearthstone_logo_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */; };
+		FBFA4E2B1A517C1000B6964B /* ecoModeTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -412,6 +413,7 @@
 				2CA2B1531A3B4E7200D5F913 /* Route.swift in Sources */,
 				19F0F15D1A2E309000D1BB35 /* FirstViewController.swift in Sources */,
 				19F0F15C1A2E308C00D1BB35 /* AppDelegate.swift in Sources */,
+				FBFA4E2B1A517C1000B6964B /* ecoModeTipsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
