@@ -39,13 +39,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ji-z2-X0y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ji-z2-X0y">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPa-Z0-h9a">
                                 <rect key="frame" x="16" y="64" width="288" height="396"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium consectetur malesuada. Etiam molestie tortor eu magna bibendum, mollis commodo turpis volutpat. Suspendisse ac tellus lectus. Sed ultricies rhoncus lacus vitae mollis. Integer vulputate mattis condimentum. Cras dignissim erat feugiat auctor congue. Aenean quam ex, porta id facilisis imperdiet, dictum a diam. Donec non lacus consequat ex consequat feugiat in in eros. Aliquam at mollis nunc. Nullam congue sem posuere, tincidunt ipsum ut, egestas eros. Aenean consectetur tincidunt mi. Vestibulum tincidunt scelerisque commodo.</string>
+                                <string key="text">Driving advices:
+- To lower gas consumption, keep the car at low RPM</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,13 +54,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2ji-z2-X0y" firstAttribute="top" secondItem="Ghe-gY-c6f" secondAttribute="top" id="20q-wN-9XH"/>
                             <constraint firstItem="PPa-Z0-h9a" firstAttribute="top" secondItem="EO4-7t-gZT" secondAttribute="bottom" id="9oi-j2-OfZ"/>
                             <constraint firstItem="EO4-7t-gZT" firstAttribute="top" secondItem="aIn-ic-J2J" secondAttribute="bottom" id="ADz-sa-b8k"/>
                             <constraint firstItem="PPa-Z0-h9a" firstAttribute="leading" secondItem="Ghe-gY-c6f" secondAttribute="leadingMargin" id="Bgm-TO-QZz"/>
                             <constraint firstItem="EO4-7t-gZT" firstAttribute="leading" secondItem="Ghe-gY-c6f" secondAttribute="leading" id="Ea9-fT-oON"/>
+                            <constraint firstItem="2ji-z2-X0y" firstAttribute="trailing" secondItem="EO4-7t-gZT" secondAttribute="trailing" id="F3x-UG-XFM"/>
                             <constraint firstAttribute="width" secondItem="EO4-7t-gZT" secondAttribute="width" id="G43-bL-GyC"/>
                             <constraint firstAttribute="bottom" secondItem="PPa-Z0-h9a" secondAttribute="bottom" constant="20" symbolic="YES" id="ioF-4q-D0z"/>
                             <constraint firstItem="PPa-Z0-h9a" firstAttribute="centerX" secondItem="EO4-7t-gZT" secondAttribute="centerX" id="mcZ-Bh-7HH"/>
+                            <constraint firstItem="2ji-z2-X0y" firstAttribute="bottom" secondItem="EO4-7t-gZT" secondAttribute="top" id="n8O-F5-Ma7"/>
+                            <constraint firstItem="2ji-z2-X0y" firstAttribute="leading" secondItem="EO4-7t-gZT" secondAttribute="leading" id="pYI-BG-5nx"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -591,7 +596,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQi-qG-t22">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQi-qG-t22">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -620,7 +625,11 @@
                             <constraint firstItem="QtV-z4-eIX" firstAttribute="centerX" secondItem="epF-6Q-E2c" secondAttribute="centerX" id="H0s-xA-mcB"/>
                             <constraint firstItem="epF-6Q-E2c" firstAttribute="width" secondItem="8ft-KC-Cqy" secondAttribute="width" id="UDl-BN-wyS"/>
                             <constraint firstItem="QtV-z4-eIX" firstAttribute="leading" secondItem="8ft-KC-Cqy" secondAttribute="leadingMargin" id="asU-NK-8nH"/>
+                            <constraint firstItem="EQi-qG-t22" firstAttribute="leading" secondItem="epF-6Q-E2c" secondAttribute="leading" id="iBN-HE-cQp"/>
+                            <constraint firstItem="EQi-qG-t22" firstAttribute="top" secondItem="8ft-KC-Cqy" secondAttribute="top" id="pc3-Xq-CNY"/>
                             <constraint firstItem="epF-6Q-E2c" firstAttribute="top" secondItem="ejg-V8-5GH" secondAttribute="bottom" id="rpi-zf-j3f"/>
+                            <constraint firstItem="EQi-qG-t22" firstAttribute="trailing" secondItem="epF-6Q-E2c" secondAttribute="trailing" id="t4k-76-zwx"/>
+                            <constraint firstItem="EQi-qG-t22" firstAttribute="bottom" secondItem="epF-6Q-E2c" secondAttribute="top" id="wSj-8w-dwQ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -662,7 +671,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMI-hk-vU8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMI-hk-vU8">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -696,9 +705,13 @@
                             <constraint firstItem="Syh-q3-iIx" firstAttribute="top" secondItem="yzB-5y-JKq" secondAttribute="bottom" constant="8" symbolic="YES" id="MFT-BO-kIJ"/>
                             <constraint firstItem="92s-4q-EsC" firstAttribute="top" secondItem="FSv-4Y-xAv" secondAttribute="bottom" id="Xmn-Fh-732"/>
                             <constraint firstItem="yzB-5y-JKq" firstAttribute="centerX" secondItem="92s-4q-EsC" secondAttribute="centerX" id="bJE-Tc-QE0"/>
+                            <constraint firstItem="vMI-hk-vU8" firstAttribute="trailing" secondItem="92s-4q-EsC" secondAttribute="trailing" id="cL7-ly-ayc"/>
                             <constraint firstItem="Syh-q3-iIx" firstAttribute="centerY" secondItem="9ni-MU-cPL" secondAttribute="centerY" id="ckh-eh-Z4S"/>
                             <constraint firstItem="Syh-q3-iIx" firstAttribute="centerX" secondItem="igc-ZJ-4Fr" secondAttribute="centerX" id="d08-7j-z4f"/>
+                            <constraint firstItem="vMI-hk-vU8" firstAttribute="top" secondItem="9ni-MU-cPL" secondAttribute="top" id="dGH-RQ-K0p"/>
                             <constraint firstItem="igc-ZJ-4Fr" firstAttribute="top" secondItem="Syh-q3-iIx" secondAttribute="bottom" constant="8" symbolic="YES" id="kNn-R5-R5l"/>
+                            <constraint firstItem="vMI-hk-vU8" firstAttribute="bottom" secondItem="92s-4q-EsC" secondAttribute="top" id="lYc-ZZ-cGU"/>
+                            <constraint firstItem="vMI-hk-vU8" firstAttribute="leading" secondItem="92s-4q-EsC" secondAttribute="leading" id="lZo-r2-VqT"/>
                             <constraint firstItem="92s-4q-EsC" firstAttribute="leading" secondItem="9ni-MU-cPL" secondAttribute="leading" id="mBO-jJ-mP1"/>
                             <constraint firstItem="igc-ZJ-4Fr" firstAttribute="leading" secondItem="9ni-MU-cPL" secondAttribute="leadingMargin" constant="95" id="vQj-Wt-Bzy"/>
                             <constraint firstItem="yzB-5y-JKq" firstAttribute="centerX" secondItem="Syh-q3-iIx" secondAttribute="centerX" id="vtO-Xu-7Pn"/>
