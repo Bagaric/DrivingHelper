@@ -62,13 +62,11 @@ class RouteViewController: UIViewController {
         var resAvg = AverageValue(resultRoute[index]);
         var maxValues = MaxValue(resultRoute[index]);
         
-        lblAcceleration.text = String(format: "%.2f",resAvg.0);
         lblMaxAcceleration.text = String(format: "%.2f",maxValues.0);
         
-        lblBraking.text = String(format: "%.2f",resAvg.1);
         lblMaxBraking.text = String(format: "%.2f",maxValues.1);
         
-        lblRating.text = String(resultRoute[index].rating);
+        //lblRating.text = String(resultRoute[index].rating);
         
         //lblAcceleration.text = String(resultRoute[index].endMoment.count)
         

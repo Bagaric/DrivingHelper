@@ -299,10 +299,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var stateMain = 1;
-    let imageStartButton = UIImage(named: "StartTripButton") as UIImage?
-    let imageStopButton = UIImage(named: "StopTripButton") as UIImage?
+
     
     @IBAction func btnStop(sender: AnyObject) {
+        var imageStartButton = UIImage(named: "StartTripButton") as UIImage?
+        var imageStopButton = UIImage(named: "StopTripButton") as UIImage?
         
         if (stateMain == 1) {
             btnRoute.setImage(imageStopButton, forState: .Normal)
