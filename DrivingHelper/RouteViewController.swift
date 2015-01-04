@@ -25,9 +25,11 @@ class RouteViewController: UIViewController {
     @IBOutlet weak var lblAcceleration: UILabel!
     @IBOutlet weak var lblBraking: UILabel!
     
-    
     @IBOutlet weak var lblMaxAcceleration: UILabel!
     @IBOutlet weak var lblMaxBraking: UILabel!
+    
+    @IBOutlet weak var lblRating: UILabel!
+    
     
     
     
@@ -66,6 +68,7 @@ class RouteViewController: UIViewController {
         lblBraking.text = String(format: "%.2f",resAvg.1);
         lblMaxBraking.text = String(format: "%.2f",maxValues.1);
         
+        lblRating.text = String(resultRoute[index].rating);
         
         //lblAcceleration.text = String(resultRoute[index].endMoment.count)
         

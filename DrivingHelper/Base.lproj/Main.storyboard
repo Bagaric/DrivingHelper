@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1209,6 +1209,7 @@
                         <outlet property="lblKMDone" destination="tZ8-iD-1L2" id="bW2-BO-das"/>
                         <outlet property="lblMaxAcceleration" destination="9Ri-jY-4P9" id="gmF-lV-qUo"/>
                         <outlet property="lblMaxBraking" destination="tZr-s4-NJw" id="Ys6-wr-xUb"/>
+                        <outlet property="lblRating" destination="5Vf-u0-JLH" id="h2a-l5-RKn"/>
                         <outlet property="lblStartPoint" destination="I6g-ot-pbS" id="iZg-3k-oDf"/>
                         <outlet property="lblStartTime" destination="pS8-fp-44m" id="dsk-P4-Zvz"/>
                     </connections>

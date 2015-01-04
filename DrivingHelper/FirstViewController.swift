@@ -345,6 +345,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             
             var drivingRating = 10000 - accBrakingAverage / (totalTime / 1000)
+            
+            route.rating = Int(drivingRating);
+            
             println("Driving rating: \(drivingRating)\nTotal time: \(totalTime)\nAcc/Braking average: \(accBrakingAverage)")
 
             var tmpres: Double = 0.0
