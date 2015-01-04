@@ -46,8 +46,6 @@
 		52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */; };
 		52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A7983E1A265C4800DD0CA9 /* Main.storyboard */; };
 		52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A798431A265C4800DD0CA9 /* LaunchScreen.xib */; };
-		52D431801A5991180071DD1D /* brake-pedal-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D4317F1A5991180071DD1D /* brake-pedal-3.png */; };
-		52D431821A59912D0071DD1D /* throttle-pedal-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 52D431811A59912D0071DD1D /* throttle-pedal-3.png */; };
 		843CC6181A2AD4FA00094D37 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6171A2AD4FA00094D37 /* CoreMotion.framework */; };
 		843CC61A1A2AD50500094D37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
 		9600BA411A3F74A200BEBCE2 /* carUpdated.png in Resources */ = {isa = PBXBuildFile; fileRef = 9600BA401A3F74A200BEBCE2 /* carUpdated.png */; };
@@ -127,8 +125,6 @@
 		52A7984A1A265C4900DD0CA9 /* DrivingHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrivingHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A7984F1A265C4900DD0CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A798501A265C4900DD0CA9 /* ProjectoPSS_IAUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectoPSS_IAUTests.swift; sourceTree = "<group>"; };
-		52D4317F1A5991180071DD1D /* brake-pedal-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brake-pedal-3.png"; path = "../../Downloads/brake-pedal-3.png"; sourceTree = "<group>"; };
-		52D431811A59912D0071DD1D /* throttle-pedal-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "throttle-pedal-3.png"; path = "../../Downloads/throttle-pedal-3.png"; sourceTree = "<group>"; };
 		843CC6171A2AD4FA00094D37 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		843CC6191A2AD50500094D37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9600BA401A3F74A200BEBCE2 /* carUpdated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carUpdated.png; sourceTree = "<group>"; };
@@ -202,13 +198,6 @@
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
-				52D431811A59912D0071DD1D /* throttle-pedal-3.png */,
-				52D4317F1A5991180071DD1D /* brake-pedal-3.png */,
-				524B1EFE1A59695600E58C4D /* brake-pedal-2.png */,
-				524B1EFC1A59663300E58C4D /* brake-pedal.png */,
-				524B1EFA1A59662700E58C4D /* throttle-pedal.png */,
-				524B1EF61A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png */,
-				524B1EF71A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png */,
 				960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */,
 				FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */,
 				960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */,
@@ -382,14 +371,11 @@
 				960967871A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png in Resources */,
 				190FAE191A5187DA009AF0A7 /* settingsFilled@2x.png in Resources */,
 				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
-				524B1EFD1A59663300E58C4D /* brake-pedal.png in Resources */,
-				52D431801A5991180071DD1D /* brake-pedal-3.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
 				190FAE1E1A518847009AF0A7 /* settings.png in Resources */,
 				190FAE1A1A5187DA009AF0A7 /* settingsFilled@3x.png in Resources */,
 				2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */,
 				FB94EE1B1A508D9300B370A0 /* hearthstone_logo_twitter.png in Resources */,
-				52D431821A59912D0071DD1D /* throttle-pedal-3.png in Resources */,
 				FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */,
 				190FAE091A51745B009AF0A7 /* history@3x.png in Resources */,
 				96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */,
