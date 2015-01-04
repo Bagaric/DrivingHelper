@@ -41,6 +41,12 @@
 		2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */; };
 		2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF645F31A37609700FF25B3 /* CustomCell.swift */; };
 		52035C681A2975AD00A8FD52 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52035C671A2975AD00A8FD52 /* images.xcassets */; };
+		5264FCB31A59A873002A80CB /* StartLapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCAD1A59A873002A80CB /* StartLapButton.png */; };
+		5264FCB41A59A873002A80CB /* StartTrackdayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCAE1A59A873002A80CB /* StartTrackdayButton.png */; };
+		5264FCB51A59A873002A80CB /* StartTripButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCAF1A59A873002A80CB /* StartTripButton.png */; };
+		5264FCB61A59A873002A80CB /* StopLapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCB01A59A873002A80CB /* StopLapButton.png */; };
+		5264FCB71A59A873002A80CB /* StopTrackdayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCB11A59A873002A80CB /* StopTrackdayButton.png */; };
+		5264FCB81A59A873002A80CB /* StopTripButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5264FCB21A59A873002A80CB /* StopTripButton.png */; };
 		52A798391A265C4800DD0CA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
 		52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */; };
@@ -115,6 +121,12 @@
 		2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2CF645F31A37609700FF25B3 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52035C671A2975AD00A8FD52 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
+		5264FCAD1A59A873002A80CB /* StartLapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartLapButton.png; sourceTree = "<group>"; };
+		5264FCAE1A59A873002A80CB /* StartTrackdayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartTrackdayButton.png; sourceTree = "<group>"; };
+		5264FCAF1A59A873002A80CB /* StartTripButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartTripButton.png; sourceTree = "<group>"; };
+		5264FCB01A59A873002A80CB /* StopLapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopLapButton.png; sourceTree = "<group>"; };
+		5264FCB11A59A873002A80CB /* StopTrackdayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopTrackdayButton.png; sourceTree = "<group>"; };
+		5264FCB21A59A873002A80CB /* StopTripButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StopTripButton.png; sourceTree = "<group>"; };
 		52A798331A265C4800DD0CA9 /* DrivingHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A798371A265C4800DD0CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A798381A265C4800DD0CA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +207,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		5264FCA01A59A7F4002A80CB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5264FCAD1A59A873002A80CB /* StartLapButton.png */,
+				5264FCAE1A59A873002A80CB /* StartTrackdayButton.png */,
+				5264FCAF1A59A873002A80CB /* StartTripButton.png */,
+				5264FCB01A59A873002A80CB /* StopLapButton.png */,
+				5264FCB11A59A873002A80CB /* StopTrackdayButton.png */,
+				5264FCB21A59A873002A80CB /* StopTripButton.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +256,7 @@
 		52A798351A265C4800DD0CA9 /* DrivingHelper */ = {
 			isa = PBXGroup;
 			children = (
+				5264FCA01A59A7F4002A80CB /* Images */,
 				2CA2B14D1A3B4E2900D5F913 /* Model */,
 				52A798381A265C4800DD0CA9 /* AppDelegate.swift */,
 				52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */,
@@ -366,12 +392,16 @@
 				190FAE0A1A51745B009AF0A7 /* trackday.png in Resources */,
 				190FAE081A51745B009AF0A7 /* history@2x.png in Resources */,
 				190FAE051A51745B009AF0A7 /* helper@2x.png in Resources */,
+				5264FCB61A59A873002A80CB /* StopLapButton.png in Resources */,
 				969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */,
+				5264FCB41A59A873002A80CB /* StartTrackdayButton.png in Resources */,
 				190FAE0B1A51745B009AF0A7 /* trackday@2x.png in Resources */,
 				960967871A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png in Resources */,
 				190FAE191A5187DA009AF0A7 /* settingsFilled@2x.png in Resources */,
+				5264FCB81A59A873002A80CB /* StopTripButton.png in Resources */,
 				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
+				5264FCB31A59A873002A80CB /* StartLapButton.png in Resources */,
 				190FAE1E1A518847009AF0A7 /* settings.png in Resources */,
 				190FAE1A1A5187DA009AF0A7 /* settingsFilled@3x.png in Resources */,
 				2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */,
@@ -383,6 +413,8 @@
 				190FAE071A51745B009AF0A7 /* history.png in Resources */,
 				190FAE0C1A51745B009AF0A7 /* trackday@3x.png in Resources */,
 				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
+				5264FCB71A59A873002A80CB /* StopTrackdayButton.png in Resources */,
+				5264FCB51A59A873002A80CB /* StartTripButton.png in Resources */,
 				2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */,
 				52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */,
 				960967851A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png in Resources */,
