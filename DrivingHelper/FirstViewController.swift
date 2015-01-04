@@ -347,7 +347,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             route.endMoment = momentRoute;
             totalTime = CFAbsoluteTimeGetCurrent() - totalTime
             
+            
             var drivingRating = accBrakingAverage / (totalTime / 1000)
+            println("Driving rating: \(drivingRating)\nTotal time: \(totalTime)\nAcc/Braking average: \(accBrakingAverage)")
 
             var tmpres: Double = 0.0
             
