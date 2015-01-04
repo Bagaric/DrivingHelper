@@ -299,11 +299,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var stateMain = 1;
+    let imageStartButton = UIImage(named: "StartTripButton") as UIImage?
+    let imageStopButton = UIImage(named: "StopTripButton") as UIImage?
     
     @IBAction func btnStop(sender: AnyObject) {
         
         if (stateMain == 1) {
-            btnRoute.setTitle("STOP ROUTE", forState: UIControlState.Normal);
+            btnRoute.setImage(imageStopButton, forState: .Normal)
+            btnRoute.backgroundColor = UIColor.redColor()
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a"
@@ -362,7 +365,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if (listSpeed.count != 0){
                 route.speed = Int(tmpres / Double(listSpeed.count));}
             
-            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal);
+            btnRoute.setImage(imageStartButton, forState: .Normal)
+            btnRoute.backgroundColor = UIColor.greenColor();
             
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route]
