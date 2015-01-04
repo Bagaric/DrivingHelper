@@ -104,9 +104,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         println ("\(indexPath.row)")
         
         //let hotelName = items[indexPath.row]
-        cell.lblTime.text = "Date: " + resultRoute[indexPath.row].endTime;
-        cell.lblKMDone.text = "KM.Done: " + String(resultRoute[indexPath.row].kmDone); //String(resultRoute.kmDone)
-        cell.lblSpeed.text = "AVG. Speed: " + String(resultRoute[indexPath.row].speed)
+        cell.lblTime.text = "Date: " + resultRoute[indexPath.row].endTime
+        cell.lblKMDone.text = "Kilometers: " + String(resultRoute[indexPath.row].kmDone) //String(resultRoute.kmDone)
+        cell.lblSpeed.text = "Avg. Speed: " + String(resultRoute[indexPath.row].speed)
         cell.lblRating.text = "Rating: " + String(resultRoute[indexPath.row].rating)
 
         
