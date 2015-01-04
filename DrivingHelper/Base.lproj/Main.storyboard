@@ -192,7 +192,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="throttle-pedal.png" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-ND-Aps">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="throttle-pedal" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-ND-Aps">
                                 <rect key="frame" x="176" y="90" width="119" height="128"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhw-NF-P4e">
@@ -271,7 +271,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="BrakeColor" destination="zg5-O8-PEE" id="B6S-r2-vB0"/>
-                        <outlet property="GasColor" destination="6xm-ND-Aps" id="gWU-kZ-ecw"/>
+                        <outlet property="GasColor" destination="6xm-ND-Aps" id="utU-QZ-LHi"/>
                         <outlet property="LeftColor" destination="b7Q-az-95j" id="3dF-lV-wwL"/>
                         <outlet property="RightColor" destination="8P9-ZP-Smh" id="O8f-bN-PWo"/>
                         <outlet property="btnRoute" destination="nhw-NF-P4e" id="Cfl-fa-Sg5"/>
@@ -1196,7 +1196,7 @@
         <image name="brake-pedal-2" width="2184" height="3752"/>
         <image name="facebook_icon_by_x_1337_x-d5ikwkm" width="971" height="1000"/>
         <image name="hearthstone_logo_twitter" width="693" height="693"/>
-        <image name="throttle-pedal.png" width="2184" height="3752"/>
+        <image name="throttle-pedal" width="2184" height="3752"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

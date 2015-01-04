@@ -53,8 +53,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!
-    @IBOutlet weak var GasColor: UIImageView!
     @IBOutlet weak var BrakeColor: UIImageView!
+    @IBOutlet weak var GasColor: UIImageView!
     
     
     var limitAccelerate: CGFloat = 1.0
@@ -159,6 +159,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             moment.acc = z
             
+            
+            
             // Change car color
             if z > Double(0) {
                 var braking: Double = z * Double(limitBraking)
@@ -168,7 +170,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 //moment.acc = Double(z)
             } else {
-                var acceleration: Double = z * Double(limitAccelerate)
+                var acceleration: Double = abs(z) * Double(limitAccelerate)
                 ChangeColorCarAccelerate(CGFloat(acceleration))
                 if acceleration > 0.3 {
                     accBrakingAverage += acceleration
@@ -199,13 +201,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      *  Interface
     
      */
-    
-    @IBAction func ChangeColor(sender: AnyObject) {
-        ChangeColorLeftTurn(0)
-        ChangeColorCarAccelerate(0)
-        ChangeColorRightTurn(0)
-    }
- 
     
     /*
      *  Changing colors of the interface

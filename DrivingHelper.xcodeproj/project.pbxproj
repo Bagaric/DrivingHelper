@@ -41,11 +41,6 @@
 		2CDFC02D1A30B94F00446E98 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */; };
 		2CF645F41A37609700FF25B3 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF645F31A37609700FF25B3 /* CustomCell.swift */; };
 		52035C681A2975AD00A8FD52 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52035C671A2975AD00A8FD52 /* images.xcassets */; };
-		524B1EF81A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 524B1EF61A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png */; };
-		524B1EF91A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 524B1EF71A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png */; };
-		524B1EFB1A59662700E58C4D /* throttle-pedal.png in Resources */ = {isa = PBXBuildFile; fileRef = 524B1EFA1A59662700E58C4D /* throttle-pedal.png */; };
-		524B1EFD1A59663300E58C4D /* brake-pedal.png in Resources */ = {isa = PBXBuildFile; fileRef = 524B1EFC1A59663300E58C4D /* brake-pedal.png */; };
-		524B1EFF1A59695600E58C4D /* brake-pedal-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 524B1EFE1A59695600E58C4D /* brake-pedal-2.png */; };
 		52A798391A265C4800DD0CA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		52A7983B1A265C4800DD0CA9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
 		52A7983D1A265C4800DD0CA9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */; };
@@ -120,11 +115,6 @@
 		2CDFC02C1A30B94F00446E98 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2CF645F31A37609700FF25B3 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		52035C671A2975AD00A8FD52 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
-		524B1EF61A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_left_crooked_segmented_full.png; path = ../../Downloads/arrow_left_crooked_segmented_full.png; sourceTree = "<group>"; };
-		524B1EF71A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_right_crooked_segmented_full.png; path = ../../Downloads/arrow_right_crooked_segmented_full.png; sourceTree = "<group>"; };
-		524B1EFA1A59662700E58C4D /* throttle-pedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "throttle-pedal.png"; path = "../../Downloads/throttle-pedal.png"; sourceTree = "<group>"; };
-		524B1EFC1A59663300E58C4D /* brake-pedal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brake-pedal.png"; path = "../../Downloads/brake-pedal.png"; sourceTree = "<group>"; };
-		524B1EFE1A59695600E58C4D /* brake-pedal-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brake-pedal-2.png"; path = "../../Downloads/brake-pedal-2.png"; sourceTree = "<group>"; };
 		52A798331A265C4800DD0CA9 /* DrivingHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A798371A265C4800DD0CA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A798381A265C4800DD0CA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,11 +198,6 @@
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
-				524B1EFE1A59695600E58C4D /* brake-pedal-2.png */,
-				524B1EFC1A59663300E58C4D /* brake-pedal.png */,
-				524B1EFA1A59662700E58C4D /* throttle-pedal.png */,
-				524B1EF61A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png */,
-				524B1EF71A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png */,
 				960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */,
 				FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */,
 				960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */,
@@ -375,7 +360,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				524B1EF81A5964AF00E58C4D /* arrow_left_crooked_segmented_full.png in Resources */,
 				9686C35A1A30EB6E00161A08 /* timerpdf.pdf in Resources */,
 				190FAE061A51745B009AF0A7 /* helper@3x.png in Resources */,
 				190FAE041A51745B009AF0A7 /* helper.png in Resources */,
@@ -386,9 +370,7 @@
 				190FAE0B1A51745B009AF0A7 /* trackday@2x.png in Resources */,
 				960967871A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png in Resources */,
 				190FAE191A5187DA009AF0A7 /* settingsFilled@2x.png in Resources */,
-				524B1EFF1A59695600E58C4D /* brake-pedal-2.png in Resources */,
 				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
-				524B1EFD1A59663300E58C4D /* brake-pedal.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
 				190FAE1E1A518847009AF0A7 /* settings.png in Resources */,
 				190FAE1A1A5187DA009AF0A7 /* settingsFilled@3x.png in Resources */,
@@ -401,9 +383,7 @@
 				190FAE071A51745B009AF0A7 /* history.png in Resources */,
 				190FAE0C1A51745B009AF0A7 /* trackday@3x.png in Resources */,
 				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
-				524B1EFB1A59662700E58C4D /* throttle-pedal.png in Resources */,
 				2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */,
-				524B1EF91A5964AF00E58C4D /* arrow_right_crooked_segmented_full.png in Resources */,
 				52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */,
 				960967851A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png in Resources */,
 				190FAE1F1A518847009AF0A7 /* settings@2x.png in Resources */,
