@@ -11,34 +11,6 @@ import CoreMotion
 import CoreLocation
 import Social
 
-/*class Matrix {
-    var cols:Int, rows:Int
-    var matrix:[Double]
-    
-    
-    init(cols:Int, rows:Int) {
-        self.cols = cols
-        self.rows = rows
-        matrix = Array(count:cols*rows, repeatedValue:0)
-    }
-    
-    subscript(col:Int, row:Int) -> Double {
-        get {
-            return matrix[cols * row + col]
-        }
-        set {
-            matrix[cols*row+col] = newValue
-        }
-    }
-    
-    func colCount() -> Int {
-        return self.cols
-    }
-    
-    func rowCount() -> Int {
-        return self.rows
-    }
-}*/
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -66,7 +38,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     var currRelativeAccY: Double = 0.0
     var currRelativeAccZ: Double = 0.0
     var measuringStarted: Bool = false
-    //var rotMatrix: Matrix = Matrix(cols: 3, rows: 3)
     var startingPitch: Double = 0.0
     var startingRoll: Double = 0.0
     var startingYaw: Double = 0.0
@@ -82,19 +53,21 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!
-    @IBOutlet weak var GasColor: UIImageView!
     @IBOutlet weak var BrakeColor: UIImageView!
+    @IBOutlet weak var GasColor: UIImageView!
     
     
-    var limitAccelerate:CGFloat = 1.0
-    var limitBraking:CGFloat = 1.0
-    var limitTurning:CGFloat = 1.0
-    var limitRoad:CGFloat = 1.0
+    var limitAccelerate: CGFloat = 1.0
+    var limitBraking: CGFloat = 1.0
+    var limitTurning: CGFloat = 1.0
+    var limitRoad: CGFloat = 1.0
+    
+    // Variables needed to do the rating
+    var accBrakingAverage: Double = 0.0
+    var totalTime: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 
         // Enclosure that get the accelerometer and gyro data
         if self.motionManager.gyroAvailable && self.motionManager.accelerometerAvailable {
@@ -161,7 +134,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     {
         var moment: Accelerations = Accelerations()
         //moment.acc = 15
-
         
         if !measuringStarted {
             
@@ -169,28 +141,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             startingRoll = devMot.attitude.roll
             startingYaw = devMot.attitude.yaw
             
-            
         } else {
             
-            /*var x2 = (devMot.userAcceleration.x * cos(startingPitch)) - (devMot.userAcceleration.y * sin(startingPitch))
-            var y2 = (devMot.userAcceleration.x * sin(startingPitch)) + (devMot.userAcceleration.y * cos(startingPitch))
-            var z2 = devMot.userAcceleration.z
-            
-            var y3 = (y2 * cos(startingRoll)) - (z2 * sin(startingRoll))
-            var z3 = (y2 * sin(startingRoll)) + (z2 * cos(startingRoll))
-            var x3 = x2
-            
-            var z = (z3 * cos(startingYaw)) - (x3 * sin(startingYaw))
-            var x = (z3 * sin(startingYaw)) + (x3 * cos(startingYaw))
-            var y = y3*/
-            
-            var z = devMot.userAcceleration.z
             var x = devMot.userAcceleration.x
             var y = devMot.userAcceleration.y
+            var z = devMot.userAcceleration.z
             
-            //println(String(format: "\nPitch \t- X: \t%.2f \nRoll \t- Y: \t%.2f \nYaw \t- Z: \t%.2f", att.pitch, att.roll, att.yaw))
-            
-            println(String(format: "\nAcc \t- X: \t%.2f \t %.2f \n\t \t- Y: \t%.2f \t %.2f\n\t \t- Z: \t%.2f \t %.2f", devMot.userAcceleration.x, x, devMot.userAcceleration.y, y, devMot.userAcceleration.z, z))
+            //println(String(format: "\nAcc \t- X: \t%.2f \t %.2f \n\t \t- Y: \t%.2f \t %.2f\n\t \t- Z: \t%.2f \t %.2f", devMot.userAcceleration.x, x, devMot.userAcceleration.y, y, devMot.userAcceleration.z, z))
             
             
             // Change arrow colors
@@ -200,14 +157,24 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 ChangeColorLeftTurn(CGFloat(abs(x))*limitTurning)
             }
             
-            
             moment.acc = z
+            
+            
+            
             // Change car color
             if z > Double(0) {
-                ChangeColorCarBrake(CGFloat(z)*limitBraking)
+                var braking: Double = z * Double(limitBraking)
+                ChangeColorCarBrake(CGFloat(braking))
+                if braking > 0.3 {
+                    accBrakingAverage += braking
+                }
                 //moment.acc = Double(z)
             } else {
-                ChangeColorCarAccelerate(CGFloat(abs(z))*limitAccelerate)
+                var acceleration: Double = abs(z) * Double(limitAccelerate)
+                ChangeColorCarAccelerate(CGFloat(acceleration))
+                if acceleration > 0.3 {
+                    accBrakingAverage += acceleration
+                }
                 //moment.acc = Double(z)
             }
             
@@ -229,67 +196,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         momentRoute.append(moment)
     }
     
-    /*func generateInitialMatrix(matrix: Matrix) {
-        
-        matrix[0,0] = 1
-        matrix[0,1] = 0
-        matrix[0,2] = 0
-        matrix[0,3] = 0
-        
-        matrix[1,0] = 0
-        matrix[1,1] = 1
-        matrix[1,2] = 0
-        matrix[1,3] = 0
-        
-        matrix[2,0] = 0
-        matrix[2,1] = 0
-        matrix[2,2] = 1
-        matrix[2,3] = 0
-        
-        matrix[3,0] = 0
-        matrix[3,1] = 0
-        matrix[3,2] = 0
-        matrix[3,3] = 1
-    }*/
-    
-    /*func inverseMatrix(mat: CMRotationMatrix) -> Matrix {
-        
-        var detMatrix = mat.m11 * mat.m22 * mat.m33 + mat.m21 * mat.m32 * mat.m13
-                        + mat.m31 * mat.m12 * mat.m23 - mat.m11 * mat.m32 * mat.m23
-                        - mat.m31 * mat.m22 * mat.m13 - mat.m21 * mat.m12 * mat.m33
-        
-        var scalar = 1 / detMatrix
-        
-        var inverse: Matrix = Matrix(cols: 3, rows: 3)
-        
-        inverse[0,0] = scalar * (mat.m22 * mat.m33 - mat.m23 * mat.m32)
-        inverse[1,0] = scalar * (mat.m13 * mat.m32 - mat.m12 * mat.m33)
-        inverse[2,0] = scalar * (mat.m12 * mat.m23 - mat.m13 * mat.m22)
-        
-        inverse[0,1] = scalar * (mat.m23 * mat.m31 - mat.m21 * mat.m33)
-        inverse[1,1] = scalar * (mat.m11 * mat.m33 - mat.m13 * mat.m31)
-        inverse[2,1] = scalar * (mat.m13 * mat.m21 - mat.m11 * mat.m23)
-        
-        inverse[0,2] = scalar * (mat.m21 * mat.m32 - mat.m22 * mat.m31)
-        inverse[1,2] = scalar * (mat.m12 * mat.m31 - mat.m11 * mat.m32)
-        inverse[2,2] = scalar * (mat.m11 * mat.m22 - mat.m12 * mat.m21)
-        
-        return inverse
-    }*/
-    
-    
     
     /*
      *  Interface
     
      */
-    
-    @IBAction func ChangeColor(sender: AnyObject) {
-        ChangeColorLeftTurn(0)
-        ChangeColorCarAccelerate(0)
-        ChangeColorRightTurn(0)
-    }
- 
     
     /*
      *  Changing colors of the interface
@@ -397,21 +308,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         if (stateMain == 1) {
             btnRoute.setTitle("STOP ROUTE", forState: UIControlState.Normal);
-
-            //let dateTime = NSDate();
-            /*let calendar = NSCalendar.currentCalendar()
-            let components = calendar.components(.CalendarUnitHour | .CalendarUnitMinute , fromDate: date)
-            let hour = components.hour
-            let minutes = components.minute*/
-
-            //println("Data: \(date)")
-            
-            //Code for getting the initial point (Street)
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a"
             
             route.startTime = dateFormatter.stringFromDate(NSDate());
+            totalTime = CFAbsoluteTimeGetCurrent()
             
             measuringStarted = true
             
@@ -442,8 +344,10 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             dateFormatter.dateFormat = "yyyy-MM-dd 'at' h:mm a"
             
             route.endTime = dateFormatter.stringFromDate(NSDate());
-            
             route.endMoment = momentRoute;
+            totalTime = CFAbsoluteTimeGetCurrent() - totalTime
+            
+            var drivingRating = accBrakingAverage / (totalTime / 1000)
 
             var tmpres: Double = 0.0
             
@@ -452,18 +356,20 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             if (listSpeed.count != 0){
-                route.speed = Int(tmpres / Double(listSpeed.count));}
+                route.speed = Int(tmpres / Double(listSpeed.count))
+            }
             
-            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal);
+            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal)
             
             
-            let resultRoute = ArchiveRoute().retrieveData() as [Route];
-            var listRoute: [Route] = resultRoute;
+            let resultRoute = ArchiveRoute().retrieveData() as [Route]
+            var listRoute: [Route] = resultRoute
             
-            //ArchiveRoute().saveData(nameProject: listRoute);
+            //ArchiveRoute().saveData(nameProject: listRoute)
             
-            route.startPoint = self.startPoint;
-            route.endPoint = self.endPoint;
+            route.rating = Int(drivingRating)
+            route.startPoint = self.startPoint
+            route.endPoint = self.endPoint
             
             if (listRoute[0].startTime == "")
             {
@@ -480,7 +386,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 
                 //listRoute.append(route);
                 listRoute.insert(route, atIndex: 0)
-                ArchiveRoute().saveData(nameProject: listRoute);
+                ArchiveRoute().saveData(nameProject: listRoute)
                 
             }
             
