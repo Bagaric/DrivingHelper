@@ -82,7 +82,8 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     // UI element declarations
     @IBOutlet weak var RightColor: UIImageView!
     @IBOutlet weak var LeftColor: UIImageView!
-    @IBOutlet weak var carColor: UIView!
+    @IBOutlet weak var GasColor: UIImageView!
+    @IBOutlet weak var BrakeColor: UIImageView!
     
     
     var limitAccelerate:CGFloat = 1.0
@@ -313,7 +314,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
-            self.carColor.backgroundColor = color})
+            self.GasColor.backgroundColor = color})
         
     }
     func ChangeColorCarBrake(speed: CGFloat) {
@@ -321,7 +322,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             var red:CGFloat = speed * 2 * 300
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
-            self.carColor.backgroundColor = color})
+            self.BrakeColor.backgroundColor = color})
         
     }
     
