@@ -348,6 +348,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if drivingRating < 0 {
                 drivingRating = 0.0
             }
+            
+            route.rating = Int(drivingRating);
+            
             println("Driving rating: \(drivingRating)\nTotal time: \(totalTime)\nAcc/Braking average: \(accBrakingAverage)")
 
             var tmpres: Double = 0.0
