@@ -170,11 +170,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 //moment.acc = Double(z)
             } else {
-                var acceleration: Double = abs(z) * Double(limitAccelerate)
-                ChangeColorCarAccelerate(CGFloat(acceleration))
-                if acceleration > 0.3 {
-                    accBrakingAverage += acceleration
-                }
+                ChangeColorCarAccelerate(CGFloat(abs(z))*limitAccelerate)
                 //moment.acc = Double(z)
             }
             
@@ -356,10 +352,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             if (listSpeed.count != 0){
-                route.speed = Int(tmpres / Double(listSpeed.count))
-            }
+                route.speed = Int(tmpres / Double(listSpeed.count));}
             
-            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal)
+            btnRoute.setTitle("START ROUTE", forState: UIControlState.Normal);
             
             
             let resultRoute = ArchiveRoute().retrieveData() as [Route]
