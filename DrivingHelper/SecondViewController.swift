@@ -317,12 +317,14 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             println("Top Speed: \(maxSpeed)");
-            
             println ("FastestLap: \(fastestLap)");
+            println("Max Lateral: \(maxLateral)");
+            println("Max Braking: \(maxBraking)");
+            
             
             var alert = UIAlertController(title: "Share", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
-            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
+            alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet(maxSpeed, maxBraking: maxBraking, maxLateral: maxBraking, fastestLap: fastestLap))}))
+            alert.addAction(UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook(maxSpeed, maxBraking: maxBraking, maxLateral: maxBraking, fastestLap: fastestLap))}))
             alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
@@ -338,24 +340,25 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate {
     
     }
     
-    func Tweet()
+    func Tweet(maxspeed: Double, maxBraking: Double, maxLateral: Double, fastestLap: String)
     {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            //twitterSheet.setInitialText("Share on Twitter")
+            twitterSheet.setInitialText("Great! I went to INSERT-CIRCUIT-NAME and I did \(fastestLap), with a top speed of \(maxspeed), with \(maxLateral) lateral G and \(maxBraking) braking G");
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        
     }
     
-    func ShareFacebook()
+    func ShareFacebook(maxspeed: Double, maxBraking: Double, maxLateral: Double, fastestLap: String)
     {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
             var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            //facebookSheet.setInitialText("Share on Facebook")
+            facebookSheet.setInitialText("Great! I went to INSERT-CIRCUIT-NAME and I did \(fastestLap), with a top speed of \(maxspeed), with \(maxLateral) lateral G and \(maxBraking) braking G")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)

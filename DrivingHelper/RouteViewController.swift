@@ -147,25 +147,11 @@ class RouteViewController: UIViewController {
         
     }
     
-    @IBAction func itmDeleteRoute(sender: AnyObject) {
-        
-        var resultRoute = ArchiveRoute().retrieveData() as [Route];
-        var index = rowList.toInt()!;
-        
-        println("Valor: \(index)")
-        
-        self.dismissViewControllerAnimated(true, completion: nil);
-        
-        //resultRoute.removeAtIndex(index);
-        
-        
-    }
-    
     @IBAction func Tweet(sender: AnyObject) {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            //twitterSheet.setInitialText("Share on Twitter")
+            twitterSheet.setInitialText("I just made a trip and achieved a rate of \(lblRating.text!)")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -179,7 +165,7 @@ class RouteViewController: UIViewController {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
             var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            //facebookSheet.setInitialText("Share on Facebook")
+            facebookSheet.setInitialText("I just made a trip and achieved a rate of \(lblRating.text!)")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)

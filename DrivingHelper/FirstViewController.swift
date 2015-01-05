@@ -330,12 +330,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             detectLocation()
 
             
-            var alert = UIAlertController(title: "Route complete", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-            alert.addAction(UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet())}))
-            alert.addAction(UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook())}))
-            alert.addAction(UIAlertAction(title: "See Report", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.performSegueWithIdentifier("segReport", sender: String(0)))}))
-            alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            
             
             let dateTime = NSDate();
             //Code for getting the ending point
@@ -386,6 +381,13 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             route.startPoint = self.startPoint
             route.endPoint = self.endPoint
             
+            var alert = UIAlertController(title: "Route complete", message: "Do you want to share?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            alert.addAction(UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.Tweet(Int(drivingRating)))}))
+            alert.addAction(UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.ShareFacebook(Int(drivingRating)))}))
+            alert.addAction(UIAlertAction(title: "See Report", style: UIAlertActionStyle.Default, handler: {(actionSheet: UIAlertAction!) in (self.performSegueWithIdentifier("segReport", sender: String(0)))}))
+            alert.addAction(UIAlertAction(title: "Don't share", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
             if (listRoute[0].startTime == "")
             {
                 
@@ -416,11 +418,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func Tweet()
+    func Tweet(rating: Int)
     {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             var twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            //twitterSheet.setInitialText("Share on Twitter")
+            twitterSheet.setInitialText("I just made a trip and achieved a rate of \(rating/100)%")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -431,12 +433,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
 
     }
     
-    func ShareFacebook()
+    func ShareFacebook(rating: Int)
     {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
             var facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            //facebookSheet.setInitialText("Share on Facebook")
+            facebookSheet.setInitialText("I just made a trip and achieved a rate of \(rating/100)%")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
             var alert = UIAlertController(title: "Accounts", message: "Please login to your Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
