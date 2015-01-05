@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         */
         
         // Tab bar coloring
-        UITabBar.appearance().barTintColor = UIColor.blackColor()
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        //UITabBar.appearance().barTintColor = UIColor.blackColor()
+        //UITabBar.appearance().tintColor = UIColor.blueColor()
         UITabBar.appearance().translucent = false
 
         return true
