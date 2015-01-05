@@ -113,13 +113,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_left_crooked_segmented_full" translatesAutoresizingMaskIntoConstraints="NO" id="b7Q-az-95j">
-                                <rect key="frame" x="16" y="226" width="120" height="120"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="FuW-xm-uvK"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-zs-Lgn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,15 +180,12 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="throttle-pedal-3" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-ND-Aps">
                                 <rect key="frame" x="170" y="90" width="104" height="128"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brake-pedal-3" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-O8-PEE">
                                 <rect key="frame" x="42" y="90" width="108" height="128"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_crooked_segmented_full" translatesAutoresizingMaskIntoConstraints="NO" id="8P9-ZP-Smh">
                                 <rect key="frame" x="184" y="226" width="120" height="120"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.82352948189999997" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYN-uA-W8v">
                                 <rect key="frame" x="81" y="402" width="107" height="21"/>
@@ -212,11 +202,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ztb-Gz-nbA"/>
                                 </constraints>
-                                <state key="normal" title="START ROUTE" image="StartTripButton"/>
+                                <state key="normal" title="START TRIP"/>
                                 <connections>
                                     <action selector="btnStop:" destination="9pv-A4-QxB" eventType="touchUpInside" id="gZs-AI-tZs"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_left_crooked_segmented_full" translatesAutoresizingMaskIntoConstraints="NO" id="b7Q-az-95j">
+                                <rect key="frame" x="16" y="226" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="FuW-xm-uvK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -941,7 +937,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o9W-In-1Jl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6a0-Eu-Wxn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="by2-4o-eiw">
@@ -1184,6 +1180,7 @@
                         <outlet property="lblKMDone" destination="tZ8-iD-1L2" id="bW2-BO-das"/>
                         <outlet property="lblMaxAcceleration" destination="9Ri-jY-4P9" id="gmF-lV-qUo"/>
                         <outlet property="lblMaxBraking" destination="tZr-s4-NJw" id="Ys6-wr-xUb"/>
+                        <outlet property="lblRating" destination="njp-Qa-4mn" id="GPe-pV-8U0"/>
                         <outlet property="lblStartPoint" destination="I6g-ot-pbS" id="iZg-3k-oDf"/>
                         <outlet property="lblStartTime" destination="pS8-fp-44m" id="dsk-P4-Zvz"/>
                     </connections>
@@ -1198,7 +1195,6 @@
         <image name="Helper" width="30" height="30"/>
         <image name="History" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
-        <image name="StartTripButton" width="6000" height="1757"/>
         <image name="Trackday" width="30" height="30"/>
         <image name="arrow_left_crooked_segmented_full" width="3392" height="2328"/>
         <image name="arrow_right_crooked_segmented_full" width="3392" height="2328"/>
@@ -1213,6 +1209,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yTg-jQ-Mgh"/>
+        <segue reference="Af1-IH-jN9"/>
     </inferredMetricsTieBreakers>
 </document>
