@@ -324,6 +324,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
         } else {
             
+            
             measuringStarted = false
             
             detectLocation()
@@ -347,12 +348,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             totalTime = CFAbsoluteTimeGetCurrent() - totalTime
             
             // Ratings
-            var drivingRating = 10000 - accBrakingAverage / (totalTime / 1000)
+            var drivingRating: Double = 10000 - accBrakingAverage / (totalTime / 1000)
             if drivingRating < 0 {
                 drivingRating = 0.0
             }
             
-            route.rating = Int(drivingRating);
+            route.rating = Int(drivingRating)
             
             println("Driving rating: \(drivingRating)\nTotal time: \(totalTime)\nAcc/Braking average: \(accBrakingAverage)")
 
@@ -365,6 +366,12 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if (listSpeed.count != 0){
                 route.speed = Int(tmpres / Double(listSpeed.count));}
             
+            // Returning color to beginning state
+            UIView.animateWithDuration(motionUpdateInterval, animations:{
+                self.BrakeColor.backgroundColor = UIColor.lightGrayColor()
+                self.LeftColor.backgroundColor = UIColor.lightGrayColor()
+                self.RightColor.backgroundColor = UIColor.lightGrayColor()
+                self.GasColor.backgroundColor = UIColor.lightGrayColor()})
             
             btnRoute.setTitle("START TRIP", forState: UIControlState.Normal)
             btnRoute.backgroundColor = UIColor.greenColor();

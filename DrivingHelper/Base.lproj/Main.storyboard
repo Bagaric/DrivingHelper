@@ -180,12 +180,15 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="throttle-pedal-3" translatesAutoresizingMaskIntoConstraints="NO" id="6xm-ND-Aps">
                                 <rect key="frame" x="170" y="90" width="104" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brake-pedal-3" translatesAutoresizingMaskIntoConstraints="NO" id="zg5-O8-PEE">
                                 <rect key="frame" x="42" y="90" width="108" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_crooked_segmented_full" translatesAutoresizingMaskIntoConstraints="NO" id="8P9-ZP-Smh">
                                 <rect key="frame" x="184" y="226" width="120" height="120"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 km/h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYN-uA-W8v">
                                 <rect key="frame" x="81" y="402" width="107" height="21"/>
@@ -209,6 +212,7 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_left_crooked_segmented_full" translatesAutoresizingMaskIntoConstraints="NO" id="b7Q-az-95j">
                                 <rect key="frame" x="16" y="226" width="120" height="120"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="FuW-xm-uvK"/>
                                 </constraints>
@@ -937,7 +941,7 @@
                         <viewControllerLayoutGuide type="bottom" id="o9W-In-1Jl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6a0-Eu-Wxn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="by2-4o-eiw">
@@ -1102,9 +1106,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njp-Qa-4mn">
-                                <rect key="frame" x="209" y="383" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njp-Qa-4mn">
+                                <rect key="frame" x="209" y="383" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1167,7 +1171,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="k7I-Mj-FcI" secondAttribute="trailing" constant="-4" id="sGH-Nl-iCr"/>
                             <constraint firstItem="7IQ-r4-fsM" firstAttribute="leading" secondItem="x0Y-Fk-Jbj" secondAttribute="leading" id="tph-mj-Suy"/>
                             <constraint firstItem="rIb-WF-mDg" firstAttribute="baseline" secondItem="GT9-GO-T2f" secondAttribute="baseline" id="ttt-GT-4dM"/>
-                            <constraint firstItem="B2K-9E-Rf8" firstAttribute="centerX" secondItem="njp-Qa-4mn" secondAttribute="centerX" id="uMc-9H-brk"/>
+                            <constraint firstItem="B2K-9E-Rf8" firstAttribute="centerX" secondItem="njp-Qa-4mn" secondAttribute="centerX" constant="-12.5" id="uMc-9H-brk"/>
                             <constraint firstItem="x0Y-Fk-Jbj" firstAttribute="top" secondItem="uie-sW-BJ0" secondAttribute="bottom" id="xaN-Ub-Vbw"/>
                             <constraint firstItem="by2-4o-eiw" firstAttribute="top" secondItem="x0Y-Fk-Jbj" secondAttribute="bottom" constant="15" id="xmS-yF-uQl"/>
                         </constraints>
@@ -1209,6 +1213,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Af1-IH-jN9"/>
+        <segue reference="yTg-jQ-Mgh"/>
     </inferredMetricsTieBreakers>
 </document>
