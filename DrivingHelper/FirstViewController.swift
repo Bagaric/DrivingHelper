@@ -306,7 +306,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         var imageStopButton = UIImage(named: "StopTripButton") as UIImage?
         
         if (stateMain == 1) {
-            btnRoute.setImage(imageStopButton, forState: .Normal)
+            //btnRoute.setImage(imageStopButton, forState: .Normal)
             btnRoute.backgroundColor = UIColor.redColor()
             
             let dateFormatter = NSDateFormatter()
@@ -366,7 +366,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             if (listSpeed.count != 0){
                 route.speed = Int(tmpres / Double(listSpeed.count));}
             
-            btnRoute.setImage(imageStartButton, forState: .Normal)
+            //btnRoute.setImage(imageStartButton, forState: .Normal)
             btnRoute.backgroundColor = UIColor.greenColor();
             
             
