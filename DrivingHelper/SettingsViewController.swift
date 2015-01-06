@@ -30,18 +30,18 @@ class SettingsViewController: UIViewController {
     
  
     @IBAction func accelerationSlider(sender: UISlider) {
-        limitAccel = sender.value * 2
+        limitAccel = sender.value * 4
         println(limitAccel)
         
     }
     
     @IBAction func brakingSlider(sender: UISlider) {
-        limitBraking = sender.value * 2
+        limitBraking = sender.value * 4
         println(limitBraking)
     }
     
     @IBAction func turningSlider(sender: UISlider) {
-        limitTurning = sender.value * 2
+        limitTurning = sender.value * 4
         println(limitTurning)
     }
   
@@ -101,10 +101,10 @@ class SettingsViewController: UIViewController {
         limitTurning = userDefaults.floatForKey("limitTurning")
         limitRoad = userDefaults.floatForKey("limitRoad")
         
-        accelerationSliderPosition.value = limitAccel / 2
-        brakingSliderPosition.value = limitBraking / 2
-        turningSliderPosition.value = limitTurning / 2
-        roadSliderPosition.value = limitRoad / 2
+        accelerationSliderPosition.value = limitAccel / 4
+        brakingSliderPosition.value = limitBraking / 4
+        turningSliderPosition.value = limitTurning / 4
+        roadSliderPosition.value = limitRoad / 4
     }
     
     override func viewDidLoad() {
@@ -113,14 +113,14 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func resetValues(sender: UIButton) {
-        limitAccel = 1
-        limitBraking = 1
-        limitTurning = 1
+        limitAccel = 2
+        limitBraking = 2
+        limitTurning = 2
         limitRoad = 1
         
-        accelerationSliderPosition.value = limitAccel / 2
-        brakingSliderPosition.value = limitBraking / 2
-        turningSliderPosition.value = limitTurning / 2
+        accelerationSliderPosition.value = limitAccel / 4
+        brakingSliderPosition.value = limitBraking / 4
+        turningSliderPosition.value = limitTurning / 4
         roadSliderPosition.value = limitRoad / 2
     }
     
