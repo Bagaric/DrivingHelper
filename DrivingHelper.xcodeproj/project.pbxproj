@@ -33,12 +33,13 @@
 		191636CE1A5AD7FF003B3639 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 191636C31A5AD7FF003B3639 /* Icon-Small@2x.png */; };
 		191636CF1A5AD7FF003B3639 /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 191636C41A5AD7FF003B3639 /* Icon-Small@3x.png */; };
 		1925EAFD1A433EA10046856B /* navbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1925EAFC1A433EA00046856B /* navbar.swift */; };
+		19EEAF7F1A5C84C400DE7AC1 /* SplashScreen.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 19EEAF7E1A5C84C400DE7AC1 /* SplashScreen.PNG */; };
+		19EEAF811A5C868800DE7AC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EEAF801A5C868800DE7AC1 /* LaunchScreen.storyboard */; };
 		19F0F15A1A2E2EE100D1BB35 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
 		19F0F15C1A2E308C00D1BB35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A798381A265C4800DD0CA9 /* AppDelegate.swift */; };
 		19F0F15D1A2E309000D1BB35 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983A1A265C4800DD0CA9 /* FirstViewController.swift */; };
 		19F0F15E1A2E309600D1BB35 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7983C1A265C4800DD0CA9 /* SecondViewController.swift */; };
 		19F0F15F1A2E309900D1BB35 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */; };
-		2C5F13571A2FDA730090D33B /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F13561A2FDA730090D33B /* Stop.png */; };
 		2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F135C1A2FE4710090D33B /* GMeterBase2.png */; };
 		2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C5F135E1A2FE4790090D33B /* GMeterBall2.png */; };
 		2CA2B14F1A3B4E3600D5F913 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2B14E1A3B4E3600D5F913 /* Route.swift */; };
@@ -64,17 +65,9 @@
 		52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A798431A265C4800DD0CA9 /* LaunchScreen.xib */; };
 		843CC6181A2AD4FA00094D37 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6171A2AD4FA00094D37 /* CoreMotion.framework */; };
 		843CC61A1A2AD50500094D37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843CC6191A2AD50500094D37 /* CoreLocation.framework */; };
-		9600BA411A3F74A200BEBCE2 /* carUpdated.png in Resources */ = {isa = PBXBuildFile; fileRef = 9600BA401A3F74A200BEBCE2 /* carUpdated.png */; };
-		9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */ = {isa = PBXBuildFile; fileRef = 9600BA421A3F772300BEBCE2 /* carUpdated500.png */; };
-		960967851A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */; };
-		960967871A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */; };
 		9626CAA01A3B3B02002F634C /* ecoModeTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */; };
-		9686C35A1A30EB6E00161A08 /* timerpdf.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9686C3591A30EB6E00161A08 /* timerpdf.pdf */; };
 		9695BF6A1A39F030002BD2BC /* TimerTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695BF691A39F030002BD2BC /* TimerTips.swift */; };
-		969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */ = {isa = PBXBuildFile; fileRef = 969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */; };
 		969E0A1C1A2CD1DD008F7CE0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */; };
-		96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA51A2E76A40064D8F1 /* timer31.png */; };
-		96AC6AA81A2E80760064D8F1 /* play3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AC6AA71A2E80760064D8F1 /* play3.png */; };
 		96D856A21A30DB1000AEBD9F /* GmeterSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */; };
 		FB94B5911A49F634000E0233 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB547AB1A3F390E00BD63E9 /* RouteViewController.swift */; };
 		FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */ = {isa = PBXBuildFile; fileRef = FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */; };
@@ -131,7 +124,8 @@
 		191636C31A5AD7FF003B3639 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		191636C41A5AD7FF003B3639 /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		1925EAFC1A433EA00046856B /* navbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = navbar.swift; sourceTree = "<group>"; };
-		2C5F13561A2FDA730090D33B /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
+		19EEAF7E1A5C84C400DE7AC1 /* SplashScreen.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.PNG; sourceTree = "<group>"; };
+		19EEAF801A5C868800DE7AC1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C5F135C1A2FE4710090D33B /* GMeterBase2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBase2.png; sourceTree = "<group>"; };
 		2C5F135E1A2FE4790090D33B /* GMeterBall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GMeterBall2.png; sourceTree = "<group>"; };
 		2CA2B14E1A3B4E3600D5F913 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -159,17 +153,9 @@
 		52A798501A265C4900DD0CA9 /* ProjectoPSS_IAUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectoPSS_IAUTests.swift; sourceTree = "<group>"; };
 		843CC6171A2AD4FA00094D37 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		843CC6191A2AD50500094D37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9600BA401A3F74A200BEBCE2 /* carUpdated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carUpdated.png; sourceTree = "<group>"; };
-		9600BA421A3F772300BEBCE2 /* carUpdated500.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carUpdated500.png; sourceTree = "<group>"; };
-		960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightArrowFinalWhiteBack.png; sourceTree = "<group>"; };
-		960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftArrowFinalWhiteBack.png; sourceTree = "<group>"; };
 		9626CA9F1A3B3B02002F634C /* ecoModeTipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ecoModeTipsViewController.swift; sourceTree = "<group>"; };
-		9686C3591A30EB6E00161A08 /* timerpdf.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = timerpdf.pdf; sourceTree = "<group>"; };
 		9695BF691A39F030002BD2BC /* TimerTips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerTips.swift; sourceTree = "<group>"; };
-		969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ios7-gear-outline-44.png"; sourceTree = "<group>"; };
 		969E0A1B1A2CD1DD008F7CE0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		96AC6AA51A2E76A40064D8F1 /* timer31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer31.png; sourceTree = "<group>"; };
-		96AC6AA71A2E80760064D8F1 /* play3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play3.png; sourceTree = "<group>"; };
 		96D856A11A30DB1000AEBD9F /* GmeterSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GmeterSettings.swift; sourceTree = "<group>"; };
 		FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_icon_by_x_1337_x-d5ikwkm.png"; sourceTree = "<group>"; };
 		FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hearthstone_logo_twitter.png; sourceTree = "<group>"; };
@@ -247,6 +233,7 @@
 		5264FCA01A59A7F4002A80CB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				19EEAF7E1A5C84C400DE7AC1 /* SplashScreen.PNG */,
 				5264FCAD1A59A873002A80CB /* StartLapButton.png */,
 				5264FCAE1A59A873002A80CB /* StartTrackdayButton.png */,
 				5264FCAF1A59A873002A80CB /* StartTripButton.png */,
@@ -260,19 +247,10 @@
 		52A7982A1A265C4800DD0CA9 = {
 			isa = PBXGroup;
 			children = (
-				960967861A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png */,
 				FB94EE181A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png */,
-				960967841A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png */,
 				FB94EE1A1A508D9300B370A0 /* hearthstone_logo_twitter.png */,
-				9600BA421A3F772300BEBCE2 /* carUpdated500.png */,
-				9600BA401A3F74A200BEBCE2 /* carUpdated.png */,
-				9686C3591A30EB6E00161A08 /* timerpdf.pdf */,
-				96AC6AA71A2E80760064D8F1 /* play3.png */,
-				2C5F13561A2FDA730090D33B /* Stop.png */,
 				2C5F135E1A2FE4790090D33B /* GMeterBall2.png */,
 				2C5F135C1A2FE4710090D33B /* GMeterBase2.png */,
-				96AC6AA51A2E76A40064D8F1 /* timer31.png */,
-				969E0A151A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png */,
 				843CC6191A2AD50500094D37 /* CoreLocation.framework */,
 				843CC6171A2AD4FA00094D37 /* CoreMotion.framework */,
 				52A798351A265C4800DD0CA9 /* DrivingHelper */,
@@ -293,6 +271,7 @@
 		52A798351A265C4800DD0CA9 /* DrivingHelper */ = {
 			isa = PBXGroup;
 			children = (
+				19EEAF801A5C868800DE7AC1 /* LaunchScreen.storyboard */,
 				191636B91A5AD7DD003B3639 /* AppIcon */,
 				5264FCA01A59A7F4002A80CB /* Images */,
 				2CA2B14D1A3B4E2900D5F913 /* Model */,
@@ -424,7 +403,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9686C35A1A30EB6E00161A08 /* timerpdf.pdf in Resources */,
 				190FAE061A51745B009AF0A7 /* helper@3x.png in Resources */,
 				190FAE041A51745B009AF0A7 /* helper.png in Resources */,
 				190FAE0A1A51745B009AF0A7 /* trackday.png in Resources */,
@@ -433,43 +411,37 @@
 				190FAE051A51745B009AF0A7 /* helper@2x.png in Resources */,
 				191636CE1A5AD7FF003B3639 /* Icon-Small@2x.png in Resources */,
 				5264FCB61A59A873002A80CB /* StopLapButton.png in Resources */,
-				969E0A161A2CC241008F7CE0 /* icon-ios7-gear-outline-44.png in Resources */,
 				191636C61A5AD7FF003B3639 /* Icon-40.png in Resources */,
 				5264FCB41A59A873002A80CB /* StartTrackdayButton.png in Resources */,
 				190FAE0B1A51745B009AF0A7 /* trackday@2x.png in Resources */,
-				960967871A40A7B50077DAA2 /* leftArrowFinalWhiteBack.png in Resources */,
 				190FAE191A5187DA009AF0A7 /* settingsFilled@2x.png in Resources */,
 				5264FCB81A59A873002A80CB /* StopTripButton.png in Resources */,
-				9600BA431A3F772300BEBCE2 /* carUpdated500.png in Resources */,
 				52035C681A2975AD00A8FD52 /* images.xcassets in Resources */,
 				191636CB1A5AD7FF003B3639 /* Icon-76.png in Resources */,
 				191636CA1A5AD7FF003B3639 /* Icon-60@3x.png in Resources */,
 				191636C91A5AD7FF003B3639 /* Icon-60@2x.png in Resources */,
 				5264FCB31A59A873002A80CB /* StartLapButton.png in Resources */,
 				190FAE1E1A518847009AF0A7 /* settings.png in Resources */,
+				19EEAF7F1A5C84C400DE7AC1 /* SplashScreen.PNG in Resources */,
 				191636CD1A5AD7FF003B3639 /* Icon-Small.png in Resources */,
 				190FAE1A1A5187DA009AF0A7 /* settingsFilled@3x.png in Resources */,
 				2C5F135D1A2FE4710090D33B /* GMeterBase2.png in Resources */,
 				FB94EE1B1A508D9300B370A0 /* hearthstone_logo_twitter.png in Resources */,
 				FB94EE191A508D8700B370A0 /* facebook_icon_by_x_1337_x-d5ikwkm.png in Resources */,
 				190FAE091A51745B009AF0A7 /* history@3x.png in Resources */,
-				96AC6AA61A2E76A40064D8F1 /* timer31.png in Resources */,
 				191636CF1A5AD7FF003B3639 /* Icon-Small@3x.png in Resources */,
 				191636CC1A5AD7FF003B3639 /* Icon-76@2x.png in Resources */,
 				190FAE201A518847009AF0A7 /* settings@3x.png in Resources */,
 				190FAE071A51745B009AF0A7 /* history.png in Resources */,
 				190FAE0C1A51745B009AF0A7 /* trackday@3x.png in Resources */,
-				96AC6AA81A2E80760064D8F1 /* play3.png in Resources */,
 				5264FCB71A59A873002A80CB /* StopTrackdayButton.png in Resources */,
 				191636C71A5AD7FF003B3639 /* Icon-40@2x.png in Resources */,
+				19EEAF811A5C868800DE7AC1 /* LaunchScreen.storyboard in Resources */,
 				5264FCB51A59A873002A80CB /* StartTripButton.png in Resources */,
 				2C5F135F1A2FE4790090D33B /* GMeterBall2.png in Resources */,
 				52A798401A265C4800DD0CA9 /* Main.storyboard in Resources */,
-				960967851A40A7B10077DAA2 /* rightArrowFinalWhiteBack.png in Resources */,
 				190FAE1F1A518847009AF0A7 /* settings@2x.png in Resources */,
 				190FAE181A5187DA009AF0A7 /* settingsFilled.png in Resources */,
-				2C5F13571A2FDA730090D33B /* Stop.png in Resources */,
-				9600BA411A3F74A200BEBCE2 /* carUpdated.png in Resources */,
 				52A798451A265C4800DD0CA9 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
@@ -649,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/DrivingHelper/Info.plist";
