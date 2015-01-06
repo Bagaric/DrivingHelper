@@ -262,6 +262,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         })
         
         var tmp = (manager.location.speed.description as NSString).doubleValue
+        if tmp < 0 {
+            tmp = 0.0
+        }
         tmp = tmp * 3.6;
         
         listSpeed.append(tmp);
