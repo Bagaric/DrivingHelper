@@ -162,7 +162,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             
             // Change car color
-            if z > Double(0) {
+            if z <= Double(0) {
                 var braking: Double = z * Double(limitBraking)
                 ChangeColorCarBrake(CGFloat(braking))
                 if braking > 0.3 {
