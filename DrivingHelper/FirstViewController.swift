@@ -152,9 +152,9 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             // Change arrow colors
             if x > Double(0) {
-                ChangeColorRightTurn(CGFloat(x)*limitTurning)
+                ChangeColorLeftTurn(CGFloat(x)*limitTurning)
             } else {
-                ChangeColorLeftTurn(CGFloat(abs(x))*limitTurning)
+                ChangeColorRightTurn(CGFloat(abs(x))*limitTurning)
             }
             
             moment.acc = z
@@ -162,15 +162,15 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             
             
             // Change car color
-            if z <= Double(0) {
+            if z > Double(0) {
                 var braking: Double = z * Double(limitBraking)
-                ChangeColorCarBrake(CGFloat(braking))
+                ChangeColorCarAccelerate(CGFloat(braking))
                 if braking > 0.3 {
                     accBrakingAverage += braking
                 }
                 //moment.acc = Double(z)
             } else {
-                ChangeColorCarAccelerate(CGFloat(abs(z))*limitAccelerate)
+                ChangeColorCarBrake(CGFloat(abs(z))*limitAccelerate)
                 //moment.acc = Double(z)
             }
             

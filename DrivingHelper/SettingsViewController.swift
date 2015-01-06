@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
     
  
     @IBAction func accelerationSlider(sender: UISlider) {
-        limitAccel = sender.value * 4
+        limitAccel = sender.value * 8
         println(limitAccel)
         
     }
@@ -101,7 +101,7 @@ class SettingsViewController: UIViewController {
         limitTurning = userDefaults.floatForKey("limitTurning")
         limitRoad = userDefaults.floatForKey("limitRoad")
         
-        accelerationSliderPosition.value = limitAccel / 4
+        accelerationSliderPosition.value = limitAccel / 8
         brakingSliderPosition.value = limitBraking / 4
         turningSliderPosition.value = limitTurning / 4
         roadSliderPosition.value = limitRoad / 4
