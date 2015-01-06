@@ -203,14 +203,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
      */
     func ChangeColorLeftTurn(speed: CGFloat) {
         UIView.animateWithDuration(motionUpdateInterval, animations:{
-            var red:CGFloat = speed * 2 * 300
+            var red:CGFloat = speed * 2 * 255
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.LeftColor.backgroundColor = color})
     }
     func ChangeColorRightTurn(speed: CGFloat) {
         UIView.animateWithDuration(motionUpdateInterval, animations:{
-            var red:CGFloat = speed * 2 * 300
+            var red:CGFloat = speed * 2 * 255
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.RightColor.backgroundColor = color})
@@ -218,7 +218,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     func ChangeColorCarAccelerate(speed: CGFloat) {
         UIView.animateWithDuration(motionUpdateInterval, animations:{
-            var red:CGFloat = speed * 2 * 300
+            var red:CGFloat = speed * 2 * 255
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.GasColor.backgroundColor = color})
@@ -226,7 +226,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     }
     func ChangeColorCarBrake(speed: CGFloat) {
         UIView.animateWithDuration(motionUpdateInterval, animations:{
-            var red:CGFloat = speed * 2 * 300
+            var red:CGFloat = speed * 2 * 255
             var green:CGFloat = 510 - red
             let color = UIColor(red: (red/255.0), green: (green/255.0), blue: (0/255.0), alpha: 1.0)
             self.BrakeColor.backgroundColor = color})
