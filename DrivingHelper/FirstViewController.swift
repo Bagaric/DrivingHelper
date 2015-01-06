@@ -343,7 +343,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
             totalTime = CFAbsoluteTimeGetCurrent() - totalTime
             
             // Ratings
-            var drivingRating: Double = 10000 - accBrakingAverage / (totalTime / 1000)
+            var drivingRating: Double = 10000 - accBrakingAverage * 20 / (totalTime / 1000)
             if drivingRating < 0 {
                 drivingRating = 0.0
             }
