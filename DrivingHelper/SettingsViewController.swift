@@ -101,10 +101,17 @@ class SettingsViewController: UIViewController {
         limitTurning = userDefaults.floatForKey("limitTurning")
         limitRoad = userDefaults.floatForKey("limitRoad")
         
-        accelerationSliderPosition.value = limitAccel / 8
-        brakingSliderPosition.value = limitBraking / 4
-        turningSliderPosition.value = limitTurning / 4
-        roadSliderPosition.value = limitRoad / 4
+        if(limitAccel == 0 && limitBraking == 0 && limitRoad == 0  && limitTurning == 0 ){
+            accelerationSliderPosition.value = 1/2
+            brakingSliderPosition.value = 1/2
+            turningSliderPosition.value = 1/2
+            roadSliderPosition.value = 1/2
+        }else{
+            accelerationSliderPosition.value = limitAccel / 8
+            brakingSliderPosition.value = limitBraking / 4
+            turningSliderPosition.value = limitTurning / 4
+            roadSliderPosition.value = limitRoad / 4
+        }
     }
     
     override func viewDidLoad() {
