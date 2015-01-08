@@ -64,7 +64,11 @@ class GmeterSettings: UIViewController {
     }
     
     @IBAction func getSlideValue(sender: AnyObject) {
-        limitG = sliderG.value
+        if(sliderG.value == 0 ){
+            limitG = 0.0001
+        }else{
+                limitG = sliderG.value
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -72,7 +76,11 @@ class GmeterSettings: UIViewController {
         
         //Loading
         limitG = userDefaults.floatForKey("limitG")
-        sliderG.value = limitG
+        if(limitG == 0 ){
+            sliderG.value = 0.5
+        }else{
+            sliderG.value = limitG
+         }
         
     }
     

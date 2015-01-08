@@ -30,24 +30,41 @@ class SettingsViewController: UIViewController {
     
  
     @IBAction func accelerationSlider(sender: UISlider) {
-        limitAccel = sender.value * 8
-        println(limitAccel)
+        if(sender.value == 0 ){
+            limitAccel = 0.001
+        } else {
+            limitAccel = sender.value * 8
+            println(limitAccel)
+        }
         
     }
     
     @IBAction func brakingSlider(sender: UISlider) {
-        limitBraking = sender.value * 4
-        println(limitBraking)
+        if(sender.value == 0 ){
+            limitBraking = 0.001
+        } else {
+            limitBraking = sender.value * 4
+            println(limitBraking)
+        }
     }
     
     @IBAction func turningSlider(sender: UISlider) {
-        limitTurning = sender.value * 4
-        println(limitTurning)
+        if(sender.value == 0 ){
+           limitTurning = 0.001
+        
+        } else {
+            limitTurning = sender.value * 4
+            println(limitTurning)
+        }
     }
   
     @IBAction func roadSlider(sender: UISlider) {
-        limitRoad = sender.value * 2
-        println(limitRoad)
+        if(sender.value == 0 ){
+                    limitRoad = 0.001
+        } else {
+            limitRoad = sender.value * 2
+            println(limitRoad)
+        }
     }
     
     @IBAction func cancelSettings(sender: AnyObject) {
@@ -120,15 +137,15 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func resetValues(sender: UIButton) {
-        limitAccel = 2
+        limitAccel = 4
         limitBraking = 2
         limitTurning = 2
-        limitRoad = 1
+        limitRoad = 2
         
-        accelerationSliderPosition.value = limitAccel / 4
+        accelerationSliderPosition.value = limitAccel / 8
         brakingSliderPosition.value = limitBraking / 4
         turningSliderPosition.value = limitTurning / 4
-        roadSliderPosition.value = limitRoad / 2
+        roadSliderPosition.value = limitRoad / 4
     }
     
     override func didReceiveMemoryWarning() {
